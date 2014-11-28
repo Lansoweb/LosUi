@@ -1,0 +1,7 @@
+/.settings
+/.buildpath
+/.project
+!*.gitadd
+!*.gitkeep
+.DS_Store
+Thumbs.db

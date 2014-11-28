@@ -1,0 +1,25 @@
+{
+  "name" : "los/losui",
+  "description" : "LosUi provides some UI utility classes your ZF2 application using Bootstrap3, Chosen, etc",
+  "version" : "0.9.0",
+  "require" : {
+    "php" : ">=5.4.0",
+    "zendframework/zendframework" : "2.3.*"
+  },
+  "authors" : [ {
+    "name" : "Leandro Silva",
+    "email" : "leandro@leandrosilva.info",
+    "homepage" : "https://github.com/Lansoweb/"
+  } ],
+  "keywords" : [ "los", "ui", "module", "zf2" ],
+  "minimum-stability" : "beta",
+  "autoload" : {
+    "psr-0" : {
+      "LosUi\\" : "src/"
+    },
+    "classmap" : [ "./" ]
+  }
+  "license" : "MIT",
+  "type" : "library",
+  "homepage" : "http://github.com/Lansoweb/LosUi"
+}
