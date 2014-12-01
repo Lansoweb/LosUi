@@ -14,5 +14,12 @@ return [
             'los_label'               => 'LosUi\View\Helper\Label',
             'los_well'                => 'LosUi\View\Helper\Well',
         ]
+    ],
+    'asset_manager' => [
+        'resolver_configs' => [
+            'paths' => [
+                'module_name' => __DIR__ . '/../public/',
+            ]
+        ]
     ]
 ];
