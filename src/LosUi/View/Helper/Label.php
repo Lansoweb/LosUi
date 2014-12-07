@@ -41,7 +41,7 @@ class Label extends AbstractHelper
     public function render($label, $class = ' label-default')
     {
         $class = trim($class);
-        
+
         return sprintf($this->format, $class, $label);
     }
 
@@ -50,7 +50,7 @@ class Label extends AbstractHelper
         if ($label) {
             return $this->render($label, $class);
         }
-        
+
         return $this;
     }
 }

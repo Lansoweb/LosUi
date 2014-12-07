@@ -31,6 +31,7 @@ class FlashMessenger extends ZfFlashMessenger
         foreach ($order as $namespace) {
             $html .= $this->renderCurrent($namespace);
         }
+
         return $html;
     }
 }

@@ -12,4 +12,3 @@ class FormElementErrors extends ZendFormElementErrors
 
     protected $messageSeparatorString = '</p><p>';
 }
-

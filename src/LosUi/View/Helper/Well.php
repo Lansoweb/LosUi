@@ -13,7 +13,7 @@ class Well extends AbstractHelper
         if ($content) {
             return $this->render($content, $class);
         }
-        
+
         return $this;
     }
 
@@ -30,7 +30,7 @@ class Well extends AbstractHelper
     public function render($content, $class = '')
     {
         $class = ' ' . trim($class);
-        
+
         return sprintf($this->format, $class, $content);
     }
 }

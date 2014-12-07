@@ -3,6 +3,9 @@ namespace LosUi\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormRow as ZfFormRow;
 use Zend\Form\ElementInterface;
+use Zend\Form\Element\Button;
+use Zend\Form\Element\MonthSelect;
+use Zend\Form\LabelAwareInterface;
 
 class FormRow extends ZfFormRow
 {
@@ -14,15 +17,15 @@ class FormRow extends ZfFormRow
         if ($this->elementErrorsHelper) {
             return $this->elementErrorsHelper;
         }
-        
+
         if (method_exists($this->view, 'plugin')) {
             $this->elementErrorsHelper = $this->view->plugin('los_form_element_errors');
         }
-        
+
         if (! $this->elementErrorsHelper instanceof FormElementErrors) {
             $this->elementErrorsHelper = new FormElementErrors();
         }
-        
+
         return $this->elementErrorsHelper;
     }
 
@@ -32,29 +35,29 @@ class FormRow extends ZfFormRow
         $labelHelper = $this->getLabelHelper();
         $elementHelper = $this->getElementHelper();
         $elementErrorsHelper = $this->getElementErrorsHelper();
-        
+
         $label = $element->getLabel();
         $inputErrorClass = $this->getInputErrorClass();
-        
+
         if (isset($label) && '' !== $label) {
             // Translate the label
             if (null !== ($translator = $this->getTranslator())) {
                 $label = $translator->translate($label, $this->getTranslatorTextDomain());
             }
         }
-        
+
         $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
         $classAttributes = $classAttributes . 'form-control';
         $element->setAttribute('class', $classAttributes);
-        
+
         // Does this element have errors ?
         if (count($element->getMessages()) > 0 && ! empty($inputErrorClass)) {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . $inputErrorClass;
-            
+
             $element->setAttribute('class', $classAttributes);
         }
-        
+
         if ($this->partial) {
             $vars = array(
                 'element' => $element,
@@ -63,43 +66,43 @@ class FormRow extends ZfFormRow
                 'labelPosition' => $this->labelPosition,
                 'renderErrors' => $this->renderErrors
             );
-            
+
             return $this->view->render($this->partial, $vars);
         }
-        
+
         if ($this->renderErrors) {
             $elementErrors = $elementErrorsHelper->render($element, [
                 'class' => 'text-danger'
             ]);
         }
-        
+
         $elementString = $elementHelper->render($element);
-        
+
         // hidden elements do not need a <label> -https://github.com/zendframework/zf2/issues/5607
         $type = $element->getAttribute('type');
         if (isset($label) && '' !== $label && $type !== 'hidden') {
-            
+
             $labelAttributes = array();
-            
+
             if ($element instanceof LabelAwareInterface) {
                 $labelAttributes = $element->getLabelAttributes();
             }
-            
+
             if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
                 $label = $escapeHtmlHelper($label);
             }
-            
+
             if (empty($labelAttributes)) {
                 $labelAttributes = $this->labelAttributes;
             }
-            
+
             if (! $element->getAttribute('id') && $element->getName()) {
                 $element->setAttribute('id', $element->getName());
             }
             if ($element->getAttribute('id')) {
                 $labelAttributes['for'] = $element->getAttribute('id');
             }
-            
+
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
             if ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect) {
@@ -115,16 +118,16 @@ class FormRow extends ZfFormRow
                     $labelOpen = $labelHelper->openTag($labelAttributes);
                     $labelClose = $labelHelper->closeTag();
                 }
-                
+
                 if ($label !== '' && (! $element->hasAttribute('id')) || ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))) {
                     $label = '<span>' . $label . '</span>';
                 }
-                
+
                 // Button element is a special case, because label is always rendered inside it
                 if ($element instanceof Button) {
                     $labelOpen = $labelClose = $label = '';
                 }
-                
+
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
                         $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, $elementString);
@@ -135,7 +138,7 @@ class FormRow extends ZfFormRow
                         break;
                 }
             }
-            
+
             if ($this->renderErrors) {
                 $markup .= $elementErrors;
             }
@@ -146,7 +149,7 @@ class FormRow extends ZfFormRow
                 $markup = $elementString;
             }
         }
-        
+
         return $markup;
     }
 }

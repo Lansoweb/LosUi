@@ -18,7 +18,7 @@ class Badge extends AbstractHelper
         if ($badge) {
             return $this->render($badge);
         }
-        
+
         return $this;
     }
 }

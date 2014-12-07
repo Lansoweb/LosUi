@@ -29,14 +29,14 @@ class Image extends AbstractHelper
     {
         $basePath = $this->view->plugin('basePath');
         $class = trim($class);
-        
+
         if ($this->isResponsive) {
             if (! empty($class)) {
                 $class .= ' ';
             }
             $class .= 'img-responsive';
         }
-        
+
         return sprintf($this->format, $basePath($src), ! empty($class) ? " class=\"$class\"" : '');
     }
 
@@ -45,9 +45,9 @@ class Image extends AbstractHelper
         if (! is_bool($responsive)) {
             throw new \InvalidArgumentException("Argument must be a bool value.");
         }
-        
+
         $this->isResponsive = $responsive;
-        
+
         return $this;
     }
 
@@ -56,7 +56,7 @@ class Image extends AbstractHelper
         if ($src) {
             return $this->render($src, $class);
         }
-        
+
         return $this;
     }
 }

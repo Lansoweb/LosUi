@@ -10,7 +10,7 @@ class Alert extends AbstractHelper
 
     protected $formatDismissible = '<div class="alert alert-dismissible %s" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>%s</div>';
 
-    protected $isDismissible = true;
+    protected $isDismissible = false;
 
     public function info($alert)
     {
@@ -40,7 +40,7 @@ class Alert extends AbstractHelper
     public function render($alert, $class = 'alert-warning')
     {
         $class = trim($class);
-        
+
         if ($this->isDismissible) {
             return sprintf($this->formatDismissible, $class, $alert);
         } else {
@@ -53,9 +53,9 @@ class Alert extends AbstractHelper
         if (! is_bool($dismissible)) {
             throw new \InvalidArgumentException("Argument must be a bool value.");
         }
-        
+
         $this->isDismissible = $dismissible;
-        
+
         return $this;
     }
 
@@ -64,7 +64,7 @@ class Alert extends AbstractHelper
         if ($alert) {
             return $this->render($alert, $class);
         }
-        
+
         return $this;
     }
 }
