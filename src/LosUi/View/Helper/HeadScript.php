@@ -76,7 +76,7 @@ class HeadScript extends ZfHeadScript
                     }
                 case 'Jquery':
                     if ($useCdn) {
-                        return $this->$action(sprintf('http://code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
                     }
                     else {
                         return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
