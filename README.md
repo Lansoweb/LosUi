@@ -45,9 +45,21 @@ For composer documentation, please refer to [getcomposer.org](http://getcomposer
 This module provides two main View Helpers: LosHeadLink and LosHeadScript. You can safely replace the default ZF HeadLink and HeadScript with this ones to use their resources.
 
 ### Jquery
+Jquery is provided as local files (default) or with CDN. Just pass false to the appendJquery method to use the CDN files.
+The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+  
 Just add the following to your layout.phtml file:
 ```php
-<?php echo $this->losHeadScript()->appendJquery() ?>
+<?php
+//Will use the local minified version  
+echo $this->losHeadScript()->appendJquery();
+
+//Will use the CDN version  
+echo $this->losHeadScript()->appendJquery(false);
+ 
+//Will use the 2.1.0 unminified CDN version  
+echo $this->losHeadScript()->appendJquery(false, false, '2.1.0'); 
+?>
 ```
 
 It will generate the following html:
@@ -55,30 +67,27 @@ It will generate the following html:
 <script src="/jquery/dist/jquery.min.js" type="text/javascript"></script>
 ``` 
 
-The default is to include the minified versions, but you can pass a false parameter:
-```php
-<?php echo $this->losHeadScript()->appendJquery(false) ?>
-```
-
-It will generate the following html:
-```html
-<script src="/jquery/dist/jquery.js" type="text/javascript"></script>
-``` 
-
 ### Font Awesome
+Font Awesome is provided as local files (default) or with CDN. Just pass false to the appendFontAwesome method to use the CDN files.
+The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+
 Include the stylesheet with:
 ```php
-<?php echo $this->losHeadLink()->appendFontAwesome() ?>
+<?php 
+//Will use the local minified version
+echo $this->losHeadLink()->appendFontAwesome();
+
+//Will use the minified CDN version
+echo $this->losHeadLink()->appendFontAwesome(false);
+ 
+//Will use the 4.2.0 unminified CDN version  
+echo $this->losHeadLink()->appendFontAwesome(false, false, '4.2.0');
+?>
 ```
 
-It will generate the following html:
+The last call will generate the following html:
 ```html
 <link type="text/css" rel="stylesheet" media="screen" href="/fontawesome/css/font-awesome.min.css">
-``` 
-
-Again, you can use the false parameter to get the default file:
-```html
-<link type="text/css" rel="stylesheet" media="screen" href="/fontawesome/css/font-awesome.css">
 ``` 
 
 To use their icon is simple, just use the LosIcon View Helper:
@@ -157,19 +166,30 @@ Again, you can use the false parameter to get the default file:
 
 
 ### Bootstrap
+Bootstrap is provided as local files (default) or with CDN. Just pass false to the appendBootstrap method to use the CDN files.
+The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+
 Include the stylesheet with (can use append or prepend)
 ```php
-<?php echo $this->losHeadLink()->appendBootstrap() ?>
+<?php 
+//Will use the minified local version
+echo $this->losHeadLink()->appendBootstrap();
+echo $this->losHeadScript()->appendBootstrap();
+
+//Will use the minified CDN version
+echo $this->losHeadLink()->appendBootstrap(false);
+echo $this->losHeadScript()->appendBootstrap(false);  
+
+//Will use the 3.3.1 unminified CDN version  
+echo $this->losHeadLink()->appendBootstrap(false, false, '3.3.1');
+echo $this->losHeadScript()->appendBootstrap(false, false, '3.3.1');
+?>
 ```
 
-It will generate the following html:
+The first call will generate the following html:
 ```html
 <link type="text/css" rel="stylesheet" media="screen" href="/bootstrap/dist/css/bootstrap.min.css">
-``` 
-
-Again, you can use the false parameter to get the default file:
-```html
-<link type="text/css" rel="stylesheet" media="screen" href="/bootstrap/dist/css/bootstrap.css">
+<script src="/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 ``` 
 
 For each section bellow, please refer to the [bootstrap documentation](http://getbootstrap.com) for the classes specifications.

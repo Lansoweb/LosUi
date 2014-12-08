@@ -25,6 +25,9 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
 class HeadLink extends ZfHeadLink
 {
 
+    const VERSION_BOOTSTRAP = "3.3.1";
+    const VERSION_FONTAWESOME = "4.2.0";
+
     /**
      * Overload method access
      *
@@ -42,15 +45,39 @@ class HeadLink extends ZfHeadLink
 
             $action .= "Stylesheet";
 
-            $isMin = true;
-            if (isset($args[0]) && is_bool($args[0])) {
-                $isMin = $args[0];
+            $useCdn = false;
+            if (isset($args[0]))
+                if (is_bool($args[0])) {
+                    $useCdn = $args[0];
+                }
+            else {
+                $version = $args[0];
             }
+
+            $isMin = true;
+            if (isset($args[1]) && is_bool($args[1])) {
+                $isMin = $args[1];
+            }
+
+            if (isset($args[2]) && is_bool($args[2])) {
+                $version = $args[2];
+            }
+
             switch ($type) {
                 case 'Bootstrap':
-                    return $this->$action(sprintf('/bootstrap/dist/css/bootstrap.%scss', $isMin ? 'min.' : ''));
+                    if ($useCdn) {
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                    }
+                    else {
+                        return $this->$action(sprintf('/bootstrap/dist/css/bootstrap.%scss', $isMin ? 'min.' : ''));
+                    }
                 case 'FontAwesome':
-                    return $this->$action(sprintf('/fontawesome/css/font-awesome.%scss', $isMin ? 'min.' : ''));
+                    if ($useCdn) {
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?: self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
+                    }
+                    else {
+                        return $this->$action(sprintf('/fontawesome/css/font-awesome.%scss', $isMin ? 'min.' : ''));
+                    }
                 case 'Chosen':
                     return $this->$action(sprintf('/chosen/chosen.%scss', $isMin ? 'min.' : ''));
             }

@@ -26,6 +26,7 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  */
 class HeadScript extends ZfHeadScript
 {
+    const VERSION_JQUERY = "2.1.1";
 
     /**
      * Overload method access
@@ -47,16 +48,39 @@ class HeadScript extends ZfHeadScript
 
             $action .= "File";
 
+            $useCdn = false;
+            if (isset($args[0]))
+                if (is_bool($args[0])) {
+                    $useCdn = $args[0];
+                }
+            else {
+                $version = $args[0];
+            }
+
             $isMin = true;
-            if (isset($args[0]) && is_bool($args[0])) {
-                $isMin = $args[0];
+            if (isset($args[1]) && is_bool($args[1])) {
+                $isMin = $args[1];
+            }
+
+            if (isset($args[2]) && is_bool($args[2])) {
+                $version = $args[2];
             }
 
             switch ($mode) {
                 case 'Bootstrap':
-                    return $this->$action(sprintf('/bootstrap/dist/js/bootstrap.%sjs', $isMin ? 'min.' : ''));
+                    if ($useCdn) {
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                    }
+                    else {
+                        return $this->$action(sprintf('/bootstrap/dist/js/bootstrap.%sjs', $isMin ? 'min.' : ''));
+                    }
                 case 'Jquery':
-                    return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
+                    if ($useCdn) {
+                        return $this->$action(sprintf('http://code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
+                    }
+                    else {
+                        return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
+                    }
                 case 'Chosen':
                     return $this->$action(sprintf('/chosen/chosen.jquery.%sjs', $isMin ? 'min.' : ''));
             }
