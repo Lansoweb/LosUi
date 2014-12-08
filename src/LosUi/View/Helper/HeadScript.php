@@ -49,6 +49,9 @@ class HeadScript extends ZfHeadScript
             $action .= "File";
 
             $useCdn = false;
+            $version = false;
+            $isMin = true;
+
             if (isset($args[0]))
                 if (is_bool($args[0])) {
                     $useCdn = $args[0];
@@ -57,12 +60,11 @@ class HeadScript extends ZfHeadScript
                 $version = $args[0];
             }
 
-            $isMin = true;
             if (isset($args[1]) && is_bool($args[1])) {
                 $isMin = $args[1];
             }
 
-            if (isset($args[2]) && is_bool($args[2])) {
+            if (isset($args[2])) {
                 $version = $args[2];
             }
 

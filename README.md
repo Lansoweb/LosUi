@@ -45,7 +45,7 @@ For composer documentation, please refer to [getcomposer.org](http://getcomposer
 This module provides two main View Helpers: LosHeadLink and LosHeadScript. You can safely replace the default ZF HeadLink and HeadScript with this ones to use their resources.
 
 ### Jquery
-Jquery is provided as local files (default) or with CDN. Just pass false to the appendJquery method to use the CDN files.
+Jquery is provided as local files (default) or with CDN. Just pass "true" to the appendJquery method to use the CDN files.
 The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
   
 Just add the following to your layout.phtml file:
@@ -55,10 +55,10 @@ Just add the following to your layout.phtml file:
 echo $this->losHeadScript()->appendJquery();
 
 //Will use the CDN version  
-echo $this->losHeadScript()->appendJquery(false);
+echo $this->losHeadScript()->appendJquery(true);
  
 //Will use the 2.1.0 unminified CDN version  
-echo $this->losHeadScript()->appendJquery(false, false, '2.1.0'); 
+echo $this->losHeadScript()->appendJquery(true, false, '2.1.0'); 
 ?>
 ```
 
@@ -68,7 +68,7 @@ It will generate the following html:
 ``` 
 
 ### Font Awesome
-Font Awesome is provided as local files (default) or with CDN. Just pass false to the appendFontAwesome method to use the CDN files.
+Font Awesome is provided as local files (default) or with CDN. Just pass "true" to the appendFontAwesome method to use the CDN files.
 The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
 
 Include the stylesheet with:
@@ -78,10 +78,10 @@ Include the stylesheet with:
 echo $this->losHeadLink()->appendFontAwesome();
 
 //Will use the minified CDN version
-echo $this->losHeadLink()->appendFontAwesome(false);
+echo $this->losHeadLink()->appendFontAwesome(true);
  
 //Will use the 4.2.0 unminified CDN version  
-echo $this->losHeadLink()->appendFontAwesome(false, false, '4.2.0');
+echo $this->losHeadLink()->appendFontAwesome(true, false, '4.2.0');
 ?>
 ```
 
@@ -166,7 +166,7 @@ Again, you can use the false parameter to get the default file:
 
 
 ### Bootstrap
-Bootstrap is provided as local files (default) or with CDN. Just pass false to the appendBootstrap method to use the CDN files.
+Bootstrap is provided as local files (default) or with CDN. Just pass "true" to the appendBootstrap method to use the CDN files.
 The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
 
 Include the stylesheet with (can use append or prepend)
@@ -177,12 +177,12 @@ echo $this->losHeadLink()->appendBootstrap();
 echo $this->losHeadScript()->appendBootstrap();
 
 //Will use the minified CDN version
-echo $this->losHeadLink()->appendBootstrap(false);
-echo $this->losHeadScript()->appendBootstrap(false);  
+echo $this->losHeadLink()->appendBootstrap(true);
+echo $this->losHeadScript()->appendBootstrap(true);  
 
 //Will use the 3.3.1 unminified CDN version  
-echo $this->losHeadLink()->appendBootstrap(false, false, '3.3.1');
-echo $this->losHeadScript()->appendBootstrap(false, false, '3.3.1');
+echo $this->losHeadLink()->appendBootstrap(true, false, '3.3.1');
+echo $this->losHeadScript()->appendBootstrap(true, false, '3.3.1');
 ?>
 ```
 
