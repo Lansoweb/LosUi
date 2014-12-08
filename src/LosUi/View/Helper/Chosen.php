@@ -48,7 +48,12 @@ class Chosen extends AbstractHelper
                 if (!$first) {
                     $chosenOptions .= ', ';
                 }
-                $chosenOptions .= "$key: $value";
+                if (is_numeric($value)) {
+                    $chosenOptions .= "$key: $value";
+                }
+                else {
+                    $chosenOptions .= "$key: '$value'";
+                }
                 if ($first) {
                     $first = false;
                 }
