@@ -22,7 +22,7 @@ return [
     'asset_manager' => [
         'resolver_configs' => [
             'paths' => [
-                'module_name' => __DIR__ . '/../public/',
+                'losui' => __DIR__ . '/../public/',
             ]
         ]
     ]
