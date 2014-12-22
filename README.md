@@ -355,7 +355,7 @@ There is a new Page type that enable you to add a divider to the menu helper:
 The breadcrumbs helper will follow [Breadcrumbs](http://getbootstrap.com/components/#breadcrumbs).
 
 If you define a page of type URI with just a '#' href, the breadcrumbs will print just it's label and not a link. 
-Very useful if you have just a category not linked to a route.
+Very useful if you have a category not linked to a route.
 
 #### Paginator
 You can use the Paginator View Helper to style as [Default Paginator](http://getbootstrap.com/components/#pagination-default) or
@@ -374,11 +374,11 @@ use the second argument to the scroll system, null as the third (will use this l
 ``` 
 
 The following options are available in the fourth parameter:
-'type': 'pager'. If specified as pager, will use the Pager. If omited, will use the Default Paginator.
-'aligned': true (default) or false. Will use the aligned version of the pager.
-'size': 'sm' or 'lg'. Use the small or large, respectively.
-'nextLabel': the label for the 'Next' buttton. Can be combined with glyphicon or FontAwesome.
-'previousLabel': the same as nextLabel, but for the 'Previous' button.
+- 'type': 'pager'. If specified as pager, will use the Pager. If omited, will use the Default Paginator.
+- 'aligned': true (default) or false. Will use the aligned version of the pager.
+- 'size': 'sm' or 'lg'. Use the small or large, respectively.
+- 'nextLabel': the label for the 'Next' buttton. Can be combined with glyphicon or FontAwesome.
+- 'previousLabel': the same as nextLabel, but for the 'Previous' button.
 
 #### Well
 ```php
