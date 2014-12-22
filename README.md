@@ -4,7 +4,7 @@
 This module provides a shortcut to several UI resources from some of the best front frameworks. 
 I will add more libraries with time and add more resources to the current ones.
 
-- Jquery: 2.1.1 [jquery.com](http://jquery.com)
+- Jquery: 2.1.3 [jquery.com](http://jquery.com)
 - Bootstrap: 3.3.1 [getbootstrap.com](http://getbootstrap.com)
 - Font Awesome: 4.2.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
 - Chosen: 1.2.0 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
@@ -310,7 +310,75 @@ As default, the image receives a img-responsive class. To remove it, call:
 <?= $this->losLabel()->danger('test') ?>
 ```
 
-The first call, will use the default style.
+The first call, will use the "default" style.
+
+#### Navigation
+For now, there is two Navigation View Helpers: Breadcrumbs and Menu. 
+
+```php
+<?= $this->losNavigation('Navigation')->menu()?>
+<?= $this->losNavigation('Navigation')->breadcrumbs()?>
+```
+
+The menu helper will use the "navbar" style form bootstrap, using the first level as navbar links 
+and submenus as dropdown as in [Bootstrap Navbar](http://getbootstrap.com/components/#navbar-default).
+
+There is a new Page type that enable you to add a divider to the menu helper:
+```php
+'navigation' => [
+    'default' => [
+        'crud' => [
+            'pages' => [
+                [
+                    'label' => 'Client',
+                    'route' => 'client',
+                    'pages' => [
+                        [
+                            'label' => 'Edit Client',
+                            'route' => 'client/edit',
+                        ],
+                        [
+                    		'type' => 'LosUi\Navigation\Page\Divider'
+                 		],
+                  		[
+                            'label' => 'Remove Client',
+                            'route' => 'client/remove',
+                        ],
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+``` 
+
+The breadcrumbs helper will follow [Breadcrumbs](http://getbootstrap.com/components/#breadcrumbs).
+
+If you define a page of type URI with just a '#' href, the breadcrumbs will print just it's label and not a link. 
+Very useful if you have just a category not linked to a route.
+
+#### Paginator
+You can use the Paginator View Helper to style as [Default Paginator](http://getbootstrap.com/components/#pagination-default) or
+[Pager](http://getbootstrap.com/components/#pagination-pager).
+
+The default helper will use the 'Sliding' scroll system, and the 'default paginator' from bootstrap. To change this behavior, just
+use the second argument to the scroll system, null as the third (will use this lib view file). 
+
+```php
+<?= $this->losPaginationControl($this->paginator); ?>
+<?= $this->losPaginationControl($this->paginator, 'All'); ?>
+<?= $this->losPaginationControl($this->paginator, 'Elastic'); ?>
+<?= $this->losPaginationControl($this->paginator, 'Jumping'); ?>
+<?= $this->losPaginationControl($this->paginator, 'Sliding'); ?>
+<?= $this->losPaginationControl($this->paginator, 'Sliding', null, ['type' => 'pager','aligned'=>false,'nextLabel'=>'Próximo']); ?>
+``` 
+
+The following options are available in the fourth parameter:
+'type': 'pager'. If specified as pager, will use the Pager. If omited, will use the Default Paginator.
+'aligned': true (default) or false. Will use the aligned version of the pager.
+'size': 'sm' or 'lg'. Use the small or large, respectively.
+'nextLabel': the label for the 'Next' buttton. Can be combined with glyphicon or FontAwesome.
+'previousLabel': the same as nextLabel, but for the 'Previous' button.
 
 #### Well
 ```php

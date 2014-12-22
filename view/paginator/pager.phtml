@@ -1,0 +1,38 @@
+
+<?php if ($this->pageCount): ?>
+
+<?php if ($this->aligned == false):?>
+<nav>
+    <ul class="pager">
+        <?php if (isset($this->previous)): ?>
+            <li<?= !isset($this->previous) ? ' class="disabled"' : '' ?>><a href="<?php echo $this->url($this->route, array('page' => $this->previous), true); ?>"><?= $this->previousLabel ?></a></li>
+        <?php else:?>
+            <li class="disabled"><a href="#"><?= $this->previousLabel ?></a></li>
+        <?php endif?>
+        
+        <?php if (isset($this->next)): ?>
+            <li><a href="<?php echo $this->url($this->route, array('page' => $this->next), true); ?>"><?= $this->nextLabel ?></a></li>
+        <?php else:?>
+            <li class="disabled"><a href="#"><?= $this->nextLabel ?></a></li>
+        <?php endif?>
+    </ul>
+</nav>
+<?php else:?>
+<nav>
+    <ul class="pager">
+        <?php if (isset($this->previous)): ?>
+            <li class="previous"><a href="<?php echo $this->url($this->route, array('page' => $this->previous), true); ?>"><?= $this->previousLabel ?></a></li>
+        <?php else:?>
+            <li class="previous disabled"><a href="#"><?= $this->previousLabel ?></a></li>
+        <?php endif?>
+        
+        <?php if (isset($this->next)): ?>
+            <li class="next"><a href="<?php echo $this->url($this->route, array('page' => $this->next), true); ?>"><?= $this->nextLabel ?></a></li>
+        <?php else:?>
+            <li class="next disabled"><a href="#"><?= $this->nextLabel ?></a></li>
+        <?php endif?>
+    </ul>
+</nav>
+<?php endif?>
+
+<?php endif?>

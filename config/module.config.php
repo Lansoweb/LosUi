@@ -16,6 +16,8 @@ return [
             'los_icon'                => 'LosUi\View\Helper\Icon',
             'los_image'               => 'LosUi\View\Helper\Image',
             'los_label'               => 'LosUi\View\Helper\Label',
+            'los_navigation'          => 'LosUi\View\Helper\Navigation',
+            'los_pagination_control'  => 'LosUi\View\Helper\PaginationControl',
             'los_well'                => 'LosUi\View\Helper\Well',
         ]
     ],
