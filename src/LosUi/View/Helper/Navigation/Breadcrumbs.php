@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu Navigation view helper styled for Bootstrap 3
+ * Breadcrumbs Navigation view helper styled for Bootstrap 3
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
@@ -15,7 +15,7 @@ use Zend\View\Helper\Navigation\Breadcrumbs as ZendBreadcrumbs;
 use Zend\Navigation\Page\Uri;
 
 /**
- * Menu Navigation view helper styled for Bootstrap 3
+ * Breadcrumbs Navigation view helper styled for Bootstrap 3
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
