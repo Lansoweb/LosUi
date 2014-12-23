@@ -1,8 +1,26 @@
 <?php
+/**
+ * Well view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#wells
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 
+/**
+ * Well view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#wells
+ */
 class Well extends AbstractHelper
 {
 

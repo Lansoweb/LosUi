@@ -1,4 +1,15 @@
 <?php
+/**
+ * Form row styled for Bootstrap 3
+ *
+ * Long description for file (if any)...
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#forms
+ */
 namespace LosUi\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormRow as ZfFormRow;
@@ -7,6 +18,15 @@ use Zend\Form\Element\Button;
 use Zend\Form\Element\MonthSelect;
 use Zend\Form\LabelAwareInterface;
 
+/**
+ * Form row styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#forms
+ */
 class FormRow extends ZfFormRow
 {
 

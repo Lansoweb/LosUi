@@ -1,8 +1,26 @@
 <?php
+/**
+ * Chosen view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://harvesthq.github.io/chosen/
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 
+/**
+ * Chosen view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://harvesthq.github.io/chosen/
+ */
 class Chosen extends AbstractHelper
 {
 
@@ -14,17 +32,16 @@ class Chosen extends AbstractHelper
             if (is_bool($element)) {
                 $includeLibs = $element;
                 $element = 'select';
-            }
-            elseif (is_array($element)) {
+            } elseif (is_array($element)) {
                 if (is_bool($options)) {
                     $includeLibs = $options;
-                }
-                else {
+                } else {
                     $includeLibs = true;
                 }
                 $options = $element;
                 $element = 'select';
             }
+
             return $this->render($element, $options, $includeLibs);
         }
 
@@ -50,8 +67,7 @@ class Chosen extends AbstractHelper
                 }
                 if (is_numeric($value)) {
                     $chosenOptions .= "$key: $value";
-                }
-                else {
+                } else {
                     $chosenOptions .= "$key: '$value'";
                 }
                 if ($first) {

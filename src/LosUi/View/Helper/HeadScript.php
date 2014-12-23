@@ -1,10 +1,18 @@
 <?php
+/**
+ * Head Script view helper adding the necessary libs or cdns
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi\View\Helper;
 
 use Zend\View\Helper\HeadScript as ZfHeadScript;
 
 /**
- * Helper for setting and retrieving script elements for HTML head section
+ * Head Script view helper adding the necessary libs or cdns
  *
  * Allows the following method calls:
  *
@@ -23,10 +31,15 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  * @method HeadScript offsetSetScript($index, $src, $type = 'text/javascript', $attrs = array())
  * @method HeadScript prependScript($script, $type = 'text/javascript', $attrs = array())
  * @method HeadScript setScript($script, $type = 'text/javascript', $attrs = array())
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
  */
 class HeadScript extends ZfHeadScript
 {
-    const VERSION_JQUERY = "2.1.1";
+    const VERSION_JQUERY = "2.1.3";
 
     /**
      * Overload method access
@@ -55,8 +68,7 @@ class HeadScript extends ZfHeadScript
             if (isset($args[0]))
                 if (is_bool($args[0])) {
                     $useCdn = $args[0];
-                }
-            else {
+                } else {
                 $version = $args[0];
             }
 
@@ -72,15 +84,13 @@ class HeadScript extends ZfHeadScript
                 case 'Bootstrap':
                     if ($useCdn) {
                         return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
-                    }
-                    else {
+                    } else {
                         return $this->$action(sprintf('/bootstrap/dist/js/bootstrap.%sjs', $isMin ? 'min.' : ''));
                     }
                 case 'Jquery':
                     if ($useCdn) {
                         return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
-                    }
-                    else {
+                    } else {
                         return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
                     }
                 case 'Chosen':

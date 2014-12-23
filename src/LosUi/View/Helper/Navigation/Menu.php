@@ -1,4 +1,13 @@
 <?php
+/**
+ * Menu Navigation view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#navbar-default
+ */
 namespace LosUi\View\Helper\Navigation;
 
 use RecursiveIteratorIterator;
@@ -6,20 +15,32 @@ use Zend\View\Helper\Navigation\Menu as ZendMenu;
 use Zend\Navigation\AbstractContainer;
 use Zend\Navigation\Page\AbstractPage;
 use Zend\View;
-use Zend\View\Exception;
 use LosUi\Navigation\Page\Divider;
 
+/**
+ * Menu Navigation view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#navbar-default
+ */
 class Menu extends ZendMenu
 {
 
     protected $ulClass = 'nav navbar-nav';
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\View\Helper\Navigation\Menu::renderDeepestMenu()
+     */
     protected function renderDeepestMenu(AbstractContainer $container, $ulClass, $indent, $minDepth, $maxDepth, $escapeLabels, $addClassToListItem, $liActiveClass = null)
     {
         if (! $active = $this->findActive($container, $minDepth - 1, $maxDepth)) {
             return '';
         }
-        
+
         if ($active['depth'] < $minDepth) {
             if (! $active['page']->hasPages()) {
                 return '';
@@ -29,39 +50,43 @@ class Menu extends ZendMenu
         } elseif (is_int($maxDepth) && $active['depth'] + 1 > $maxDepth) {
             $active['page'] = $active['page']->getParent();
         }
-        
+
         $ulClass = $ulClass ? ' class="' . $ulClass . '"' : '';
         $html = $indent . '<ul' . $ulClass . '>' . self::EOL;
-        
+
         foreach ($active['page'] as $subPage) {
             if (! $this->accept($subPage)) {
                 continue;
             }
-            
+
             $liClasses = array();
             if ($subPage->isActive(true)) {
                 $liClasses[] = 'active';
             }
-            
+
             if ($addClassToListItem && $subPage->getClass()) {
                 $liClasses[] = $subPage->getClass();
             }
             $liClass = empty($liClasses) ? '' : ' class="' . implode(' ', $liClasses) . '"';
-            
+
             $html .= $indent . '    <li' . $liClass . '>' . self::EOL;
             $html .= $indent . '        ' . $this->htmlify($subPage, $escapeLabels, $addClassToListItem) . self::EOL;
             $html .= $indent . '    </li>' . self::EOL;
         }
-        
+
         $html .= $indent . '</ul>';
-        
+
         return $html;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\View\Helper\Navigation\Menu::renderNormalMenu()
+     */
     protected function renderNormalMenu(AbstractContainer $container, $ulClass, $indent, $minDepth, $maxDepth, $onlyActive, $escapeLabels, $addClassToListItem, $liActiveClass = null)
     {
         $html = '';
-        
+
         $found = $this->findActive($container, $minDepth, $maxDepth);
         if ($found) {
             $foundPage = $found['page'];
@@ -69,15 +94,15 @@ class Menu extends ZendMenu
         } else {
             $foundPage = null;
         }
-        
+
         // Since bootstrap doesn't support more than one level, we set maxDepth to minDeph plus one
         $maxDepth = $minDepth + 1;
-        
+
         $iterator = new RecursiveIteratorIterator($container, RecursiveIteratorIterator::SELF_FIRST);
         if (is_int($maxDepth)) {
             $iterator->setMaxDepth($maxDepth);
         }
-        
+
         $prevDepth = - 1;
         foreach ($iterator as $page) {
             $depth = $iterator->getDepth();
@@ -95,15 +120,15 @@ class Menu extends ZendMenu
                         }
                     }
                 }
-                
+
                 if (! $accept) {
                     continue;
                 }
             }
-            
+
             $depth -= $minDepth;
             $myIndent = $indent . str_repeat('        ', $depth);
-            
+
             if ($depth > $prevDepth) {
                 if ($ulClass && $depth == 0) {
                     $ulClass = ' class="' . $ulClass . '"';
@@ -123,7 +148,7 @@ class Menu extends ZendMenu
             } else {
                 $html .= $myIndent . '    </li>' . self::EOL;
             }
-            
+
             $liClasses = array();
             if ($isActive) {
                 $liClasses[] = 'active';
@@ -140,12 +165,12 @@ class Menu extends ZendMenu
                 $liClasses[] = $page->getClass();
             }
             $liClass = empty($liClasses) ? '' : ' class="' . implode(' ', $liClasses) . '"';
-            
+
             $html .= $myIndent . '    <li' . $liClass . '>' . self::EOL . $myIndent . '        ' . $this->htmlify($page, $escapeLabels, $addClassToListItem) . self::EOL;
-            
+
             $prevDepth = $depth;
         }
-        
+
         if ($html) {
             for ($i = $prevDepth + 1; $i > 0; $i --) {
                 $myIndent = $indent . str_repeat('        ', $i - 1);
@@ -153,10 +178,14 @@ class Menu extends ZendMenu
             }
             $html = rtrim($html, self::EOL);
         }
-        
+
         return $html;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\View\Helper\Navigation\Menu::htmlify()
+     */
     public function htmlify(AbstractPage $page, $escapeLabel = true, $addClassToListItem = false)
     {
         if ($page instanceof Divider) {
@@ -165,7 +194,7 @@ class Menu extends ZendMenu
 
         $label = $page->getLabel();
         $title = $page->getTitle();
-        
+
         if (null !== ($translator = $this->getTranslator())) {
             $textDomain = $this->getTranslatorTextDomain();
             if (is_string($label) && ! empty($label)) {
@@ -175,7 +204,7 @@ class Menu extends ZendMenu
                 $title = $translator->translate($title, $textDomain);
             }
         }
-        
+
         $element = 'a';
         $extended = '';
         $attribs = array(
@@ -183,7 +212,7 @@ class Menu extends ZendMenu
             'title' => $title,
             'href' => '#'
         );
-        
+
         $class = array();
         if ($addClassToListItem === false) {
             $class[] = $page->getClass();
@@ -196,13 +225,13 @@ class Menu extends ZendMenu
         if (count($class) > 0) {
             $attribs['class'] = implode(' ', $class);
         }
-        
+
         $href = $page->getHref();
         if ($href) {
             $attribs['href'] = $href;
             $attribs['target'] = $page->getTarget();
         }
-        
+
         $html = '<' . $element . $this->htmlAttribs($attribs) . '>';
         if ($escapeLabel === true) {
             $escaper = $this->view->plugin('escapeHtml');
@@ -210,10 +239,10 @@ class Menu extends ZendMenu
         } else {
             $html .= $label;
         }
-        
+
         $html .= $extended;
         $html .= '</' . $element . '>';
-        
+
         return $html;
     }
 }

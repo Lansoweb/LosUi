@@ -1,8 +1,26 @@
 <?php
+/**
+ * Image view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#images
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 
+/**
+ * Image view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#images
+ */
 class Image extends AbstractHelper
 {
 

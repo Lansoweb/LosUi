@@ -1,17 +1,45 @@
 <?php
-
+/**
+ * Menu Navigation view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#breadcrumbs
+ */
 namespace LosUi\View\Helper\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 use Zend\View\Helper\Navigation\Breadcrumbs as ZendBreadcrumbs;
 use Zend\Navigation\Page\Uri;
 
+/**
+ * Menu Navigation view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#breadcrumbs
+ */
 class Breadcrumbs extends ZendBreadcrumbs
 {
+    /**
+     * Setting default minDepth to 0
+     * @var integer
+     */
     protected $minDepth = 0;
 
+    /**
+     * Bootstrap breadcrumbs already sets a separator
+     */
     protected $separator = '';
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\View\Helper\Navigation\AbstractHelper::htmlify()
+     */
     public function htmlify(AbstractPage $page, $hasParent = false)
     {
         $html = '<li';
@@ -27,7 +55,7 @@ class Breadcrumbs extends ZendBreadcrumbs
         $escaper = $this->view->plugin('escapeHtml');
         $label = $escaper($label);
 
-        if ($page->getHref() && ($hasParent || (!$hasParent && $this->getLinkLast())) && 
+        if ($page->getHref() && ($hasParent || (!$hasParent && $this->getLinkLast())) &&
             (!($page instanceof Uri) || $page->getUri() != '#')) {
             $anchorAttribs = $this->htmlAttribs(array('href' => $page->getHref()));
             $html .= '<a' . $anchorAttribs . '>' . $label . '</a>';
@@ -36,9 +64,14 @@ class Breadcrumbs extends ZendBreadcrumbs
         }
 
         $html .= '</li>';
+
         return $html;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\View\Helper\Navigation\Breadcrumbs::renderStraight()
+     */
     public function renderStraight($container = null)
     {
         $this->parseContainer($container);

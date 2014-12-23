@@ -1,11 +1,30 @@
 <?php
+/**
+ * Module file
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
+/**
+ * Module class
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 class Module implements AutoloaderProviderInterface
 {
-
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\ModuleManager\Feature\AutoloaderProviderInterface::getAutoloaderConfig()
+     */
     public function getAutoloaderConfig()
     {
         return array(

@@ -1,9 +1,25 @@
 <?php
+/**
+ * FlashMessenger view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Mvc\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
 use Zend\View\Helper\FlashMessenger as ZfFlashMessenger;
 
+/**
+ * FlashMessenger view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 class FlashMessenger extends ZfFlashMessenger
 {
 

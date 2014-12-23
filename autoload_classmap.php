@@ -5,6 +5,7 @@ return array(
   'LosUi\Form\View\Helper\FormElementErrors' => __DIR__ . '/src/LosUi/Form/View/Helper/FormElementErrors.php',
   'LosUi\Form\View\Helper\FormRow'           => __DIR__ . '/src/LosUi/Form/View/Helper/FormRow.php',
   'LosUi\Module'                             => __DIR__ . '/src/LosUi/Module.php',
+  'LosUi\Navigation\Page\Divider'            => __DIR__ . '/src/LosUi/Navigation/Page/Divider.php',
   'LosUi\View\Helper\Alert'                  => __DIR__ . '/src/LosUi/View/Helper/Alert.php',
   'LosUi\View\Helper\Badge'                  => __DIR__ . '/src/LosUi/View/Helper/Badge.php',
   'LosUi\View\Helper\Button'                 => __DIR__ . '/src/LosUi/View/Helper/Button.php',
@@ -15,5 +16,9 @@ return array(
   'LosUi\View\Helper\Icon'                   => __DIR__ . '/src/LosUi/View/Helper/Icon.php',
   'LosUi\View\Helper\Image'                  => __DIR__ . '/src/LosUi/View/Helper/Image.php',
   'LosUi\View\Helper\Label'                  => __DIR__ . '/src/LosUi/View/Helper/Label.php',
+  'LosUi\View\Helper\Navigation\Breadcrumbs' => __DIR__ . '/src/LosUi/View/Helper/Navigation/Breadcrumbs.php',
+  'LosUi\View\Helper\Navigation\Menu'        => __DIR__ . '/src/LosUi/View/Helper/Navigation/Menu.php',
+  'LosUi\View\Helper\Navigation'             => __DIR__ . '/src/LosUi/View/Helper/Navigation.php',
+  'LosUi\View\Helper\PaginationControl'      => __DIR__ . '/src/LosUi/View/Helper/PaginationControl.php',
   'LosUi\View\Helper\Well'                   => __DIR__ . '/src/LosUi/View/Helper/Well.php',
 );

@@ -1,4 +1,16 @@
 <?php
+/**
+ * Icon view helper
+ *
+ * Can be used for Gltphicon and FontAwesome
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://fontawesome.io
+ * @see        http://getbootstrap.com/components/#glyphicons
+ */
 namespace LosUi\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
@@ -6,6 +18,18 @@ use Zend\Filter\FilterChain;
 use Zend\Filter\Word\CamelCaseToDash;
 use Zend\Filter\StringToLower;
 
+/**
+ * Icon view helper
+ *
+ * Can be used for Gltphicon and FontAwesome
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://fontawesome.io
+ * @see        http://getbootstrap.com/components/#glyphicons
+ */
 class Icon extends AbstractHelper
 {
 

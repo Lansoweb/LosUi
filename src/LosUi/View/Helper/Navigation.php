@@ -1,9 +1,24 @@
 <?php
-
+/**
+ * Navigation view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi\View\Helper;
 
 use Zend\View\Helper\Navigation as ZendNavigation;
 
+/**
+ * Navigation view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 class Navigation extends ZendNavigation
 {
     protected $defaultProxy = 'menu';
@@ -19,6 +34,7 @@ class Navigation extends ZendNavigation
         foreach ($this->defaultHelpers as $name => $invokableClass) {
             $pm->setInvokableClass($name, $invokableClass);
         }
+
         return $pm;
     }
 }

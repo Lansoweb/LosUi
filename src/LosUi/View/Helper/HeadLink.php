@@ -1,9 +1,19 @@
 <?php
+/**
+ * Head Link view helper, adding the necessary libs or cdns
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi\View\Helper;
 
 use Zend\View\Helper\HeadLink as ZfHeadLink;
 
 /**
+ * Head Link view helper, adding the necessary libs or cdns
+ *
  * Allows the following method calls:
  *
  * @method HeadLink appendBootstrap($useMinified = true)
@@ -21,6 +31,11 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  * @method HeadLink offsetSetAlternate($index, $href, $type, $title, $extras = array())
  * @method HeadLink prependAlternate($href, $type, $title, $extras = array())
  * @method HeadLink setAlternate($href, $type, $title, $extras = array())
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
  */
 class HeadLink extends ZfHeadLink
 {
@@ -52,8 +67,7 @@ class HeadLink extends ZfHeadLink
             if (isset($args[0]))
                 if (is_bool($args[0])) {
                     $useCdn = $args[0];
-                }
-            else {
+                } else {
                 $version = $args[0];
             }
 
@@ -69,15 +83,13 @@ class HeadLink extends ZfHeadLink
                 case 'Bootstrap':
                     if ($useCdn) {
                         return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
-                    }
-                    else {
+                    } else {
                         return $this->$action(sprintf('/bootstrap/dist/css/bootstrap.%scss', $isMin ? 'min.' : ''));
                     }
                 case 'FontAwesome':
                     if ($useCdn) {
                         return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?: self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
-                    }
-                    else {
+                    } else {
                         return $this->$action(sprintf('/fontawesome/css/font-awesome.%scss', $isMin ? 'min.' : ''));
                     }
                 case 'Chosen':

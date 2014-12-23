@@ -1,8 +1,26 @@
 <?php
+/**
+ * Button view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#buttons
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 
+/**
+ * Button view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#buttons
+ */
 class Button extends AbstractHelper
 {
 
@@ -46,6 +64,7 @@ class Button extends AbstractHelper
         $this->type = self::TYPE_ANCHOR;
         $this->anchor = $anchor;
         $this->anchorTarget = $target;
+
         return $this;
     }
 
@@ -56,12 +75,14 @@ class Button extends AbstractHelper
         }
         $this->type = self::TYPE_INPUT;
         $this->inputType = $type;
+
         return $this;
     }
 
     public function asButton()
     {
         $this->type = self::TYPE_BUTTON;
+
         return $this;
     }
 
@@ -159,18 +180,21 @@ class Button extends AbstractHelper
     public function setValue($value)
     {
         $this->value = $value;
+
         return $this;
     }
 
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -207,6 +231,7 @@ class Button extends AbstractHelper
             if ($this->anchorTarget != null) {
                 $extra .= ' target="' . $this->anchorTarget . '"';
             }
+
             return sprintf($this->formatAnchor, $this->anchor, $class, $extra, $value);
         } elseif ($this->type == self::TYPE_INPUT) {
             return sprintf($this->formatInput, $this->inputType, $value, $class, $extra);

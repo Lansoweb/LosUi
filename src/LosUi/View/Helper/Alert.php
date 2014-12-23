@@ -1,8 +1,26 @@
 <?php
+/**
+ * Alert view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#alerts
+ */
 namespace LosUi\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 
+/**
+ * Alert view helper styled for Bootstrap 3
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#alerts
+ */
 class Alert extends AbstractHelper
 {
 

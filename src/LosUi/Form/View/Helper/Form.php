@@ -1,13 +1,40 @@
 <?php
+/**
+ * Form View Helper
+ *
+ * This view helper overrides the default ZF2 helper to use the LosFormRow
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#forms
+ */
 namespace LosUi\Form\View\Helper;
 
 use Zend\Form\FormInterface;
 use Zend\Form\FieldsetInterface;
 use Zend\Form\View\Helper\Form as ZfFormHelper;
 
+/**
+ *
+ * Form View Helper
+ *
+ * This view helper overrides the default ZF2 helper to use the LosFormRow
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/css/#forms
+ */
 class Form extends ZfFormHelper
 {
 
+    /**
+     * (non-PHPdoc)
+     * @see \Zend\Form\View\Helper\Form::render()
+     */
     public function render(FormInterface $form)
     {
         if (method_exists($form, 'prepare')) {
