@@ -21,7 +21,7 @@ class BadgeTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Badge();
     }
-    
+
     private function getExpected($content)
     {
         return '<span class="badge">'.$content.'</span>';

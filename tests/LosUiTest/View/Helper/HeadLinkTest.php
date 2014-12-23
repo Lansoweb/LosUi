@@ -21,12 +21,12 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new HeadLink();
     }
-    
+
     public function tearDown()
     {
         unset($this->helper);
     }
-    
+
     private function getExpected($content)
     {
         return '<span class="badge">'.$content.'</span>';
@@ -34,12 +34,12 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
 
     public function testBootstrap()
     {
-        $this->assertEquals('<link href="/bootstrap/dist/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />', 
+        $this->assertEquals('<link href="/bootstrap/dist/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendBootstrap()->toString());
     }
     public function testBootstrapCdn()
     {
-        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />', 
+        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendBootstrap(true)->toString());
     }
     public function testBootstrapUnminified()
@@ -57,10 +57,10 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendBootstrap(true, false, '3.3.0')->toString());
     }
-    
+
     public function testFontAwesome()
     {
-        $this->assertEquals('<link href="/fontawesome/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css" />', 
+        $this->assertEquals('<link href="/fontawesome/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendFontAwesome()->toString());
     }
     public function testFontAwesomeCdn()
@@ -83,10 +83,10 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/font-awesome/3.3.0/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendFontAwesome(true, false, '3.3.0')->toString());
     }
-    
+
     public function testChosen()
     {
-        $this->assertEquals('<link href="/chosen/chosen.min.css" media="screen" rel="stylesheet" type="text/css" />', 
+        $this->assertEquals('<link href="/chosen/chosen.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendChosen()->toString());
     }
     public function testChosenUnminified()

@@ -21,7 +21,7 @@ class FlashMessengerTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new FlashMessenger();
     }
-    
+
     private function getExpected($content,$two = false)
     {
         if (!$two) {

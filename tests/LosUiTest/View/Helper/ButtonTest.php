@@ -21,7 +21,7 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Button();
     }
-    
+
     private function getExpected($type, $asInput = Button::TYPE_BUTTON, $class = '', $attr = '')
     {
         if ($asInput == Button::TYPE_ANCHOR) {
@@ -37,22 +37,22 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('default'), $this->helper->useDefault('foo'));
     }
-    
+
     public function testInfo()
     {
         $this->assertEquals($this->getExpected('info'), $this->helper->info('foo'));
     }
-    
+
     public function testDanger()
     {
         $this->assertEquals($this->getExpected('danger'), $this->helper->danger('foo'));
     }
-    
+
     public function testWarning()
     {
         $this->assertEquals($this->getExpected('warning'), $this->helper->warning('foo'));
     }
-    
+
     public function testSuccess()
     {
         $this->assertEquals($this->getExpected('success'), $this->helper->success('foo'));
@@ -62,7 +62,7 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('link'), $this->helper->link('foo'));
     }
-    
+
     public function testAnchorSuccess()
     {
         $this->assertEquals($this->getExpected('success', Button::TYPE_ANCHOR), $this->helper->asAnchor()->success('foo'));
@@ -72,12 +72,12 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('success', Button::TYPE_INPUT), $this->helper->asInput()->success('foo'));
     }
-    
+
     public function testLarge()
     {
         $this->assertEquals($this->getExpected('success', Button::TYPE_BUTTON, ' btn-lg'), $this->helper->setLarge()->success('foo'));
     }
-    
+
     public function testSmall()
     {
         $this->assertEquals($this->getExpected('success', Button::TYPE_BUTTON, ' btn-sm'), $this->helper->setSmall()->success('foo'));
@@ -117,7 +117,7 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('success', Button::TYPE_BUTTON, ' active btn-block btn-lg', ' disabled="disabled" id="bar" name="bar"'), $this->helper->setName('bar')->setId('bar')->setLarge()->isDisabled()->isActive()->isBlock()->isDisabled()->success('foo'));
     }
-    
+
     public function testRender()
     {
         $this->assertEquals($this->getExpected('default'), $this->helper->render('foo'));
@@ -127,5 +127,5 @@ class ButtonTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('default'), $this->helper->__invoke('foo'));
     }
-    
+
 }

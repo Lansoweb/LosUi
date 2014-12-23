@@ -26,12 +26,13 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $basePath = $view->plugin('basePath');
         $basePath->setBasePath('/');
     }
-    
+
     private function getExpected($img, $class = '', $responsive = true)
     {
         if ($responsive) {
             $class .= (!empty($class) ? ' ' : '') . 'img-responsive';
         }
+
         return '<img src="/'.$img.'" class="'.$class.'">';
     }
 
@@ -51,7 +52,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('foo.png','img-circle',false), $this->helper->setResponsive(false)->circle('foo.png'));
     }
-    
+
     public function testRender()
     {
         $this->assertEquals($this->getExpected('foo.png'), $this->helper->render('foo.png'));

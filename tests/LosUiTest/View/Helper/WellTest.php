@@ -21,7 +21,7 @@ class WellTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Well();
     }
-    
+
     private function getExpected($content, $class='')
     {
         return '<div class="well'.$class.'">'.$content.'</div>';
@@ -35,7 +35,7 @@ class WellTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('foo',' well-sm'), $this->helper->small('foo'));
     }
-    
+
     public function testRender()
     {
         $this->assertEquals($this->getExpected('foo'), $this->helper->render('foo'));
@@ -45,5 +45,5 @@ class WellTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('foo'), $this->helper->__invoke('foo'));
     }
-    
+
 }

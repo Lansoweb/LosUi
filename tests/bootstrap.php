@@ -24,8 +24,8 @@ $path = array(
 );
 set_include_path(implode(PATH_SEPARATOR, $path));
 
-require_once  'Zend/Loader/AutoloaderFactory.php';
-require_once  'Zend/Loader/StandardAutoloader.php';
+require_once 'Zend/Loader/AutoloaderFactory.php';
+require_once 'Zend/Loader/StandardAutoloader.php';
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
@@ -33,7 +33,7 @@ use Zend\Loader\StandardAutoloader;
 // setup autoloader
 AutoloaderFactory::factory(
     array(
-    	'Zend\Loader\StandardAutoloader' => array(
+        'Zend\Loader\StandardAutoloader' => array(
             StandardAutoloader::AUTOREGISTER_ZF => true,
             StandardAutoloader::ACT_AS_FALLBACK => false,
             StandardAutoloader::LOAD_NS => $additionalNamespaces,

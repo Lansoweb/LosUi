@@ -21,7 +21,7 @@ class IconTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Icon();
     }
-    
+
     private function getExpected($icon, $glyphicon = true, $style = '')
     {
         if ($glyphicon) {
@@ -39,22 +39,22 @@ class IconTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('user', true, ' style="width:100px;"'), $this->helper->render('glyphicon-user', 'width:100px;'));
     }
-    
+
     public function testRenderFontAwesome()
     {
         $this->assertEquals($this->getExpected('user', false), $this->helper->render('fa-user'));
     }
-    
+
     public function testInvoke()
     {
         $this->assertEquals($this->getExpected('user'), $this->helper->__invoke('glyphicon-user'));
     }
-    
+
     public function testGlyphiconCall()
     {
         $this->assertEquals($this->getExpected('user'), $this->helper->GlyphiconUser());
     }
-    
+
     public function testFontAwesomeCall()
     {
         $this->assertEquals($this->getExpected('user',false), $this->helper->FaUser());

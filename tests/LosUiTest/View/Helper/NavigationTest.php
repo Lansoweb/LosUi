@@ -21,7 +21,7 @@ class NavigationTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Navigation();
     }
-    
+
     private function getExpected($content)
     {
         return '<span class="badge">'.$content.'</span>';

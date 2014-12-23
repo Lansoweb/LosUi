@@ -13,7 +13,7 @@ namespace LosUiTest\View\Helper;
 
 use LosUi\View\Helper\HeadScript;
 
-class HeadHeadScriptTest extends \PHPUnit_Framework_TestCase
+class HeadScriptTest extends \PHPUnit_Framework_TestCase
 {
     protected $helper;
 
@@ -21,12 +21,12 @@ class HeadHeadScriptTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new HeadScript();
     }
-    
+
     public function tearDown()
     {
         unset($this->helper);
     }
-    
+
     private function getExpected($content)
     {
         return '<span class="badge">'.$content.'</span>';
@@ -34,12 +34,12 @@ class HeadHeadScriptTest extends \PHPUnit_Framework_TestCase
 
     public function testBootstrap()
     {
-        $this->assertEquals('<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>', 
+        $this->assertEquals('<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>',
             $this->helper->appendBootstrap()->toString());
     }
     public function testBootstrapCdn()
     {
-        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>', 
+        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>',
             $this->helper->appendBootstrap(true)->toString());
     }
     public function testBootstrapUnminified()
@@ -57,10 +57,10 @@ class HeadHeadScriptTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.js"></script>',
             $this->helper->appendBootstrap(true, false, '3.3.0')->toString());
     }
-    
+
     public function testJquery()
     {
-        $this->assertEquals('<script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>', 
+        $this->assertEquals('<script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>',
             $this->helper->appendJquery()->toString());
     }
     public function testJqueryCdn()
@@ -83,10 +83,10 @@ class HeadHeadScriptTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<script type="text/javascript" src="//code.jquery.com/jquery-3.3.0.js"></script>',
             $this->helper->appendJquery(true, false, '3.3.0')->toString());
     }
-    
+
     public function testChosen()
     {
-        $this->assertEquals('<script type="text/javascript" src="/chosen/chosen.jquery.min.js"></script>', 
+        $this->assertEquals('<script type="text/javascript" src="/chosen/chosen.jquery.min.js"></script>',
             $this->helper->appendChosen()->toString());
     }
     public function testChosenUnminified()

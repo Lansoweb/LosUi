@@ -21,7 +21,7 @@ class ChosenTest extends \PHPUnit_Framework_TestCase
     {
         $this->helper = new Chosen();
     }
-    
+
     private function getExpected($content, $options = '')
     {
         return '$("'.$content.'").chosen('.$options.');';
@@ -31,21 +31,20 @@ class ChosenTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('foo'), $this->helper->render('foo',[],false));
     }
-    
+
     public function testRenderWithOptions()
     {
         $this->assertEquals($this->getExpected('foo',"{width: '100px', height: '30px'}"), $this->helper->render('foo',['width'=>'100px','height'=>'30px'],false));
     }
-    
+
     public function testInvoke()
     {
         $this->assertEquals($this->getExpected('foo'), $this->helper->__invoke('foo',[],false));
     }
-    
+
     public function testInvokeWithOptions()
     {
         $this->assertEquals($this->getExpected('foo',"{width: '100px', height: '30px'}"), $this->helper->__invoke('foo',['width'=>'100px','height'=>'30px'],false));
     }
-    
-    
+
 }
