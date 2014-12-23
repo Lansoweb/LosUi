@@ -47,7 +47,9 @@ class Well extends AbstractHelper
 
     public function render($content, $class = '')
     {
-        $class = ' ' . trim($class);
+        if (!empty($class)) {
+            $class = ' ' . trim($class);
+        }
 
         return sprintf($this->format, $class, $content);
     }

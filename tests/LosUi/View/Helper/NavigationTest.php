@@ -1,0 +1,38 @@
+<?php
+/**
+ * Tests for Navigation View Helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @subpackage Tests
+ * @license    http://opensource.org/licenses/MIT   MIT License
+ * @link       http://github.com/LansoWeb/LosUi
+ * @see        http://getbootstrap.com/components/#alerts
+ */
+namespace LosUiTest\View\Helper;
+
+use LosUi\View\Helper\Navigation;
+
+class NavigationTest extends \PHPUnit_Framework_TestCase
+{
+    protected $helper;
+
+    public function setUp()
+    {
+        $this->helper = new Navigation();
+    }
+    
+    private function getExpected($content)
+    {
+        return '<span class="badge">'.$content.'</span>';
+    }
+
+    public function testHelpersWereAdded()
+    {
+        $pm = $this->helper->getPluginManager();
+        $this->assertTrue($pm->has('menu'));
+        $this->assertInstanceOf('LosUi\View\Helper\Navigation\Menu', $pm->get('menu'));
+        $this->assertInstanceOf('LosUi\View\Helper\Navigation\Breadcrumbs', $pm->get('breadcrumbs'));
+    }
+
+}

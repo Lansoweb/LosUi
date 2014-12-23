@@ -64,11 +64,12 @@ class HeadLink extends ZfHeadLink
             $version = false;
             $isMin = true;
 
-            if (isset($args[0]))
+            if (isset($args[0])) {
                 if (is_bool($args[0])) {
                     $useCdn = $args[0];
                 } else {
-                $version = $args[0];
+                    $version = $args[0];
+                }
             }
 
             if (isset($args[1]) && is_bool($args[1])) {

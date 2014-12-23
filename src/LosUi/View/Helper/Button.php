@@ -205,16 +205,16 @@ class Button extends AbstractHelper
 
         $extra = '';
         if ($this->isDisabled) {
-            $extra = ' disabled="disabled"';
+            $extra .= ' disabled="disabled"';
         }
         if ($this->id != null) {
-            $extra = ' id="'.$this->id.'"';
+            $extra .= ' id="'.$this->id.'"';
         }
         if ($this->name != null) {
-            $extra = ' name="'.$this->name.'"';
+            $extra .= ' name="'.$this->name.'"';
         }
         if ($style != null) {
-            $extra = ' style="'.$style.'"';
+            $extra .= ' style="'.$style.'"';
         }
 
         if ($this->isActive) {
