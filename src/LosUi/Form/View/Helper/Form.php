@@ -65,8 +65,8 @@ class Form extends ZfFormHelper
 
     public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
     {
-        $this->isHorizontal = (bool)$isHorizontal;
-        $this->labelColumns = (int)$labelColumns;
+        $this->isHorizontal = (bool) $isHorizontal;
+        $this->labelColumns = (int) $labelColumns;
 
         if (!$form) {
             return $this;

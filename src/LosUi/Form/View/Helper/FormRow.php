@@ -73,8 +73,7 @@ class FormRow extends ZfFormRow
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . 'form-control';
             $element->setAttribute('class', $classAttributes);
-        }
-        elseif ($type == 'button' || $type == 'submit') {
+        } elseif ($type == 'button' || $type == 'submit') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . 'btn';
             $element->setAttribute('class', $classAttributes);
