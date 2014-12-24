@@ -73,7 +73,8 @@ class FormRow extends ZfFormRow
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . 'form-control';
             $element->setAttribute('class', $classAttributes);
-        } elseif ($type == 'button' || $type == 'submit') {
+        }
+        elseif ($type == 'button' || $type == 'submit') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . 'btn';
             $element->setAttribute('class', $classAttributes);
@@ -178,7 +179,7 @@ class FormRow extends ZfFormRow
                             $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
                                 $labelOpen . $label . $labelClose,
                                 12 - $labelColumns, $addDivClass,
-                                $elementString, '');
+                                $elementString . ($this->renderErrors ? $elementErrors : ''), '');
                         } else {
                             $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, $elementString);
                         }
@@ -188,7 +189,7 @@ class FormRow extends ZfFormRow
                         if ($isHorizontal) {
                             $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
                                 '', 12 - $labelColumns, $addDivClass,
-                                $elementString, $labelOpen . $label . $labelClose);
+                                $elementString . ($this->renderErrors ? $elementErrors : ''), $labelOpen . $label . $labelClose);
                         } else {
                             $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen . $label . $labelClose);
                         }
@@ -196,7 +197,7 @@ class FormRow extends ZfFormRow
                 }
             }
 
-            if ($this->renderErrors) {
+            if (!$isHorizontal && $this->renderErrors) {
                 $markup .= $elementErrors;
             }
         } else {
