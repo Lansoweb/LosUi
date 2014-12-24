@@ -30,6 +30,8 @@ use Zend\Form\View\Helper\Form as ZfFormHelper;
  */
 class Form extends ZfFormHelper
 {
+    protected $isHorizontal = false;
+    protected $labelColumns = 2;
 
     /**
      * (non-PHPdoc)
@@ -37,6 +39,13 @@ class Form extends ZfFormHelper
      */
     public function render(FormInterface $form)
     {
+        if ($this->isHorizontal) {
+            if ($form->hasAttribute('class')) {
+                $form->setAttribute('class', 'form-horizontal ' . $form->getAttribute('class'));
+            } else {
+                $form->setAttribute('class', 'form-horizontal');
+            }
+        }
         if (method_exists($form, 'prepare')) {
             $form->prepare();
         }
@@ -47,10 +56,22 @@ class Form extends ZfFormHelper
             if ($element instanceof FieldsetInterface) {
                 $formContent .= $this->getView()->formCollection($element);
             } else {
-                $formContent .= $this->view->plugin('los_form_row')->render($element);
+                $formContent .= $this->view->plugin('los_form_row')->render($element, $this->isHorizontal, $this->labelColumns);
             }
         }
 
         return $this->openTag($form) . $formContent . $this->closeTag();
+    }
+
+    public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
+    {
+        $this->isHorizontal = (bool)$isHorizontal;
+        $this->labelColumns = (int)$labelColumns;
+
+        if (!$form) {
+            return $this;
+        }
+
+        return $this->render($form);
     }
 }

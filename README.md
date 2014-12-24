@@ -195,15 +195,32 @@ The first call will generate the following html:
 For each section bellow, please refer to the [bootstrap documentation](http://getbootstrap.com) for the classes specifications.
 
 #### Forms
-This module provies a Form View Helper that automatically adds bootstrap style to forms. Just use the default form but with the new view helper: 
+This module provides a Form View Helper that automatically adds bootstrap style to forms. Just use the default form but with the new view helper: 
 ```php
 <?= $this->losForm($form) ?>
 ```
 
-The is a LosFormRow view helper that prints just a row. It will add all necessary classes, including alerts for form errors.
+To make the form [horizontal](http://getbootstrap.com/css/#forms-horizontal), just pass true in the second argument, 
+and the number of columns the label will use (default is 2):
+```php
+<?= $this->losForm($form, true) ?>
+<?= $this->losForm($form, true, 4) ?>
+```
+
+In the horizontal form, buttons and checkboxes will be aligned with the other fields, not using the label column.
+To better style checkboxes and radios, add the following to your stylesheet:
+```css
+.radio label, .checkbox label {
+    padding-right: 20px;
+}
+```
+
+
+There is a LosFormRow view helper that prints just a row. It will add all necessary classes, including alerts for form errors.
 ```php
 <?= $this->losFormRow($form->get('password') ?>
 ```
+ 
 
 #### Alert
 ```php

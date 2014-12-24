@@ -31,6 +31,7 @@ class FormRow extends ZfFormRow
 {
 
     protected $rowWrapper = '<div class="form-group%s">%s%s</div>';
+    protected $horizontalRowWrapper = '<div class="form-group%s">%s<div class="col-sm-%d%s">%s</div>%s</div>';
 
     protected function getElementErrorsHelper()
     {
@@ -49,7 +50,7 @@ class FormRow extends ZfFormRow
         return $this->elementErrorsHelper;
     }
 
-    public function render(ElementInterface $element)
+    public function render(ElementInterface $element, $isHorizontal = false, $labelColumns = 2)
     {
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
         $labelHelper = $this->getLabelHelper();
@@ -66,9 +67,18 @@ class FormRow extends ZfFormRow
             }
         }
 
-        $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
-        $classAttributes = $classAttributes . 'form-control';
-        $element->setAttribute('class', $classAttributes);
+        $type = $element->getAttribute('type');
+
+        if ($type != 'checkbox' && $type != 'submit' && $type != 'radio') {
+            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
+            $classAttributes = $classAttributes . 'form-control';
+            $element->setAttribute('class', $classAttributes);
+        }
+        elseif ($type == 'button' || $type == 'submit') {
+            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
+            $classAttributes = $classAttributes . 'btn';
+            $element->setAttribute('class', $classAttributes);
+        }
 
         // Does this element have errors ?
         if (count($element->getMessages()) > 0 && ! empty($inputErrorClass)) {
@@ -99,7 +109,6 @@ class FormRow extends ZfFormRow
         $elementString = $elementHelper->render($element);
 
         // hidden elements do not need a <label> -https://github.com/zendframework/zf2/issues/5607
-        $type = $element->getAttribute('type');
         if (isset($label) && '' !== $label && $type !== 'hidden') {
 
             $labelAttributes = array();
@@ -122,11 +131,22 @@ class FormRow extends ZfFormRow
             if ($element->getAttribute('id')) {
                 $labelAttributes['for'] = $element->getAttribute('id');
             }
+            if ($isHorizontal) {
+                $labelAttributes['class'] = " control-label col-sm-" . $labelColumns;
+                $element->setLabelAttributes(['class' => "control-label col-sm-" . $labelColumns]);
+            }
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect) {
-                $markup = sprintf('<fieldset><legend>%s</legend>%s</fieldset>', $label, $elementString);
+            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
+                $markup = sprintf('<fieldset class="radio"><legend>%s</legend>%s</fieldset>', $label, $elementString);
+            } elseif ($type == 'checkbox') {
+                // Checkboxes need special treatment too
+                if ($isHorizontal) {
+                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12-$labelColumns).' col-xs-offset-'.$labelColumns.'"><label>' . $elementString . $label . '</label></div></div>';
+                } else {
+                    $markup = '<div class="checkbox"><label>' . $elementString . $label . '</label></div>';
+                }
             } else {
                 // Ensure element and label will be separated if element has an `id`-attribute.
                 // If element has label option `always_wrap` it will be nested in any case.
@@ -143,18 +163,36 @@ class FormRow extends ZfFormRow
                     $label = '<span>' . $label . '</span>';
                 }
 
+                $addDivClass = '';
                 // Button element is a special case, because label is always rendered inside it
                 if ($element instanceof Button) {
                     $labelOpen = $labelClose = $label = '';
+                    $addDivClass = ' col-xs-offset-' . $labelColumns;
+                }
+                if ($type == 'radio') {
+                    $addDivClass =  ' radio';
                 }
 
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
-                        $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, $elementString);
+                        if ($isHorizontal) {
+                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
+                                $labelOpen . $label . $labelClose,
+                                12 - $labelColumns, $addDivClass,
+                                $elementString, '');
+                        } else {
+                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, $elementString);
+                        }
                         break;
                     case self::LABEL_APPEND:
                     default:
-                        $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen . $label . $labelClose);
+                        if ($isHorizontal) {
+                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
+                                '', 12 - $labelColumns, $addDivClass,
+                                $elementString, $labelOpen . $label . $labelClose);
+                        } else {
+                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen . $label . $labelClose);
+                        }
                         break;
                 }
             }
