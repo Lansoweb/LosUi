@@ -215,12 +215,19 @@ To better style checkboxes and radios, add the following to your stylesheet:
 }
 ```
 
-
 There is a LosFormRow view helper that prints just a row. It will add all necessary classes, including alerts for form errors.
 ```php
 <?= $this->losFormRow($form->get('password') ?>
 ```
  
+If you need to change the order of the form elements, you can do (example for horizontal form with 4 columns for labels):
+```php
+echo $this->losForm()->openTag($form, true);
+foreach (['name','gender','email','password','passwordVerify','captcha','newsletter','submit'] as $element) {
+    echo $this->losFormRow()->render($form->get($element), true, 4);
+}
+echo $this->losForm()->closeTag();
+```
 
 #### Alert
 ```php

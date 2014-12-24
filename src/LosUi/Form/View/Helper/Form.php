@@ -30,22 +30,22 @@ use Zend\Form\View\Helper\Form as ZfFormHelper;
  */
 class Form extends ZfFormHelper
 {
+
     protected $isHorizontal = false;
+
     protected $labelColumns = 2;
 
     /**
      * (non-PHPdoc)
      * @see \Zend\Form\View\Helper\Form::render()
      */
-    public function render(FormInterface $form)
+    public function render(FormInterface $form, $isHorizontal = false, $labelColumns = 2)
     {
-        if ($this->isHorizontal) {
-            if ($form->hasAttribute('class')) {
-                $form->setAttribute('class', 'form-horizontal ' . $form->getAttribute('class'));
-            } else {
-                $form->setAttribute('class', 'form-horizontal');
-            }
-        }
+        $this->isHorizontal = (bool) $isHorizontal;
+        $this->labelColumns = (int) $labelColumns;
+
+        $this->setHorizontal($form, $isHorizontal);
+
         if (method_exists($form, 'prepare')) {
             $form->prepare();
         }
@@ -68,10 +68,30 @@ class Form extends ZfFormHelper
         $this->isHorizontal = (bool) $isHorizontal;
         $this->labelColumns = (int) $labelColumns;
 
-        if (!$form) {
+        if (! $form) {
             return $this;
         }
 
         return $this->render($form);
+    }
+
+    private function setHorizontal($form, $isHorizontal)
+    {
+        if ($this->isHorizontal) {
+            if ($form->hasAttribute('class')) {
+                $form->setAttribute('class', 'form-horizontal ' . $form->getAttribute('class'));
+            } else {
+                $form->setAttribute('class', 'form-horizontal');
+            }
+        }
+    }
+
+    public function openTag(FormInterface $form = null, $isHorizontal = false)
+    {
+        $this->isHorizontal = (bool) $isHorizontal;
+
+        $this->setHorizontal($form, $isHorizontal);
+
+        return parent::openTag($form);
     }
 }
