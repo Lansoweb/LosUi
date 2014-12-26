@@ -201,10 +201,17 @@ class FormRow extends ZfFormRow
                 $markup .= $elementErrors;
             }
         } else {
-            if ($this->renderErrors) {
-                $markup = $elementString . $elementErrors;
+            if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
+                $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
+                    '',
+                    12 - $labelColumns, ' col-xs-offset-' . $labelColumns,
+                    $elementString . ($this->renderErrors ? $elementErrors : ''), '');
             } else {
-                $markup = $elementString;
+                if ($this->renderErrors) {
+                    $markup = $elementString . $elementErrors;
+                } else {
+                    $markup = $elementString;
+                }
             }
         }
 
