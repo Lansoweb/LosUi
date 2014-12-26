@@ -5,9 +5,9 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @subpackage Tests
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUiTest\View\Helper;
 
@@ -38,7 +38,7 @@ class AlertTest extends \PHPUnit_Framework_TestCase
 
     public function testDismissibleInfo()
     {
-        $this->assertEquals($this->getExpected('info',true), $this->helper->setDismissible(true)->info('foo'));
+        $this->assertEquals($this->getExpected('info', true), $this->helper->setDismissible(true)->info('foo'));
     }
 
     public function testError()
@@ -48,7 +48,7 @@ class AlertTest extends \PHPUnit_Framework_TestCase
 
     public function testDismissibleError()
     {
-        $this->assertEquals($this->getExpected('danger',true), $this->helper->setDismissible(true)->error('foo'));
+        $this->assertEquals($this->getExpected('danger', true), $this->helper->setDismissible(true)->error('foo'));
     }
 
     public function testDanger()
@@ -58,7 +58,7 @@ class AlertTest extends \PHPUnit_Framework_TestCase
 
     public function testDismissibleDanger()
     {
-        $this->assertEquals($this->getExpected('danger',true), $this->helper->setDismissible(true)->danger('foo'));
+        $this->assertEquals($this->getExpected('danger', true), $this->helper->setDismissible(true)->danger('foo'));
     }
 
     public function testWarning()
@@ -68,7 +68,7 @@ class AlertTest extends \PHPUnit_Framework_TestCase
 
     public function testDismissibleWarning()
     {
-        $this->assertEquals($this->getExpected('warning',true), $this->helper->setDismissible(true)->warning('foo'));
+        $this->assertEquals($this->getExpected('warning', true), $this->helper->setDismissible(true)->warning('foo'));
     }
 
     public function testSuccess()
@@ -78,7 +78,7 @@ class AlertTest extends \PHPUnit_Framework_TestCase
 
     public function testDismissibleSuccess()
     {
-        $this->assertEquals($this->getExpected('success',true), $this->helper->setDismissible(true)->success('foo'));
+        $this->assertEquals($this->getExpected('success', true), $this->helper->setDismissible(true)->success('foo'));
     }
 
     public function testRender()

@@ -4,7 +4,7 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -34,7 +34,7 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  */
 class HeadScript extends ZfHeadScript
@@ -66,11 +66,12 @@ class HeadScript extends ZfHeadScript
             $version = false;
             $isMin = true;
 
-            if (isset($args[0]))
+            if (isset($args[0])) {
                 if (is_bool($args[0])) {
                     $useCdn = $args[0];
                 } else {
-                $version = $args[0];
+                    $version = $args[0];
+                }
             }
 
             if (isset($args[1]) && is_bool($args[1])) {

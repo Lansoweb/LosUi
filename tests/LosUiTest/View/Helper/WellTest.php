@@ -5,9 +5,9 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @subpackage Tests
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUiTest\View\Helper;
 
@@ -22,18 +22,18 @@ class WellTest extends \PHPUnit_Framework_TestCase
         $this->helper = new Well();
     }
 
-    private function getExpected($content, $class='')
+    private function getExpected($content, $class = '')
     {
         return '<div class="well'.$class.'">'.$content.'</div>';
     }
 
     public function testLarge()
     {
-        $this->assertEquals($this->getExpected('foo',' well-lg'), $this->helper->large('foo'));
+        $this->assertEquals($this->getExpected('foo', ' well-lg'), $this->helper->large('foo'));
     }
     public function testSmall()
     {
-        $this->assertEquals($this->getExpected('foo',' well-sm'), $this->helper->small('foo'));
+        $this->assertEquals($this->getExpected('foo', ' well-sm'), $this->helper->small('foo'));
     }
 
     public function testRender()
@@ -45,5 +45,4 @@ class WellTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('foo'), $this->helper->__invoke('foo'));
     }
-
 }

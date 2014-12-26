@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 class Alert extends AbstractHelper
 {
-
     protected $format = '<div class="alert %s" role="alert">%s</div>';
 
     protected $formatDismissible = '<div class="alert alert-dismissible %s" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>%s</div>';

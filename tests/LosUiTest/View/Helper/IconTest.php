@@ -5,9 +5,9 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @subpackage Tests
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUiTest\View\Helper;
 
@@ -57,6 +57,6 @@ class IconTest extends \PHPUnit_Framework_TestCase
 
     public function testFontAwesomeCall()
     {
-        $this->assertEquals($this->getExpected('user',false), $this->helper->FaUser());
+        $this->assertEquals($this->getExpected('user', false), $this->helper->FaUser());
     }
 }

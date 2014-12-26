@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#badges
+ * @link       http://getbootstrap.com/components/#badges
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#badges
+ * @link       http://getbootstrap.com/components/#badges
  */
 class Badge extends AbstractHelper
 {
-
     protected $format = '<span class="badge">%s</span>';
 
     public function render($badge)

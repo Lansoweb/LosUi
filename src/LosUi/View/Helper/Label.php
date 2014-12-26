@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#labels
+ * @link       http://getbootstrap.com/components/#labels
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#labels
+ * @link       http://getbootstrap.com/components/#labels
  */
 class Label extends AbstractHelper
 {
-
     protected $format = '<span class="label %s">%s</span>';
 
     public function info($label)

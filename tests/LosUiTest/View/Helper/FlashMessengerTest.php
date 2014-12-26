@@ -5,9 +5,9 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @subpackage Tests
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUiTest\View\Helper;
 
@@ -22,10 +22,10 @@ class FlashMessengerTest extends \PHPUnit_Framework_TestCase
         $this->helper = new FlashMessenger();
     }
 
-    private function getExpected($content,$two = false)
+    private function getExpected($content, $two = false)
     {
         if (!$two) {
-        return '<div class="alert alert-dismissable alert-success">
+            return '<div class="alert alert-dismissable alert-success">
      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
          &times;
      </button>
@@ -54,9 +54,9 @@ class FlashMessengerTest extends \PHPUnit_Framework_TestCase
         $this->helper->getPluginFlashMessenger()->addSuccessMessage('foo');
         $this->helper->getPluginFlashMessenger()->addErrorMessage('bar');
         $actual_out = $this->helper->renderAll();
-        $actual_out = str_replace(["\n",'\t','  '], '',$actual_out);
-        $expected = $this->getExpected('foo',true);
-        $expected = str_replace(["\n",'\t','  '], '',$expected);
+        $actual_out = str_replace(["\n", '\t', '  '], '', $actual_out);
+        $expected = $this->getExpected('foo', true);
+        $expected = str_replace(["\n", '\t', '  '], '', $expected);
         $this->assertEquals($expected, $actual_out);
     }
 }

@@ -6,10 +6,10 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://fontawesome.io
- * @see        http://getbootstrap.com/components/#glyphicons
+ * @link       http://fontawesome.io
+ * @link       http://getbootstrap.com/components/#glyphicons
  */
 namespace LosUi\View\Helper;
 
@@ -25,14 +25,13 @@ use Zend\Filter\StringToLower;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://fontawesome.io
- * @see        http://getbootstrap.com/components/#glyphicons
+ * @link       http://fontawesome.io
+ * @link       http://getbootstrap.com/components/#glyphicons
  */
 class Icon extends AbstractHelper
 {
-
     protected $format = '<span class="%s"%s></span>';
 
     public function __invoke($icon = null, $style = '')
@@ -58,13 +57,13 @@ class Icon extends AbstractHelper
     public function render($icon, $style = '')
     {
         if (substr($icon, 0, 3) == 'fa-') {
-            $class = trim('fa ' . $icon);
+            $class = trim('fa '.$icon);
         } else {
-            $class = trim('glyphicon ' . $icon);
+            $class = trim('glyphicon '.$icon);
         }
 
         if ($style != '') {
-            $style = ' style="' . $style . '"';
+            $style = ' style="'.$style.'"';
         }
 
         return sprintf($this->format, $class, $style);

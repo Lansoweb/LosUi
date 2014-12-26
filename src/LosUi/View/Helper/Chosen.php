@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://harvesthq.github.io/chosen/
+ * @link       http://harvesthq.github.io/chosen/
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://harvesthq.github.io/chosen/
+ * @link       http://harvesthq.github.io/chosen/
  */
 class Chosen extends AbstractHelper
 {
-
     protected $format = '$("%s").chosen(%s);';
 
     public function __invoke($element = 'select', $options = [], $includeLibs = true)

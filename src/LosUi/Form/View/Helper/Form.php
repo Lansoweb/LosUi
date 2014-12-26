@@ -6,9 +6,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#forms
+ * @link       http://getbootstrap.com/css/#forms
  */
 namespace LosUi\Form\View\Helper;
 
@@ -24,13 +24,12 @@ use Zend\Form\View\Helper\Form as ZfFormHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#forms
+ * @link       http://getbootstrap.com/css/#forms
  */
 class Form extends ZfFormHelper
 {
-
     protected $isHorizontal = false;
 
     protected $labelColumns = 2;
@@ -60,7 +59,7 @@ class Form extends ZfFormHelper
             }
         }
 
-        return $this->openTag($form) . $formContent . $this->closeTag();
+        return $this->openTag($form).$formContent.$this->closeTag();
     }
 
     public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
@@ -79,7 +78,7 @@ class Form extends ZfFormHelper
     {
         if ($this->isHorizontal) {
             if ($form->hasAttribute('class')) {
-                $form->setAttribute('class', 'form-horizontal ' . $form->getAttribute('class'));
+                $form->setAttribute('class', 'form-horizontal '.$form->getAttribute('class'));
             } else {
                 $form->setAttribute('class', 'form-horizontal');
             }

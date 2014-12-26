@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#wells
+ * @link       http://getbootstrap.com/components/#wells
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#wells
+ * @link       http://getbootstrap.com/components/#wells
  */
 class Well extends AbstractHelper
 {
-
     protected $format = '<div class="well%s">%s</div>';
 
     public function __invoke($content = '', $class = '')
@@ -48,7 +47,7 @@ class Well extends AbstractHelper
     public function render($content, $class = '')
     {
         if (!empty($class)) {
-            $class = ' ' . trim($class);
+            $class = ' '.trim($class);
         }
 
         return sprintf($this->format, $class, $content);

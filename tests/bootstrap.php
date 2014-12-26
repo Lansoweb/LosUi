@@ -12,10 +12,10 @@ $additionalNamespaces = $additionalModulePaths = $moduleDependencies = null;
 $rootPath = realpath(dirname(__DIR__));
 $testsPath = "$rootPath/tests";
 
-if (is_readable($testsPath . '/TestConfiguration.php')) {
-    require_once $testsPath . '/TestConfiguration.php';
+if (is_readable($testsPath.'/TestConfiguration.php')) {
+    require_once $testsPath.'/TestConfiguration.php';
 } else {
-    require_once $testsPath . '/TestConfiguration.php.dist';
+    require_once $testsPath.'/TestConfiguration.php.dist';
 }
 
 $path = array(
@@ -37,7 +37,7 @@ AutoloaderFactory::factory(
             StandardAutoloader::AUTOREGISTER_ZF => true,
             StandardAutoloader::ACT_AS_FALLBACK => false,
             StandardAutoloader::LOAD_NS => $additionalNamespaces,
-        )
+        ),
     )
 );
 
@@ -62,7 +62,6 @@ if (isset($moduleDependencies)) {
     $modules = array_merge($modules, $moduleDependencies);
 }
 
-
 $listenerOptions = new Zend\ModuleManager\Listener\ListenerOptions(array('module_paths' => $modulePaths));
 $defaultListeners = new Zend\ModuleManager\Listener\DefaultListenerAggregate($listenerOptions);
 $sharedEvents = new Zend\EventManager\SharedEventManager();
@@ -74,7 +73,7 @@ $moduleManager->loadModules();
 if (method_exists($moduleTestCaseClassname, 'setLocator')) {
     $config = $defaultListeners->getConfigListener()->getMergedConfig();
 
-    $di = new \Zend\Di\Di;
+    $di = new \Zend\Di\Di();
     $di->instanceManager()->addTypePreference('Zend\Di\LocatorInterface', $di);
 
     if (isset($config['di'])) {
@@ -89,7 +88,7 @@ if (method_exists($moduleTestCaseClassname, 'setLocator')) {
                     'Zend\Mvc\Router\RouteStackInterface' => array(
                         'instantiator' => array(
                             'Zend\Mvc\Router\Http\TreeRouteStack',
-                            'factory'
+                            'factory',
                         ),
                     ),
                 ),

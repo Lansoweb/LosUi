@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#navbar-default
+ * @link       http://getbootstrap.com/components/#navbar-default
  */
 namespace LosUi\View\Helper\Navigation;
 
@@ -22,13 +22,12 @@ use LosUi\Navigation\Page\Divider;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#navbar-default
+ * @link       http://getbootstrap.com/components/#navbar-default
  */
 class Menu extends ZendMenu
 {
-
     protected $ulClass = 'nav navbar-nav';
 
     /**
@@ -51,8 +50,8 @@ class Menu extends ZendMenu
             $active['page'] = $active['page']->getParent();
         }
 
-        $ulClass = $ulClass ? ' class="' . $ulClass . '"' : '';
-        $html = $indent . '<ul' . $ulClass . '>' . self::EOL;
+        $ulClass = $ulClass ? ' class="'.$ulClass.'"' : '';
+        $html = $indent.'<ul'.$ulClass.'>'.self::EOL;
 
         foreach ($active['page'] as $subPage) {
             if (! $this->accept($subPage)) {
@@ -67,14 +66,14 @@ class Menu extends ZendMenu
             if ($addClassToListItem && $subPage->getClass()) {
                 $liClasses[] = $subPage->getClass();
             }
-            $liClass = empty($liClasses) ? '' : ' class="' . implode(' ', $liClasses) . '"';
+            $liClass = empty($liClasses) ? '' : ' class="'.implode(' ', $liClasses).'"';
 
-            $html .= $indent . '    <li' . $liClass . '>' . self::EOL;
-            $html .= $indent . '        ' . $this->htmlify($subPage, $escapeLabels, $addClassToListItem) . self::EOL;
-            $html .= $indent . '    </li>' . self::EOL;
+            $html .= $indent.'    <li'.$liClass.'>'.self::EOL;
+            $html .= $indent.'        '.$this->htmlify($subPage, $escapeLabels, $addClassToListItem).self::EOL;
+            $html .= $indent.'    </li>'.self::EOL;
         }
 
-        $html .= $indent . '</ul>';
+        $html .= $indent.'</ul>';
 
         return $html;
     }
@@ -127,26 +126,26 @@ class Menu extends ZendMenu
             }
 
             $depth -= $minDepth;
-            $myIndent = $indent . str_repeat('        ', $depth);
+            $myIndent = $indent.str_repeat('        ', $depth);
 
             if ($depth > $prevDepth) {
                 if ($ulClass && $depth == 0) {
-                    $ulClass = ' class="' . $ulClass . '"';
+                    $ulClass = ' class="'.$ulClass.'"';
                 } elseif ($page->getParent()) {
                     $ulClass = ' class="dropdown-menu"';
                 } else {
                     $ulClass = '';
                 }
-                $html .= $myIndent . '<ul' . $ulClass . '>' . self::EOL;
+                $html .= $myIndent.'<ul'.$ulClass.'>'.self::EOL;
             } elseif ($prevDepth > $depth) {
                 for ($i = $prevDepth; $i > $depth; $i --) {
-                    $ind = $indent . str_repeat('        ', $i);
-                    $html .= $ind . '    </li>' . self::EOL;
-                    $html .= $ind . '</ul>' . self::EOL;
+                    $ind = $indent.str_repeat('        ', $i);
+                    $html .= $ind.'    </li>'.self::EOL;
+                    $html .= $ind.'</ul>'.self::EOL;
                 }
-                $html .= $myIndent . '    </li>' . self::EOL;
+                $html .= $myIndent.'    </li>'.self::EOL;
             } else {
-                $html .= $myIndent . '    </li>' . self::EOL;
+                $html .= $myIndent.'    </li>'.self::EOL;
             }
 
             $liClasses = array();
@@ -164,17 +163,17 @@ class Menu extends ZendMenu
             if ($addClassToListItem && $page->getClass()) {
                 $liClasses[] = $page->getClass();
             }
-            $liClass = empty($liClasses) ? '' : ' class="' . implode(' ', $liClasses) . '"';
+            $liClass = empty($liClasses) ? '' : ' class="'.implode(' ', $liClasses).'"';
 
-            $html .= $myIndent . '    <li' . $liClass . '>' . self::EOL . $myIndent . '        ' . $this->htmlify($page, $escapeLabels, $addClassToListItem) . self::EOL;
+            $html .= $myIndent.'    <li'.$liClass.'>'.self::EOL.$myIndent.'        '.$this->htmlify($page, $escapeLabels, $addClassToListItem).self::EOL;
 
             $prevDepth = $depth;
         }
 
         if ($html) {
             for ($i = $prevDepth + 1; $i > 0; $i --) {
-                $myIndent = $indent . str_repeat('        ', $i - 1);
-                $html .= $myIndent . '    </li>' . self::EOL . $myIndent . '</ul>' . self::EOL;
+                $myIndent = $indent.str_repeat('        ', $i - 1);
+                $html .= $myIndent.'    </li>'.self::EOL.$myIndent.'</ul>'.self::EOL;
             }
             $html = rtrim($html, self::EOL);
         }
@@ -210,7 +209,7 @@ class Menu extends ZendMenu
         $attribs = array(
             'id' => $page->getId(),
             'title' => $title,
-            'href' => '#'
+            'href' => '#',
         );
 
         $class = array();
@@ -232,7 +231,7 @@ class Menu extends ZendMenu
             $attribs['target'] = $page->getTarget();
         }
 
-        $html = '<' . $element . $this->htmlAttribs($attribs) . '>';
+        $html = '<'.$element.$this->htmlAttribs($attribs).'>';
         if ($escapeLabel === true) {
             $escaper = $this->view->plugin('escapeHtml');
             $html .= $escaper($label);
@@ -241,7 +240,7 @@ class Menu extends ZendMenu
         }
 
         $html .= $extended;
-        $html .= '</' . $element . '>';
+        $html .= '</'.$element.'>';
 
         return $html;
     }

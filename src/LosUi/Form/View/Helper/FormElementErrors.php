@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#forms
+ * @link       http://getbootstrap.com/css/#forms
  */
 namespace LosUi\Form\View\Helper;
 
@@ -18,13 +18,12 @@ use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrors;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#forms
+ * @link       http://getbootstrap.com/css/#forms
  */
 class FormElementErrors extends ZendFormElementErrors
 {
-
     protected $messageCloseString = '</p></div>';
 
     protected $messageOpenFormat = '<div%s><p>';

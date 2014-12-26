@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#buttons
+ * @link       http://getbootstrap.com/css/#buttons
  */
 namespace LosUi\View\Helper;
 
@@ -17,13 +17,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/css/#buttons
+ * @link       http://getbootstrap.com/css/#buttons
  */
 class Button extends AbstractHelper
 {
-
     const TYPE_BUTTON = 0;
 
     const TYPE_ANCHOR = 1;
@@ -224,12 +223,12 @@ class Button extends AbstractHelper
             $class .= ' btn-block';
         }
         if ($this->size != null) {
-            $class .= ' ' . $this->size;
+            $class .= ' '.$this->size;
         }
 
         if ($this->type == self::TYPE_ANCHOR) {
             if ($this->anchorTarget != null) {
-                $extra .= ' target="' . $this->anchorTarget . '"';
+                $extra .= ' target="'.$this->anchorTarget.'"';
             }
 
             return sprintf($this->formatAnchor, $this->anchor, $class, $extra, $value);

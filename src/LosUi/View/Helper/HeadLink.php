@@ -4,7 +4,7 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -34,12 +34,11 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  */
 class HeadLink extends ZfHeadLink
 {
-
     const VERSION_BOOTSTRAP = "3.3.1";
     const VERSION_FONTAWESOME = "4.2.0";
 

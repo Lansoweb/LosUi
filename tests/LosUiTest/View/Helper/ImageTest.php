@@ -5,9 +5,9 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @subpackage Tests
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#alerts
+ * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUiTest\View\Helper;
 
@@ -30,7 +30,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     private function getExpected($img, $class = '', $responsive = true)
     {
         if ($responsive) {
-            $class .= (!empty($class) ? ' ' : '') . 'img-responsive';
+            $class .= (!empty($class) ? ' ' : '').'img-responsive';
         }
 
         return '<img src="/'.$img.'" class="'.$class.'">';
@@ -38,19 +38,19 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testCircle()
     {
-        $this->assertEquals($this->getExpected('foo.png','img-circle'), $this->helper->circle('foo.png'));
+        $this->assertEquals($this->getExpected('foo.png', 'img-circle'), $this->helper->circle('foo.png'));
     }
     public function testRounded()
     {
-        $this->assertEquals($this->getExpected('foo.png','img-rounded'), $this->helper->rounded('foo.png'));
+        $this->assertEquals($this->getExpected('foo.png', 'img-rounded'), $this->helper->rounded('foo.png'));
     }
     public function testThumbnail()
     {
-        $this->assertEquals($this->getExpected('foo.png','img-thumbnail'), $this->helper->thumbnail('foo.png'));
+        $this->assertEquals($this->getExpected('foo.png', 'img-thumbnail'), $this->helper->thumbnail('foo.png'));
     }
     public function testCircleNotResponsive()
     {
-        $this->assertEquals($this->getExpected('foo.png','img-circle',false), $this->helper->setResponsive(false)->circle('foo.png'));
+        $this->assertEquals($this->getExpected('foo.png', 'img-circle', false), $this->helper->setResponsive(false)->circle('foo.png'));
     }
 
     public function testRender()

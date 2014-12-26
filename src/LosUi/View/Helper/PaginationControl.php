@@ -6,9 +6,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#pagination
+ * @link       http://getbootstrap.com/components/#pagination
  */
 namespace LosUi\View\Helper;
 
@@ -22,9 +22,9 @@ use Zend\Paginator;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#pagination
+ * @link       http://getbootstrap.com/components/#pagination
  */
 class PaginationControl extends ZfPaginationControl
 {

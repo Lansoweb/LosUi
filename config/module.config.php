@@ -19,13 +19,13 @@ return [
             'los_navigation'          => 'LosUi\View\Helper\Navigation',
             'los_pagination_control'  => 'LosUi\View\Helper\PaginationControl',
             'los_well'                => 'LosUi\View\Helper\Well',
-        ]
+        ],
     ],
     'asset_manager' => [
         'resolver_configs' => [
             'paths' => [
-                'losui' => __DIR__ . '/../public/',
-            ]
-        ]
+                'losui' => __DIR__.'/../public/',
+            ],
+        ],
     ]
 ];

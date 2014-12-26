@@ -4,9 +4,9 @@
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#breadcrumbs
+ * @link       http://getbootstrap.com/components/#breadcrumbs
  */
 namespace LosUi\View\Helper\Navigation;
 
@@ -19,9 +19,9 @@ use Zend\Navigation\Page\Uri;
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
- * @license    http://opensource.org/licenses/MIT   MIT License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
- * @see        http://getbootstrap.com/components/#breadcrumbs
+ * @link       http://getbootstrap.com/components/#breadcrumbs
  */
 class Breadcrumbs extends ZendBreadcrumbs
 {
@@ -58,7 +58,7 @@ class Breadcrumbs extends ZendBreadcrumbs
         if ($page->getHref() && ($hasParent || (!$hasParent && $this->getLinkLast())) &&
             (!($page instanceof Uri) || $page->getUri() != '#')) {
             $anchorAttribs = $this->htmlAttribs(array('href' => $page->getHref()));
-            $html .= '<a' . $anchorAttribs . '>' . $label . '</a>';
+            $html .= '<a'.$anchorAttribs.'>'.$label.'</a>';
         } else {
             $html .= $label;
         }
@@ -88,7 +88,7 @@ class Breadcrumbs extends ZendBreadcrumbs
 
         while ($parent = $active->getParent()) {
             if ($parent instanceof AbstractPage) {
-                $html = $this->htmlify($parent, true) . $html;
+                $html = $this->htmlify($parent, true).$html;
             }
 
             if ($parent === $container) {
@@ -98,6 +98,6 @@ class Breadcrumbs extends ZendBreadcrumbs
             $active = $parent;
         }
 
-        return strlen($html) ? '<ol class="breadcrumb">' . $this->getIndent() . $html . '</ol>' : '';
+        return strlen($html) ? '<ol class="breadcrumb">'.$this->getIndent().$html.'</ol>' : '';
     }
 }
