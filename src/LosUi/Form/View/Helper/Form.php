@@ -15,6 +15,7 @@ namespace LosUi\Form\View\Helper;
 use Zend\Form\FormInterface;
 use Zend\Form\FieldsetInterface;
 use Zend\Form\View\Helper\Form as ZfFormHelper;
+use Zend\Form\Element\Button;
 
 /**
  *
@@ -51,12 +52,21 @@ class Form extends ZfFormHelper
 
         $formContent = '';
 
+        $buttons = [];
+
         foreach ($form as $element) {
-            if ($element instanceof FieldsetInterface) {
+            if ($element instanceof Button) {
+                $buttons[] = $element;
+                continue;
+            } elseif ($element instanceof FieldsetInterface) {
                 $formContent .= $this->getView()->formCollection($element);
             } else {
                 $formContent .= $this->view->plugin('los_form_row')->render($element, $this->isHorizontal, $this->labelColumns);
             }
+        }
+
+        if (count($buttons) > 0) {
+            $formContent .= $this->view->plugin('los_form_row')->renderButtons($buttons, $this->isHorizontal, $this->labelColumns);
         }
 
         return $this->openTag($form).$formContent.$this->closeTag();
@@ -71,7 +81,7 @@ class Form extends ZfFormHelper
             return $this;
         }
 
-        return $this->render($form);
+        return $this->render($form, $this->isHorizontal, $this->labelColumns);
     }
 
     private function setHorizontal($form, $isHorizontal)

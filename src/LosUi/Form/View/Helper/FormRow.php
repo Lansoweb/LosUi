@@ -49,6 +49,28 @@ class FormRow extends ZfFormRow
         return $this->elementErrorsHelper;
     }
 
+    public function renderButtons(array $elements, $isHorizontal = false, $labelColumns = 2)
+    {
+        $elementHelper = $this->getElementHelper();
+
+        $elementString = '';
+
+        foreach ($elements as $button) {
+            $elementString .= $elementHelper->render($button) . ' ';
+        }
+
+        if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
+            $markup = sprintf($this->horizontalRowWrapper, '', '',
+                12 - $labelColumns, ' col-xs-offset-'.$labelColumns,
+                $elementString, '');
+        } else {
+            $markup = sprintf($this->rowWrapper, '',
+                $elementString, '');
+        }
+
+        return $markup;
+    }
+
     public function render(ElementInterface $element, $isHorizontal = false, $labelColumns = 2)
     {
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
@@ -68,7 +90,7 @@ class FormRow extends ZfFormRow
 
         $type = $element->getAttribute('type');
 
-        if ($type != 'checkbox' && $type != 'submit' && $type != 'radio') {
+        if ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.'form-control';
             $element->setAttribute('class', $classAttributes);
@@ -198,7 +220,7 @@ class FormRow extends ZfFormRow
                 $markup .= $elementErrors;
             }
         } else {
-            if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
+            if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
                 $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
                     '',
                     12 - $labelColumns, ' col-xs-offset-'.$labelColumns,
