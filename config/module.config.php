@@ -27,5 +27,10 @@ return [
                 'losui' => __DIR__.'/../public/',
             ],
         ],
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
+            'losui' => __DIR__ . '/../view',
+        ],
     ]
 ];
