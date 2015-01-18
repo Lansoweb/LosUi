@@ -38,7 +38,7 @@ final class Url extends AbstractHelper
             if (! empty($queryParams)) {
                 $queryParams = $queryParams->toArray();
                 if (array_key_exists('query', $options)) {
-                    $options['query'] = array_merge($options['query'], $queryParams);
+                    $options['query'] = array_merge($queryParams, $options['query']);
                 } else {
                     $options['query'] = $queryParams;
                 }
@@ -51,5 +51,4 @@ final class Url extends AbstractHelper
     {
         $this->request = $request;
     }
-
 }
