@@ -4,6 +4,9 @@ return [
         'factories' => [
             'LosUi\View\Helper\Url'   => 'LosUi\View\Helper\UrlFactory',
         ],
+        'aliases' => [
+            'los_url' => 'LosUi\View\Helper\Url'
+        ],
         'invokables' => [
             'los_alert'               => 'LosUi\View\Helper\Alert',
             'los_badge'               => 'LosUi\View\Helper\Badge',
@@ -22,7 +25,6 @@ return [
             'los_label'               => 'LosUi\View\Helper\Label',
             'los_navigation'          => 'LosUi\View\Helper\Navigation',
             'los_pagination_control'  => 'LosUi\View\Helper\PaginationControl',
-            'los_url'                 => 'LosUi\View\Helper\Url',
             'los_well'                => 'LosUi\View\Helper\Well',
         ],
     ],
