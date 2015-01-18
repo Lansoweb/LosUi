@@ -1,6 +1,9 @@
 <?php
 return [
     'view_helpers' => [
+        'factories' => [
+            'LosUi\View\Helper\Url'   => 'LosUi\View\Helper\UrlFactory',
+        ],
         'invokables' => [
             'los_alert'               => 'LosUi\View\Helper\Alert',
             'los_badge'               => 'LosUi\View\Helper\Badge',
