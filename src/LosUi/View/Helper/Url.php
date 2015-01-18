@@ -1,13 +1,29 @@
 <?php
+/**
+ * Url view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
 namespace LosUi\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\Stdlib\RequestInterface;
 
-class Url extends AbstractHelper
+/**
+ * Url view helper
+ *
+ * @author     Leandro Silva <leandro@leandrosilva.info>
+ * @category   LosUi
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @link       http://github.com/LansoWeb/LosUi
+ */
+final class Url extends AbstractHelper
 {
 
-    protected $request;
+    private $request;
 
     public function from($name = null, $params = array(), $options = array(), $reuseMatchedParams = false)
     {
