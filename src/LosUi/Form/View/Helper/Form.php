@@ -59,7 +59,7 @@ class Form extends ZfFormHelper
                 $buttons[] = $element;
                 continue;
             } elseif ($element instanceof FieldsetInterface) {
-                $formContent .= $this->getView()->formCollection($element);
+                $formContent .= $this->view->plugin('los_form_collection')->render($element);
             } else {
                 $formContent .= $this->view->plugin('los_form_row')->render($element, $this->isHorizontal, $this->labelColumns);
             }

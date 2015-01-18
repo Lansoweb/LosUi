@@ -9,6 +9,7 @@ return [
             'los_flashmessenger'      => 'LosUi\View\Helper\FlashMessenger',
             'los_form'                => 'LosUi\Form\View\Helper\Form',
             'los_formrow'             => 'LosUi\Form\View\Helper\FormRow',
+            'los_form_collection'     => 'LosUi\Form\View\Helper\FormCollection',
             'los_form_element_errors' => 'LosUi\Form\View\Helper\FormElementErrors',
             'los_form_renderer'       => 'LosUi\Form\View\Helper\Form',
             'los_headlink'            => 'LosUi\View\Helper\HeadLink',
