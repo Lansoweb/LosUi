@@ -18,7 +18,7 @@
             <li><a href="<?php echo $this->losurl()->from($this->route, array('page' => $this->next), $query, true); ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
             <li><a href="<?php echo $this->losurl()->from($this->route, array('page' => $this->pageCount), $query, true); ?>"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
         <?php else:?>
-            <li><span class="glyphicon glyphicon-chevron-right"></span></li>
-            <li><span class="glyphicon glyphicon-fast-forward"></span></li>
+            <li class="disabled"><span class="glyphicon glyphicon-chevron-right"></span></li>
+            <li class="disabled"><span class="glyphicon glyphicon-fast-forward"></span></li>
         <?php endif?>
 <?php endif; ?>
