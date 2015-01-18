@@ -1,22 +1,22 @@
- 
+<?php $query = isset($this->query) ? ['query'=>$this->query] : []?>
 <?php if ($this->pageCount): ?>
 <nav>
     <ul class="pagination<?= isset($this->size) ? ' pagination-'.$this->size : '' ?>">
         <?php if (isset($this->previous)): ?>
-            <li><a href="<?php echo $this->url($this->route, array('page' => 1), true); ?>"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
-            <li><a href="<?php echo $this->url($this->route, array('page' => $this->previous), true); ?>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+            <li><a href="<?php echo $this->url($this->route, array('page' => 1), $query, true); ?>"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
+            <li><a href="<?php echo $this->url($this->route, array('page' => $this->previous), $query, true); ?>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
         <?php else:?>
             <li class="disabled"><span class="glyphicon glyphicon-fast-backward"></span></li>
             <li class="disabled"><span class="glyphicon glyphicon-chevron-left"></span></li>
         <?php endif?>
-      
+
         <?php foreach ($this->pagesInRange as $page): ?>
-            <li<?php echo ($page == $this->current) ? ' class="active"' : '' ?>><a href="<?php echo $this->url($this->route, array('page' => $page), true); ?>"><?= $page ?></a></li>
+            <li<?php echo ($page == $this->current) ? ' class="active"' : '' ?>><a href="<?php echo $this->url($this->route, array('page' => $page), $query, true); ?>"><?= $page ?></a></li>
         <?php endforeach;?>
-        
+
         <?php if (isset($this->next)): ?>
-            <li><a href="<?php echo $this->url($this->route, array('page' => $this->next), true); ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            <li><a href="<?php echo $this->url($this->route, array('page' => $this->pageCount), true); ?>"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
+            <li><a href="<?php echo $this->url($this->route, array('page' => $this->next), $query, true); ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+            <li><a href="<?php echo $this->url($this->route, array('page' => $this->pageCount), $query, true); ?>"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
         <?php else:?>
             <li><span class="glyphicon glyphicon-chevron-right"></span></li>
             <li><span class="glyphicon glyphicon-fast-forward"></span></li>

@@ -153,7 +153,7 @@ class Menu extends ZendMenu
                 $liClasses[] = 'active';
             }
 
-            if ($page->hasChildren() && (! isset($maxDepth) || $depth < $maxDepth)) {
+            if ($page->hasPages() && (! isset($maxDepth) || $depth < $maxDepth)) {
                 if (! isset($page->dropdown) || $page->dropdown == true) {
                     $liClasses[] = 'dropdown';
                     $page->isDropdown = true;
