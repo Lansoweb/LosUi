@@ -1,6 +1,6 @@
 <?php
 
-use LosLicenseTest\ServiceManagerTestCase;
+use LosUiTest\ServiceManagerTestCase;
 
 ini_set('error_reporting', E_ALL);
 
@@ -19,7 +19,7 @@ if (! isset($loader)) {
 }
 
 /* @var $loader \Composer\Autoload\ClassLoader */
-$loader->add('LosLicenseTest\\', __DIR__);
+$loader->add('LosUiTest\\', __DIR__);
 
 if (file_exists(__DIR__ . '/TestConfiguration.php')) {
     $config = require __DIR__ . '/TestConfiguration.php';

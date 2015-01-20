@@ -22,6 +22,8 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  * @method HeadScript prependJquery($useMinified = true)
  * @method HeadScript appendChosen($useMinified = true)
  * @method HeadScript prependChosen($useMinified = true)
+ * @method HeadScript appendMoment($useMinified = true)
+ * @method HeadScript prependMoment($useMinified = true)
  *
  * @method HeadScript appendFile($src, $type = 'text/javascript', $attrs = array())
  * @method HeadScript offsetSetFile($index, $src, $type = 'text/javascript', $attrs = array())
@@ -39,8 +41,10 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  */
 class HeadScript extends ZfHeadScript
 {
+
     const VERSION_JQUERY = "2.1.3";
-    const VERSION_BOOTSTRAP = "3.3.1";
+
+    const VERSION_BOOTSTRAP = "3.3.2";
 
     /**
      * Overload method access
@@ -54,7 +58,7 @@ class HeadScript extends ZfHeadScript
      */
     public function __call($method, $args)
     {
-        if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery|Chosen)$/', $method, $matches)) {
+        if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery)$/', $method, $matches)) {
             $action = $matches['action'];
             $mode = $matches['mode'];
             $type = 'text/javascript';
@@ -85,20 +89,57 @@ class HeadScript extends ZfHeadScript
             switch ($mode) {
                 case 'Bootstrap':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?  : self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('/bootstrap/dist/js/bootstrap.%sjs', $isMin ? 'min.' : ''));
                     }
                 case 'Jquery':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?  : self::VERSION_JQUERY, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
                     }
-                case 'Chosen':
-                    return $this->$action(sprintf('/chosen/chosen.jquery.%sjs', $isMin ? 'min.' : ''));
             }
-        }
+        } else
+            if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
+                $action = $matches['action'];
+                $mode = $matches['mode'];
+                $type = 'text/javascript';
+                $attrs = array();
+
+                $action .= "File";
+
+                $langs = [];
+                $isMin = true;
+
+                if (isset($args[0])) {
+                    if (is_bool($args[0])) {
+                        $isMin = $args[0];
+                    } else {
+                        $langs = $args[0];
+                    }
+                }
+
+                if (isset($args[1]) && is_bool($args[1])) {
+                    $isMin = $args[1];
+                }
+
+                switch ($mode) {
+                    case 'Chosen':
+                        return $this->$action(sprintf('/chosen/chosen.jquery.%sjs', $isMin ? 'min.' : ''));
+
+                    case 'Moment':
+                        if (in_array('*', $langs)) {
+                            $ret = $this->$action(sprintf('/moment/min/moment-with-locales.%sjs', $isMin ? 'min.' : ''));
+                        } else {
+                            $ret = $this->$action(sprintf('/moment/%smoment.%sjs', $isMin ? 'min/' : '', $isMin ? 'min.' : ''));
+                            foreach ($langs as $lang) {
+                                $ret = $ret->$action(sprintf('/moment/%slocale/%s.%sjs', $isMin ? 'min/' : '', $lang, $isMin ? 'min.' : ''));
+                            }
+                        }
+                        return $ret;
+                }
+            }
 
         return parent::__call($method, $args);
     }

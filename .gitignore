@@ -8,3 +8,16 @@
 Thumbs.db
 /vendor
 /composer.lock
+
+/public/jquery/src
+/public/fontawesome/less
+/public/fontawesome/scss
+/public/moment/benchmarks
+/public/moment/meteor
+/public/moment/scripts
+/public/chosen/docsupport
+/public/chosen/*.html
+/public/bootstrap/grunt
+/public/bootstrap/less
+
+/public/node_modules

@@ -39,7 +39,7 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  */
 class HeadLink extends ZfHeadLink
 {
-    const VERSION_BOOTSTRAP = "3.3.1";
+    const VERSION_BOOTSTRAP = "3.3.2";
     const VERSION_FONTAWESOME = "4.2.0";
 
     /**
@@ -52,7 +52,7 @@ class HeadLink extends ZfHeadLink
      */
     public function __call($method, $args)
     {
-        if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome|Chosen)$/', $method, $matches)) {
+        if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome)$/', $method, $matches)) {
             $argc = count($args);
             $action = $matches['action'];
             $type = $matches['type'];
@@ -92,6 +92,23 @@ class HeadLink extends ZfHeadLink
                     } else {
                         return $this->$action(sprintf('/fontawesome/css/font-awesome.%scss', $isMin ? 'min.' : ''));
                     }
+            }
+        } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen)$/', $method, $matches)) {
+            $argc = count($args);
+            $action = $matches['action'];
+            $type = $matches['type'];
+
+            $action .= "Stylesheet";
+
+            $isMin = true;
+
+            if (isset($args[0])) {
+                if (is_bool($args[0])) {
+                    $isMin = $args[0];
+                }
+            }
+
+            switch ($type) {
                 case 'Chosen':
                     return $this->$action(sprintf('/chosen/chosen.%scss', $isMin ? 'min.' : ''));
             }

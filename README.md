@@ -5,9 +5,10 @@ This module provides a shortcut to several UI resources from some of the best fr
 I will add more libraries with time and add more resources to the current ones.
 
 - Jquery: 2.1.3 [jquery.com](http://jquery.com)
-- Bootstrap: 3.3.1 [getbootstrap.com](http://getbootstrap.com)
+- Bootstrap: 3.3.2 [getbootstrap.com](http://getbootstrap.com)
 - Font Awesome: 4.2.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
 - Chosen: 1.2.0 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
+- MomentJs: 2.9.0 [http://momentjs.com](http://momentjs.com)
 
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
 
@@ -164,6 +165,55 @@ Again, you can use the false parameter to get the default file:
 <script src="/chosen/chosen.jquery.js" type="text/javascript"></script>
 ```
 
+### Moment
+To include the script (can use append or prepend)
+```php
+<?php echo $this->losHeadScript()->appendMoment() ?>
+```
+
+It will generate the following html:
+```html
+<script src="/moment/min/moment.min.js" type="text/javascript"></script>
+``` 
+
+Again, you can use the false parameter to get the default file:
+```html
+<script src="/moment/moment.js" type="text/javascript"></script>
+```
+
+You can specify which translations to add by passing and array to the appendMoment:
+```php
+<?php echo $this->losHeadScript()->appendMoment(['pt-br','en']) ?>
+```
+
+It will generate the following html:
+```html
+<script src="/moment/min/moment.min.js" type="text/javascript"></script>
+<script src="/moment/min/locale/pt-br.min.js" type="text/javascript"></script>
+<script src="/moment/min/locale/en.min.js" type="text/javascript"></script>
+``` 
+
+You can combine with the unminified version:
+```php
+<?php echo $this->losHeadScript()->appendMoment(['pt-br','en'],false) ?>
+```
+
+It will generate the following html:
+```html
+<script src="/moment/moment.js" type="text/javascript"></script>
+<script src="/moment/locale/pt-br.js" type="text/javascript"></script>
+<script src="/moment/locale/en.js" type="text/javascript"></script>
+```
+
+You can add all languages using one minified file:
+```php
+<?php echo $this->losHeadScript()->appendMoment(['*']) ?>
+```
+
+It will generate the following html:
+```html
+<script src="/moment/min/moment-with-locales.min.js" type="text/javascript"></script>
+```
 
 ### Bootstrap
 Bootstrap is provided as local files (default) or with CDN. Just pass "true" to the appendBootstrap method to use the CDN files.
