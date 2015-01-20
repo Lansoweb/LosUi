@@ -44,6 +44,7 @@ final class Url extends AbstractHelper
                 }
             }
         }
+
         return $this->view->plugin('url')->__invoke($name, $params, $options, $reuseMatchedParams);
     }
 

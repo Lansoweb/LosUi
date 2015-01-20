@@ -137,6 +137,7 @@ class HeadScript extends ZfHeadScript
                                 $ret = $ret->$action(sprintf('/moment/%slocale/%s.%sjs', $isMin ? 'min/' : '', $lang, $isMin ? 'min.' : ''));
                             }
                         }
+
                         return $ret;
                 }
             }

@@ -14,6 +14,7 @@ class UrlFactory implements FactoryInterface
     {
         $serviceLocator = $sl->getServiceLocator();
         $application = $serviceLocator->get('Application');
+
         return new Url($application->getRequest());
     }
 }
