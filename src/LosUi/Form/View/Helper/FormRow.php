@@ -29,7 +29,9 @@ use Zend\Form\LabelAwareInterface;
  */
 class FormRow extends ZfFormRow
 {
+
     protected $rowWrapper = '<div class="form-group%s">%s%s</div>';
+
     protected $horizontalRowWrapper = '<div class="form-group%s">%s<div class="col-sm-%d%s">%s</div>%s</div>';
 
     protected function getElementErrorsHelper()
@@ -60,12 +62,9 @@ class FormRow extends ZfFormRow
         }
 
         if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
-            $markup = sprintf($this->horizontalRowWrapper, '', '',
-                12 - $labelColumns, ' col-xs-offset-'.$labelColumns,
-                $elementString, '');
+            $markup = sprintf($this->horizontalRowWrapper, '', '', 12 - $labelColumns, ' col-xs-offset-' . $labelColumns, $elementString, '');
         } else {
-            $markup = sprintf($this->rowWrapper, '',
-                $elementString, '');
+            $markup = sprintf($this->rowWrapper, '', $elementString, '');
         }
 
         return $markup;
@@ -91,19 +90,19 @@ class FormRow extends ZfFormRow
         $type = $element->getAttribute('type');
 
         if ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file') {
-            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
-            $classAttributes = $classAttributes.'form-control';
+            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
+            $classAttributes = $classAttributes . 'form-control';
             $element->setAttribute('class', $classAttributes);
         } elseif ($type == 'button' || $type == 'submit') {
-            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
-            $classAttributes = $classAttributes.'btn';
+            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
+            $classAttributes = $classAttributes . 'btn';
             $element->setAttribute('class', $classAttributes);
         }
 
         // Does this element have errors ?
         if (count($element->getMessages()) > 0 && ! empty($inputErrorClass)) {
-            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
-            $classAttributes = $classAttributes.$inputErrorClass;
+            $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
+            $classAttributes = $classAttributes . $inputErrorClass;
 
             $element->setAttribute('class', $classAttributes);
         }
@@ -114,7 +113,7 @@ class FormRow extends ZfFormRow
                 'label' => $label,
                 'labelAttributes' => $this->labelAttributes,
                 'labelPosition' => $this->labelPosition,
-                'renderErrors' => $this->renderErrors,
+                'renderErrors' => $this->renderErrors
             ];
 
             return $this->view->render($this->partial, $vars);
@@ -151,20 +150,27 @@ class FormRow extends ZfFormRow
                 $labelAttributes['for'] = $element->getAttribute('id');
             }
             if ($isHorizontal) {
-                $labelAttributes['class'] = " control-label col-sm-".$labelColumns;
-                $element->setLabelAttributes(['class' => "control-label col-sm-".$labelColumns]);
+                $labelAttributes['class'] = " control-label col-sm-" . $labelColumns;
+                $element->setLabelAttributes([
+                    'class' => "control-label col-sm-" . $labelColumns
+                ]);
+            } else {
+                $labelAttributes['class'] = " control-label";
+                $element->setLabelAttributes([
+                    'class' => "control-label"
+                ]);
             }
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
+            if (! $isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
                 $markup = sprintf('<fieldset class="radio"><legend>%s</legend>%s</fieldset>', $label, $elementString);
             } elseif ($type == 'checkbox') {
                 // Checkboxes need special treatment too
                 if ($isHorizontal) {
-                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12-$labelColumns).' col-xs-offset-'.$labelColumns.'"><label>'.$elementString.$label.'</label></div></div>';
+                    $markup = '<div class="form-group"><div class="checkbox col-xs-' . (12 - $labelColumns) . ' col-xs-offset-' . $labelColumns . '"><label>' . $elementString . $label . '</label></div></div>';
                 } else {
-                    $markup = '<div class="checkbox"><label>'.$elementString.$label.'</label></div>';
+                    $markup = '<div class="checkbox"><label>' . $elementString . $label . '</label></div>';
                 }
             } else {
                 // Ensure element and label will be separated if element has an `id`-attribute.
@@ -179,55 +185,47 @@ class FormRow extends ZfFormRow
                 }
 
                 if ($label !== '' && (! $element->hasAttribute('id')) || ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))) {
-                    $label = '<span>'.$label.'</span>';
+                    $label = '<span>' . $label . '</span>';
                 }
 
                 $addDivClass = '';
                 // Button element is a special case, because label is always rendered inside it
                 if ($element instanceof Button) {
                     $labelOpen = $labelClose = $label = '';
-                    $addDivClass = ' col-xs-offset-'.$labelColumns;
+                    $addDivClass = ' col-xs-offset-' . $labelColumns;
                 }
                 if ($type == 'radio') {
-                    $addDivClass =  ' radio';
+                    $addDivClass = ' radio';
                 }
 
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
-                                $labelOpen.$label.$labelClose,
-                                12 - $labelColumns, $addDivClass,
-                                $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, 12 - $labelColumns, $addDivClass, $elementString . ($this->renderErrors ? $elementErrors : ''), '');
                         } else {
-                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, $elementString);
+                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen . $label . $labelClose, $elementString);
                         }
                         break;
                     case self::LABEL_APPEND:
                     default:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
-                                '', 12 - $labelColumns, $addDivClass,
-                                $elementString.($this->renderErrors ? $elementErrors : ''), $labelOpen.$label.$labelClose);
+                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, $addDivClass, $elementString . ($this->renderErrors ? $elementErrors : ''), $labelOpen . $label . $labelClose);
                         } else {
-                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen.$label.$labelClose);
+                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen . $label . $labelClose);
                         }
                         break;
                 }
             }
 
-            if (!$isHorizontal && $this->renderErrors) {
+            if (! $isHorizontal && $this->renderErrors) {
                 $markup .= $elementErrors;
             }
         } else {
             if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
-                $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '',
-                    '',
-                    12 - $labelColumns, ' col-xs-offset-'.$labelColumns,
-                    $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, ' col-xs-offset-' . $labelColumns, $elementString . ($this->renderErrors ? $elementErrors : ''), '');
             } else {
                 if ($this->renderErrors) {
-                    $markup = $elementString.$elementErrors;
+                    $markup = $elementString . $elementErrors;
                 } else {
                     $markup = $elementString;
                 }
