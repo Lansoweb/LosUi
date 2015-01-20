@@ -58,7 +58,7 @@ class Menu extends ZendMenu
                 continue;
             }
 
-            $liClasses = array();
+            $liClasses = [];
             if ($subPage->isActive(true)) {
                 $liClasses[] = 'active';
             }
@@ -148,7 +148,7 @@ class Menu extends ZendMenu
                 $html .= $myIndent.'    </li>'.self::EOL;
             }
 
-            $liClasses = array();
+            $liClasses = [];
             if ($isActive) {
                 $liClasses[] = 'active';
             }
@@ -206,13 +206,13 @@ class Menu extends ZendMenu
 
         $element = 'a';
         $extended = '';
-        $attribs = array(
+        $attribs = [
             'id' => $page->getId(),
             'title' => $title,
             'href' => '#',
-        );
+        ];
 
-        $class = array();
+        $class = [];
         if ($addClassToListItem === false) {
             $class[] = $page->getClass();
         }

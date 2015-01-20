@@ -23,10 +23,10 @@ class Navigation extends ZendNavigation
 {
     protected $defaultProxy = 'menu';
 
-    protected $defaultHelpers = array(
+    protected $defaultHelpers = [
         'breadcrumbs' => 'LosUi\View\Helper\Navigation\Breadcrumbs',
         'menu'        => 'LosUi\View\Helper\Navigation\Menu',
-    );
+    ];
 
     public function getPluginManager()
     {

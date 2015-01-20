@@ -57,7 +57,7 @@ class Breadcrumbs extends ZendBreadcrumbs
 
         if ($page->getHref() && ($hasParent || (!$hasParent && $this->getLinkLast())) &&
             (!($page instanceof Uri) || $page->getUri() != '#')) {
-            $anchorAttribs = $this->htmlAttribs(array('href' => $page->getHref()));
+            $anchorAttribs = $this->htmlAttribs(['href' => $page->getHref()]);
             $html .= '<a'.$anchorAttribs.'>'.$label.'</a>';
         } else {
             $html .= $label;

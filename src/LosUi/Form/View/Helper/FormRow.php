@@ -109,13 +109,13 @@ class FormRow extends ZfFormRow
         }
 
         if ($this->partial) {
-            $vars = array(
+            $vars = [
                 'element' => $element,
                 'label' => $label,
                 'labelAttributes' => $this->labelAttributes,
                 'labelPosition' => $this->labelPosition,
                 'renderErrors' => $this->renderErrors,
-            );
+            ];
 
             return $this->view->render($this->partial, $vars);
         }
@@ -130,7 +130,7 @@ class FormRow extends ZfFormRow
 
         // hidden elements do not need a <label> -https://github.com/zendframework/zf2/issues/5607
         if (isset($label) && '' !== $label && $type !== 'hidden') {
-            $labelAttributes = array();
+            $labelAttributes = [];
 
             if ($element instanceof LabelAwareInterface) {
                 $labelAttributes = $element->getLabelAttributes();

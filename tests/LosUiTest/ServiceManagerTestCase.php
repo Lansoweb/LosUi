@@ -12,7 +12,7 @@ class ServiceManagerTestCase
     /**
      * @var array
      */
-    protected static $configuration = array();
+    protected static $configuration = [];
 
     /**
      * @static
@@ -44,7 +44,7 @@ class ServiceManagerTestCase
 
         $serviceManager = new ServiceManager(
             new ServiceManagerConfig(
-                isset($configuration['service_manager']) ? $configuration['service_manager'] : array()
+                isset($configuration['service_manager']) ? $configuration['service_manager'] : []
             )
         );
 

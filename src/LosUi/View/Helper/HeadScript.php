@@ -62,7 +62,7 @@ class HeadScript extends ZfHeadScript
             $action = $matches['action'];
             $mode = $matches['mode'];
             $type = 'text/javascript';
-            $attrs = array();
+            $attrs = [];
 
             $action .= "File";
 
@@ -105,7 +105,7 @@ class HeadScript extends ZfHeadScript
                 $action = $matches['action'];
                 $mode = $matches['mode'];
                 $type = 'text/javascript';
-                $attrs = array();
+                $attrs = [];
 
                 $action .= "File";
 

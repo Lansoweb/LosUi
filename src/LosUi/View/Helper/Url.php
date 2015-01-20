@@ -25,11 +25,11 @@ final class Url extends AbstractHelper
 
     private $request;
 
-    public function from($name = null, $params = array(), $options = array(), $reuseMatchedParams = false)
+    public function from($name = null, $params = [], $options = [], $reuseMatchedParams = false)
     {
         if (3 == func_num_args() && is_bool($options)) {
             $reuseMatchedParams = $options;
-            $options = array();
+            $options = [];
         }
 
         if ($reuseMatchedParams) {
