@@ -6,7 +6,7 @@ I will add more libraries with time and add more resources to the current ones.
 
 - Jquery: 2.1.3 [jquery.com](http://jquery.com)
 - Bootstrap: 3.3.2 [getbootstrap.com](http://getbootstrap.com)
-- Font Awesome: 4.2.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
+- Font Awesome: 4.3.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
 - Chosen: 1.2.0 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
 - MomentJs: 2.9.0 [http://momentjs.com](http://momentjs.com)
 
