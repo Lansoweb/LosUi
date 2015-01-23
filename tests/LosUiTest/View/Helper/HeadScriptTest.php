@@ -39,7 +39,7 @@ class HeadScriptTest extends \PHPUnit_Framework_TestCase
     }
     public function testBootstrapCdn()
     {
-        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>',
+        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/'.HeadScript::VERSION_BOOTSTRAP.'/js/bootstrap.min.js"></script>',
             $this->helper->appendBootstrap(true)->toString());
     }
     public function testBootstrapUnminified()
@@ -49,7 +49,7 @@ class HeadScriptTest extends \PHPUnit_Framework_TestCase
     }
     public function testBootstrapUnminifiedCdn()
     {
-        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>',
+        $this->assertEquals('<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/'.HeadScript::VERSION_BOOTSTRAP.'/js/bootstrap.js"></script>',
             $this->helper->appendBootstrap(true, false)->toString());
     }
     public function testBootstrapVersioned()
@@ -65,7 +65,7 @@ class HeadScriptTest extends \PHPUnit_Framework_TestCase
     }
     public function testJqueryCdn()
     {
-        $this->assertEquals('<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>',
+        $this->assertEquals('<script type="text/javascript" src="//code.jquery.com/jquery-'.HeadScript::VERSION_JQUERY.'.min.js"></script>',
             $this->helper->appendJquery(true)->toString());
     }
     public function testJqueryUnminified()
@@ -75,7 +75,7 @@ class HeadScriptTest extends \PHPUnit_Framework_TestCase
     }
     public function testJqueryUnminifiedCdn()
     {
-        $this->assertEquals('<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>',
+        $this->assertEquals('<script type="text/javascript" src="//code.jquery.com/jquery-'.HeadScript::VERSION_JQUERY.'.js"></script>',
             $this->helper->appendJquery(true, false)->toString());
     }
     public function testJqueryVersioned()

@@ -39,7 +39,7 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
     }
     public function testBootstrapCdn()
     {
-        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />',
+        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/'.HeadLink::VERSION_BOOTSTRAP.'/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendBootstrap(true)->toString());
     }
     public function testBootstrapUnminified()
@@ -49,7 +49,7 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
     }
     public function testBootstrapUnminifiedCdn()
     {
-        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />',
+        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/bootstrap/'.HeadLink::VERSION_BOOTSTRAP.'/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendBootstrap(true, false)->toString());
     }
     public function testBootstrapVersioned()
@@ -65,7 +65,7 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
     }
     public function testFontAwesomeCdn()
     {
-        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css" />',
+        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/font-awesome/'.HeadLink::VERSION_FONTAWESOME.'/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendFontAwesome(true)->toString());
     }
     public function testFontAwesomeUnminified()
@@ -75,7 +75,7 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
     }
     public function testFontAwesomeUnminifiedCdn()
     {
-        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />',
+        $this->assertEquals('<link href="//maxcdn.bootstrapcdn.com/font-awesome/'.HeadLink::VERSION_FONTAWESOME.'/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendFontAwesome(true, false)->toString());
     }
     public function testFontAwesomeVersioned()
