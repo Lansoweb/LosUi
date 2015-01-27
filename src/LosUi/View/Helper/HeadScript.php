@@ -58,6 +58,11 @@ class HeadScript extends ZfHeadScript
      */
     public function __call($method, $args)
     {
+        $basePath = '';
+        if (method_exists($this->view, 'plugin')) {
+            $basePath = $this->view->plugin('basepath')->__invoke();
+        }
+
         if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery)$/', $method, $matches)) {
             $action = $matches['action'];
             $mode = $matches['mode'];
@@ -91,13 +96,13 @@ class HeadScript extends ZfHeadScript
                     if ($useCdn) {
                         return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?  : self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
                     } else {
-                        return $this->$action(sprintf('/bootstrap/dist/js/bootstrap.%sjs', $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('%s/bootstrap/dist/js/bootstrap.%sjs', $basePath, $isMin ? 'min.' : ''));
                     }
                 case 'Jquery':
                     if ($useCdn) {
                         return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?  : self::VERSION_JQUERY, $isMin ? 'min.' : ''));
                     } else {
-                        return $this->$action(sprintf('/jquery/dist/jquery.%sjs', $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('%s/jquery/dist/jquery.%sjs', $basePath, $isMin ? 'min.' : ''));
                     }
             }
         } else
@@ -126,15 +131,15 @@ class HeadScript extends ZfHeadScript
 
                 switch ($mode) {
                     case 'Chosen':
-                        return $this->$action(sprintf('/chosen/chosen.jquery.%sjs', $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('%s/chosen/chosen.jquery.%sjs', $basePath, $isMin ? 'min.' : ''));
 
                     case 'Moment':
                         if (in_array('*', $langs)) {
-                            $ret = $this->$action(sprintf('/moment/min/moment-with-locales.%sjs', $isMin ? 'min.' : ''));
+                            $ret = $this->$action(sprintf('%s/moment/min/moment-with-locales.%sjs', $basePath, $isMin ? 'min.' : ''));
                         } else {
-                            $ret = $this->$action(sprintf('/moment/%smoment.%sjs', $isMin ? 'min/' : '', $isMin ? 'min.' : ''));
+                            $ret = $this->$action(sprintf('%s/moment/%smoment.%sjs', $basePath, $isMin ? 'min/' : '', $isMin ? 'min.' : ''));
                             foreach ($langs as $lang) {
-                                $ret = $ret->$action(sprintf('/moment/%slocale/%s.%sjs', $isMin ? 'min/' : '', $lang, $isMin ? 'min.' : ''));
+                                $ret = $ret->$action(sprintf('%s/moment/%slocale/%s.%sjs', $basePath, $isMin ? 'min/' : '', $lang, $isMin ? 'min.' : ''));
                             }
                         }
 
