@@ -6,6 +6,10 @@
         "zendframework/zendframework" : "2.3.*",
         "rwoverdijk/assetmanager" : "=1.4.1"
     },
+    "suggest": {
+        "los/losbase": "los/losbase for some abstract classes to speed development ",
+        "los/loslog": "los/loslog for logging"
+    },        
     "authors" : [ 
         {
             "name" : "Leandro Silva",
