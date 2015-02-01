@@ -89,7 +89,7 @@ class FormRow extends ZfFormRow
 
         $type = $element->getAttribute('type');
 
-        if ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file') {
+        if ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class') . ' ' : '');
             $classAttributes = $classAttributes . 'form-control';
             $element->setAttribute('class', $classAttributes);
