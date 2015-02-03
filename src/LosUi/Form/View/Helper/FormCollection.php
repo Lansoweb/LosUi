@@ -27,6 +27,5 @@ use Zend\Form\View\Helper\FormCollection as ZfFormCollection;
  */
 class FormCollection extends ZfFormCollection
 {
-
     protected $defaultElementHelper = 'losformrow';
 }

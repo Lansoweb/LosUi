@@ -39,7 +39,6 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  */
 class HeadLink extends ZfHeadLink
 {
-
     const VERSION_BOOTSTRAP = "3.3.2";
 
     const VERSION_FONTAWESOME = "4.3.0";
@@ -47,8 +46,8 @@ class HeadLink extends ZfHeadLink
     /**
      * Overload method access
      *
-     * @param mixed $method
-     * @param mixed $args
+     * @param  mixed                            $method
+     * @param  mixed                            $args
      * @throws Exception\BadMethodCallException
      * @return void
      */
@@ -89,13 +88,13 @@ class HeadLink extends ZfHeadLink
             switch ($type) {
                 case 'Bootstrap':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?  : self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('%s/bootstrap/dist/css/bootstrap.%scss', $basePath, $isMin ? 'min.' : ''));
                     }
                 case 'FontAwesome':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?  : self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?: self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('%s/fontawesome/css/font-awesome.%scss', $basePath, $isMin ? 'min.' : ''));
                     }

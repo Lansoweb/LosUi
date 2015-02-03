@@ -6,7 +6,6 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class UrlFactory implements FactoryInterface
 {
-
     /**
      * {@inheritDoc}
      */

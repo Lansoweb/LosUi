@@ -54,7 +54,7 @@ class Image extends AbstractHelper
             $class .= 'img-responsive';
         }
 
-        return sprintf($this->format, strpos($src,'http') === 0 ? $src : $basePath($src), ! empty($class) ? " class=\"$class\"" : '');
+        return sprintf($this->format, strpos($src, 'http') === 0 ? $src : $basePath($src), ! empty($class) ? " class=\"$class\"" : '');
     }
 
     public function setResponsive($responsive)

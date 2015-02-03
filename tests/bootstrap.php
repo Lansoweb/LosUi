@@ -4,7 +4,7 @@ use LosUiTest\ServiceManagerTestCase;
 
 ini_set('error_reporting', E_ALL);
 
-$files = [__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php'];
+$files = [__DIR__.'/../vendor/autoload.php', __DIR__.'/../../../autoload.php'];
 
 foreach ($files as $file) {
     if (file_exists($file)) {
@@ -21,10 +21,10 @@ if (! isset($loader)) {
 /* @var $loader \Composer\Autoload\ClassLoader */
 $loader->add('LosUiTest\\', __DIR__);
 
-if (file_exists(__DIR__ . '/TestConfiguration.php')) {
-    $config = require __DIR__ . '/TestConfiguration.php';
+if (file_exists(__DIR__.'/TestConfiguration.php')) {
+    $config = require __DIR__.'/TestConfiguration.php';
 } else {
-    $config = require __DIR__ . '/TestConfiguration.php.dist';
+    $config = require __DIR__.'/TestConfiguration.php.dist';
 }
 
 ServiceManagerTestCase::setConfiguration($config);

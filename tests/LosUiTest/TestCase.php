@@ -17,7 +17,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->setUpSm();
     }
 
-    public function setUpSm($globPath=null)
+    public function setUpSm($globPath = null)
     {
         $serviceManagerUtil   = new ServiceManagerTestCase();
         $config = $serviceManagerUtil->getConfiguration();
@@ -27,5 +27,4 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         $this->serviceManager = $serviceManagerUtil->getServiceManager($config);
     }
-
 }

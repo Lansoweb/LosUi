@@ -22,7 +22,6 @@ use Zend\Stdlib\RequestInterface;
  */
 final class Url extends AbstractHelper
 {
-
     private $request;
 
     public function from($name = null, $params = [], $options = [], $reuseMatchedParams = false)

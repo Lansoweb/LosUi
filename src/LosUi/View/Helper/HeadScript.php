@@ -41,7 +41,6 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  */
 class HeadScript extends ZfHeadScript
 {
-
     const VERSION_JQUERY = "2.1.3";
 
     const VERSION_BOOTSTRAP = "3.3.2";
@@ -94,42 +93,41 @@ class HeadScript extends ZfHeadScript
             switch ($mode) {
                 case 'Bootstrap':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?  : self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.%sjs', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('%s/bootstrap/dist/js/bootstrap.%sjs', $basePath, $isMin ? 'min.' : ''));
                     }
                 case 'Jquery':
                     if ($useCdn) {
-                        return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?  : self::VERSION_JQUERY, $isMin ? 'min.' : ''));
+                        return $this->$action(sprintf('//code.jquery.com/jquery-%s.%sjs', $version ?: self::VERSION_JQUERY, $isMin ? 'min.' : ''));
                     } else {
                         return $this->$action(sprintf('%s/jquery/dist/jquery.%sjs', $basePath, $isMin ? 'min.' : ''));
                     }
             }
-        } else
-            if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
-                $action = $matches['action'];
-                $mode = $matches['mode'];
-                $type = 'text/javascript';
-                $attrs = [];
+        } elseif (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
+            $action = $matches['action'];
+            $mode = $matches['mode'];
+            $type = 'text/javascript';
+            $attrs = [];
 
-                $action .= "File";
+            $action .= "File";
 
-                $langs = [];
-                $isMin = true;
+            $langs = [];
+            $isMin = true;
 
-                if (isset($args[0])) {
-                    if (is_bool($args[0])) {
-                        $isMin = $args[0];
-                    } else {
-                        $langs = $args[0];
-                    }
+            if (isset($args[0])) {
+                if (is_bool($args[0])) {
+                    $isMin = $args[0];
+                } else {
+                    $langs = $args[0];
                 }
+            }
 
-                if (isset($args[1]) && is_bool($args[1])) {
-                    $isMin = $args[1];
-                }
+            if (isset($args[1]) && is_bool($args[1])) {
+                $isMin = $args[1];
+            }
 
-                switch ($mode) {
+            switch ($mode) {
                     case 'Chosen':
                         return $this->$action(sprintf('%s/chosen/chosen.jquery.%sjs', $basePath, $isMin ? 'min.' : ''));
 
@@ -145,7 +143,7 @@ class HeadScript extends ZfHeadScript
 
                         return $ret;
                 }
-            }
+        }
 
         return parent::__call($method, $args);
     }

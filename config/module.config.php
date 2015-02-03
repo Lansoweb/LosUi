@@ -5,7 +5,7 @@ return [
             'LosUi\View\Helper\Url'   => 'LosUi\View\Helper\UrlFactory',
         ],
         'aliases' => [
-            'los_url' => 'LosUi\View\Helper\Url'
+            'los_url' => 'LosUi\View\Helper\Url',
         ],
         'invokables' => [
             'los_alert'               => 'LosUi\View\Helper\Alert',
@@ -37,7 +37,7 @@ return [
     ],
     'view_manager' => [
         'template_path_stack' => [
-            'losui' => __DIR__ . '/../view',
+            'losui' => __DIR__.'/../view',
         ],
     ]
 ];
