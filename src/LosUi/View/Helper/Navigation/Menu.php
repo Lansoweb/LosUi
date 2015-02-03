@@ -25,6 +25,7 @@ use LosUi\Navigation\Page\Divider;
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#navbar-default
+ * @codeCoverageIgnore
  */
 class Menu extends ZendMenu
 {

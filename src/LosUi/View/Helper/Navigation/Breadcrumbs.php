@@ -22,6 +22,7 @@ use Zend\Navigation\Page\Uri;
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#breadcrumbs
+ * @codeCoverageIgnore
  */
 class Breadcrumbs extends ZendBreadcrumbs
 {
