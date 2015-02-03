@@ -1,4 +1,6 @@
-# LosUI [![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi)
+# LosUI 
+[![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi) [![Latest Stable Version](https://poser.pugx.org/los/losui/v/stable.svg)](https://packagist.org/packages/los/losui) [![Total Downloads](https://poser.pugx.org/los/losui/downloads.svg)](https://packagist.org/packages/los/losui)
+
 
 ## Introduction
 This module provides a shortcut to several UI resources from some of the best front frameworks. 
