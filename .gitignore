@@ -8,7 +8,7 @@
 Thumbs.db
 /vendor
 /composer.lock
-
+/build
 /public/jquery/src
 /public/fontawesome/less
 /public/fontawesome/scss
