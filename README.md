@@ -1,4 +1,4 @@
-# LosUI
+# LosUI [![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi)
 
 ## Introduction
 This module provides a shortcut to several UI resources from some of the best front frameworks. 
