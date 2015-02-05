@@ -21,7 +21,6 @@
         } 
     ],
     "keywords" : [ "los", "ui", "module", "zf2" ],
-    "minimum-stability" : "beta",
     "autoload" : {
         "psr-0" : {
             "LosUi\\" : "src/"
