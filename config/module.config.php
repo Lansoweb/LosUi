@@ -31,7 +31,7 @@ return [
     'asset_manager' => [
         'resolver_configs' => [
             'paths' => [
-                'losui' => __DIR__.'/../public/',
+                'losui' => __DIR__.'/../vendors/',
             ],
         ],
     ],
