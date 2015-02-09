@@ -43,6 +43,72 @@ class HeadLink extends ZfHeadLink
 
     const VERSION_FONTAWESOME = "4.3.0";
 
+    private function callWithCdn($method, $matches, $basePath, $args)
+    {
+        $action = $matches['action'];
+        $type = $matches['type'];
+
+        $action .= "Stylesheet";
+
+        $useCdn = false;
+        $version = false;
+        $isMin = true;
+
+        if (isset($args[0])) {
+            if (is_bool($args[0])) {
+                $useCdn = $args[0];
+            } else {
+                $version = $args[0];
+            }
+        }
+
+        if (isset($args[1]) && is_bool($args[1])) {
+            $isMin = $args[1];
+        }
+
+        if (isset($args[2])) {
+            $version = $args[2];
+        }
+
+        switch ($type) {
+            case 'Bootstrap':
+                if ($useCdn) {
+                    return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
+                } else {
+                    return $this->$action(sprintf('%s/bootstrap/dist/css/bootstrap.%scss', $basePath, $isMin ? 'min.' : ''));
+                }
+            case 'FontAwesome':
+                if ($useCdn) {
+                    return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?: self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
+                } else {
+                    return $this->$action(sprintf('%s/fontawesome/css/font-awesome.%scss', $basePath, $isMin ? 'min.' : ''));
+                }
+        }
+        return parent::__call($method, $args);
+    }
+
+    private function callWithoutCdn($method, $matches, $basePath, $args)
+    {
+        $action = $matches['action'];
+        $type = $matches['type'];
+
+        $action .= "Stylesheet";
+
+        $isMin = true;
+
+        if (isset($args[0])) {
+            if (is_bool($args[0])) {
+                $isMin = $args[0];
+            }
+        }
+
+        switch ($type) {
+            case 'Chosen':
+                return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
+        }
+        return parent::__call($method, $args);
+    }
+
     /**
      * Overload method access
      *
@@ -59,65 +125,13 @@ class HeadLink extends ZfHeadLink
         }
 
         if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome)$/', $method, $matches)) {
-            $argc = count($args);
-            $action = $matches['action'];
-            $type = $matches['type'];
 
-            $action .= "Stylesheet";
+            return $this->callWithCdn($method, $matches, $basePath, $args);
 
-            $useCdn = false;
-            $version = false;
-            $isMin = true;
-
-            if (isset($args[0])) {
-                if (is_bool($args[0])) {
-                    $useCdn = $args[0];
-                } else {
-                    $version = $args[0];
-                }
-            }
-
-            if (isset($args[1]) && is_bool($args[1])) {
-                $isMin = $args[1];
-            }
-
-            if (isset($args[2])) {
-                $version = $args[2];
-            }
-
-            switch ($type) {
-                case 'Bootstrap':
-                    if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.%scss', $version ?: self::VERSION_BOOTSTRAP, $isMin ? 'min.' : ''));
-                    } else {
-                        return $this->$action(sprintf('%s/bootstrap/dist/css/bootstrap.%scss', $basePath, $isMin ? 'min.' : ''));
-                    }
-                case 'FontAwesome':
-                    if ($useCdn) {
-                        return $this->$action(sprintf('//maxcdn.bootstrapcdn.com/font-awesome/%s/css/font-awesome.%scss', $version ?: self::VERSION_FONTAWESOME, $isMin ? 'min.' : ''));
-                    } else {
-                        return $this->$action(sprintf('%s/fontawesome/css/font-awesome.%scss', $basePath, $isMin ? 'min.' : ''));
-                    }
-            }
         } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen)$/', $method, $matches)) {
-            $argc = count($args);
-            $action = $matches['action'];
-            $type = $matches['type'];
 
-            $action .= "Stylesheet";
+            return $this->callWithoutCdn($method, $matches, $basePath, $args);
 
-            $isMin = true;
-
-            if (isset($args[0])) {
-                if (is_bool($args[0])) {
-                    $isMin = $args[0];
-                }
-            }
-
-            switch ($type) {
-                case 'Chosen':
-                    return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
-            }
         }
 
         return parent::__call($method, $args);
