@@ -39,5 +39,5 @@ return [
         'template_path_stack' => [
             'losui' => __DIR__.'/../view',
         ],
-    ]
+    ],
 ];
