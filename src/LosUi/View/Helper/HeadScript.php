@@ -45,7 +45,6 @@ class HeadScript extends ZfHeadScript
 
     const VERSION_BOOTSTRAP = "3.3.2";
 
-
     private function callWithCdn($method, $matches, $basePath, $args)
     {
         $action = $matches['action'];
@@ -87,6 +86,7 @@ class HeadScript extends ZfHeadScript
                     return $this->$action(sprintf('%s/jquery/dist/jquery.%sjs', $basePath, $isMin ? 'min.' : ''));
                 }
         }
+
         return parent::__call($method, $args);
     }
 
@@ -125,8 +125,10 @@ class HeadScript extends ZfHeadScript
                         $ret = $ret->$action(sprintf('%s/moment/%slocale/%s.%sjs', $basePath, $isMin ? 'min/' : '', $lang, $isMin ? 'min.' : ''));
                     }
                 }
+
                 return $ret;
         }
+
         return parent::__call($method, $args);
     }
 

@@ -84,6 +84,7 @@ class HeadLink extends ZfHeadLink
                     return $this->$action(sprintf('%s/fontawesome/css/font-awesome.%scss', $basePath, $isMin ? 'min.' : ''));
                 }
         }
+
         return parent::__call($method, $args);
     }
 
@@ -106,6 +107,7 @@ class HeadLink extends ZfHeadLink
             case 'Chosen':
                 return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
         }
+
         return parent::__call($method, $args);
     }
 
@@ -125,13 +127,9 @@ class HeadLink extends ZfHeadLink
         }
 
         if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome)$/', $method, $matches)) {
-
             return $this->callWithCdn($method, $matches, $basePath, $args);
-
         } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen)$/', $method, $matches)) {
-
             return $this->callWithoutCdn($method, $matches, $basePath, $args);
-
         }
 
         return parent::__call($method, $args);
