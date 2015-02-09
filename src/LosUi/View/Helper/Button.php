@@ -206,13 +206,13 @@ class Button extends AbstractHelper
         if ($this->isDisabled) {
             $extra .= ' disabled="disabled"';
         }
-        if ($this->id != null) {
+        if ($this->id !== null) {
             $extra .= ' id="'.$this->id.'"';
         }
-        if ($this->name != null) {
+        if ($this->name !== null) {
             $extra .= ' name="'.$this->name.'"';
         }
-        if ($style != null) {
+        if ($style !== null) {
             $extra .= ' style="'.$style.'"';
         }
 
@@ -222,12 +222,12 @@ class Button extends AbstractHelper
         if ($this->isBlock) {
             $class .= ' btn-block';
         }
-        if ($this->size != null) {
+        if ($this->size !== null) {
             $class .= ' '.$this->size;
         }
 
         if ($this->type == self::TYPE_ANCHOR) {
-            if ($this->anchorTarget != null) {
+            if ($this->anchorTarget !== null) {
                 $extra .= ' target="'.$this->anchorTarget.'"';
             }
 

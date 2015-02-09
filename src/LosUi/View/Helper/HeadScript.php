@@ -65,8 +65,6 @@ class HeadScript extends ZfHeadScript
         if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery)$/', $method, $matches)) {
             $action = $matches['action'];
             $mode = $matches['mode'];
-            $type = 'text/javascript';
-            $attrs = [];
 
             $action .= "File";
 
@@ -107,8 +105,6 @@ class HeadScript extends ZfHeadScript
         } elseif (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
             $action = $matches['action'];
             $mode = $matches['mode'];
-            $type = 'text/javascript';
-            $attrs = [];
 
             $action .= "File";
 

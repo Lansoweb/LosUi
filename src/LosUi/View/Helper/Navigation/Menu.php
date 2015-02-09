@@ -155,7 +155,7 @@ class Menu extends ZendMenu
             }
 
             if ($page->hasPages() && (! isset($maxDepth) || $depth < $maxDepth)) {
-                if (! isset($page->dropdown) || $page->dropdown == true) {
+                if (! isset($page->dropdown) || $page->dropdown === true) {
                     $liClasses[] = 'dropdown';
                     $page->isDropdown = true;
                 }

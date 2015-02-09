@@ -43,7 +43,7 @@ class PaginationControl extends ZfPaginationControl
                 throw new \RuntimeException('Size parameter must be either "sm" or "lg"');
             }
         }
-        if ($partial == null && isset($params['type'])) {
+        if ($partial === null && isset($params['type'])) {
             if ($params['type'] == 'pager') {
                 $partial = 'paginator/pager.phtml';
             }
