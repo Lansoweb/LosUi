@@ -1,23 +1,25 @@
 {
   "name": "LosUi",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "homepage": "https://github.com/Lansoweb/LosUi",
   "authors": [
     "Leandro Silva <leandro@leandrosilva.info>"
   ],
-  "license": "BSD-3",
+  "directory": "vendors",
+  "license": "BSD-3-Clause",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "public/",
+    "vendors/",
     "test",
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.1",
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.2.0/chosen_v1.2.0.zip",
-    "fontawesome": "~4.3.0",
-    "moment": "~2.9.0"
+    "bootstrap": "~3.3",
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip",
+    "fontawesome": "~4.3",
+    "moment": "~2.9"
   }
 }

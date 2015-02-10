@@ -1,5 +1,5 @@
 # LosUI 
-[![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi) [![Latest Stable Version](https://poser.pugx.org/los/losui/v/stable.svg)](https://packagist.org/packages/los/losui) [![Total Downloads](https://poser.pugx.org/los/losui/downloads.svg)](https://packagist.org/packages/los/losui) [![Coverage Status](https://coveralls.io/repos/Lansoweb/LosUi/badge.svg)](https://coveralls.io/r/Lansoweb/LosUi) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lansoweb/LosUi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lansoweb/LosUi/?branch=master) [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/bab31378-77d2-46b3-94df-976c60ed2fe6.svg?style=flat)](https://insight.sensiolabs.com/projects/bab31378-77d2-46b3-94df-976c60ed2fe6)
+[![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi) [![Latest Stable Version](https://poser.pugx.org/los/losui/v/stable.svg)](https://packagist.org/packages/los/losui) [![Total Downloads](https://poser.pugx.org/los/losui/downloads.svg)](https://packagist.org/packages/los/losui) [![Coverage Status](https://coveralls.io/repos/Lansoweb/LosUi/badge.svg)](https://coveralls.io/r/Lansoweb/LosUi) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lansoweb/LosUi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lansoweb/LosUi/?branch=master) [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/bab31378-77d2-46b3-94df-976c60ed2fe6.svg?style=flat)](https://insight.sensiolabs.com/projects/bab31378-77d2-46b3-94df-976c60ed2fe6) [![Dependency Status](https://www.versioneye.com/user/projects/54da836cc1bbbd5f82000357/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54da836cc1bbbd5f82000357) [![Dependency Status](https://www.versioneye.com/user/projects/54da837ec1bbbd5f8200035e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54da837ec1bbbd5f8200035e)
 
 
 ## Introduction
@@ -9,7 +9,7 @@ I will add more libraries with time and add more resources to the current ones.
 - Jquery: 2.1.3 [jquery.com](http://jquery.com)
 - Bootstrap: 3.3.2 [getbootstrap.com](http://getbootstrap.com)
 - Font Awesome: 4.3.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
-- Chosen: 1.2.0 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
+- Chosen: 1.3.0 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
 - MomentJs: 2.9.0 [http://momentjs.com](http://momentjs.com)
 
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.

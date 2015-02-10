@@ -7,15 +7,15 @@
 /vendor
 /composer.lock
 /build
-/public/jquery/src
-/public/fontawesome/less
-/public/fontawesome/scss
-/public/moment/benchmarks
-/public/moment/meteor
-/public/moment/scripts
-/public/chosen/docsupport
-/public/chosen/*.html
-/public/bootstrap/grunt
-/public/bootstrap/less
+/vendors/jquery/src
+/vendors/fontawesome/less
+/vendors/fontawesome/scss
+/vendors/moment/benchmarks
+/vendors/moment/meteor
+/vendors/moment/scripts
+/vendors/chosen/docsupport
+/vendors/chosen/*.html
+/vendors/bootstrap/grunt
+/vendors/bootstrap/less
 
-/public/node_modules
+/vendors/node_modules
