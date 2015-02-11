@@ -10,7 +10,7 @@ before_install:
   - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
 
 before_script:
-  - composer install
+  - composer install -o
 
 script:
   - (cd tests ; phpunit -c phpunit.xml)
