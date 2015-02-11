@@ -24,7 +24,11 @@
     "autoload" : {
         "psr-4" : {
             "LosUi\\" : "src/"
-        }
+        },
+        "psr-0" : {
+            "LosUi\\" : "src/"
+        },
+        "classmap" : [ "./" ]
     },
     "license" : "BSD-3-Clause",
     "type" : "library",
