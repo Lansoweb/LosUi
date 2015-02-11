@@ -22,10 +22,9 @@
     ],
     "keywords" : [ "los", "ui", "module", "zf2" ],
     "autoload" : {
-        "psr-0" : {
+        "psr-4" : {
             "LosUi\\" : "src/"
-        },
-        "classmap" : [ "./" ]
+        }
     },
     "license" : "BSD-3-Clause",
     "type" : "library",
