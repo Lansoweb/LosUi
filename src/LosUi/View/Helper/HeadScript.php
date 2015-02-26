@@ -56,12 +56,10 @@ class HeadScript extends ZfHeadScript
         $version = false;
         $isMin = true;
 
-        if (isset($args[0])) {
-            if (is_bool($args[0])) {
-                $useCdn = $args[0];
-            } else {
-                $version = $args[0];
-            }
+        if (isset($args[0]) && is_bool($args[0])) {
+            $useCdn = $args[0];
+        } elseif (isset($args[0])) {
+            $version = $args[0];
         }
 
         if (isset($args[1]) && is_bool($args[1])) {
@@ -87,7 +85,7 @@ class HeadScript extends ZfHeadScript
                 }
         }
 
-        return parent::__call($method, $args);
+        return false;
     }
 
     private function callWithoutCdn($method, $matches, $basePath, $args)
@@ -100,12 +98,10 @@ class HeadScript extends ZfHeadScript
         $langs = [];
         $isMin = true;
 
-        if (isset($args[0])) {
-            if (is_bool($args[0])) {
-                $isMin = $args[0];
-            } else {
-                $langs = $args[0];
-            }
+        if (isset($args[0]) && is_bool($args[0])) {
+            $isMin = $args[0];
+        } elseif (isset($args[0])) {
+            $langs = $args[0];
         }
 
         if (isset($args[1]) && is_bool($args[1])) {
@@ -129,7 +125,7 @@ class HeadScript extends ZfHeadScript
                 return $ret;
         }
 
-        return parent::__call($method, $args);
+        return false;
     }
 
     /**
@@ -149,12 +145,14 @@ class HeadScript extends ZfHeadScript
             $basePath = $this->view->plugin('basepath')->__invoke();
         }
 
+        $ret = false;
+
         if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery)$/', $method, $matches)) {
-            return $this->callWithCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithCdn($method, $matches, $basePath, $args);
         } elseif (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
-            return $this->callWithoutCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithoutCdn($method, $matches, $basePath, $args);
         }
 
-        return parent::__call($method, $args);
+        return ($ret !== false) ? $ret : parent::__call($method, $args);
     }
 }
