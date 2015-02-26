@@ -45,6 +45,12 @@ class HeadScript extends ZfHeadScript
 
     const VERSION_BOOTSTRAP = "3.3.2";
 
+    /**
+     * @param mixed  $method
+     * @param array  $matches
+     * @param string $basePath
+     * @param array  $args
+     */
     private function callWithCdn($method, $matches, $basePath, $args)
     {
         $action = $matches['action'];
@@ -88,6 +94,12 @@ class HeadScript extends ZfHeadScript
         return false;
     }
 
+    /**
+     * @param mixed  $method
+     * @param array  $matches
+     * @param string $basePath
+     * @param array  $args
+     */
     private function callWithoutCdn($method, $matches, $basePath, $args)
     {
         $action = $matches['action'];
@@ -136,7 +148,7 @@ class HeadScript extends ZfHeadScript
      * @param  array                            $args
      *                                                  Arguments of method
      * @throws Exception\BadMethodCallException if too few arguments or invalid method
-     * @return HeadScript
+     * @return mixed
      */
     public function __call($method, $args)
     {

@@ -151,14 +151,18 @@ class FormRow extends ZfFormRow
             }
             if ($isHorizontal) {
                 $labelAttributes['class'] = " control-label col-sm-".$labelColumns;
-                $element->setLabelAttributes([
-                    'class' => "control-label col-sm-".$labelColumns,
-                ]);
+                if ($element instanceof LabelAwareInterface) {
+                    $element->setLabelAttributes([
+                        'class' => "control-label col-sm-".$labelColumns,
+                    ]);
+                }
             } else {
                 $labelAttributes['class'] = " control-label";
-                $element->setLabelAttributes([
-                    'class' => "control-label",
-                ]);
+                if ($element instanceof LabelAwareInterface) {
+                    $element->setLabelAttributes([
+                        'class' => "control-label",
+                    ]);
+                }
             }
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested

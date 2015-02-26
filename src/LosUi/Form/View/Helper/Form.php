@@ -90,7 +90,6 @@ class Form extends ZfFormHelper
 
     /**
      * @param FormInterface|null $form
-     * @param boolean            $isHorizontal
      */
     private function setHorizontal($form)
     {
