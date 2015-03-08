@@ -52,7 +52,7 @@ class Icon extends AbstractHelper
 
         $icon = $filterChain->filter($method);
 
-        return $this->render($icon, isset($args[0]) ? $args[0] : '');
+        return $this->render($icon, isset($args[0]) ? $args[0] : '', isset($args[1]) ? $args[1] : false);
     }
 
     public function render($icon, $style = null, $useTagI = false)

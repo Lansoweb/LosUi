@@ -125,6 +125,16 @@ You can even call and icon as a method:
 <?= $this->losIcon()->FaUser() ?>
 ```
 
+You can use icons with the "i" tag for both glyphicon and fontawesome:
+```php
+<?= $this->losIcon('fa-user','',true) ?>
+```
+Will generate:
+```html
+<i class="fa fa-user"></i>
+```
+ 
+
 ### Chosen
 If you do not provide an element as the first parameter, the module will assume "select" and will apply the Chosen for all "select" elements.
 You can pass thr Chosen attributes as an array (either as the first or second parameter).
