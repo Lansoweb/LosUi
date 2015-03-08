@@ -46,7 +46,6 @@ class HeadScript extends ZfHeadScript
     const VERSION_BOOTSTRAP = "3.3.2";
 
     /**
-     * @param mixed  $method
      * @param array  $matches
      * @param string $basePath
      * @param array  $args
@@ -95,7 +94,6 @@ class HeadScript extends ZfHeadScript
     }
 
     /**
-     * @param mixed  $method
      * @param array  $matches
      * @param string $basePath
      * @param array  $args

@@ -44,12 +44,11 @@ class HeadLink extends ZfHeadLink
     const VERSION_FONTAWESOME = "4.3.0";
 
     /**
-     * @param mixed  $method
      * @param array  $matches
      * @param string $basePath
      * @param array  $args
      */
-    private function callWithCdn($method, $matches, $basePath, $args)
+    private function callWithCdn($matches, $basePath, $args)
     {
         $action = $matches['action'];
         $type = $matches['type'];
@@ -95,12 +94,11 @@ class HeadLink extends ZfHeadLink
     }
 
     /**
-     * @param mixed  $method
      * @param array  $matches
      * @param string $basePath
      * @param array  $args
      */
-    private function callWithoutCdn($method, $matches, $basePath, $args)
+    private function callWithoutCdn($matches, $basePath, $args)
     {
         $action = $matches['action'];
         $type = $matches['type'];
@@ -141,9 +139,9 @@ class HeadLink extends ZfHeadLink
         $ret = false;
 
         if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome)$/', $method, $matches)) {
-            $ret = $this->callWithCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithCdn($matches, $basePath, $args);
         } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen)$/', $method, $matches)) {
-            $ret = $this->callWithoutCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithoutCdn($matches, $basePath, $args);
         }
 
         return ($ret !== false) ? $ret : parent::__call($method, $args);
