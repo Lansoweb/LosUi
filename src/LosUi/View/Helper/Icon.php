@@ -33,6 +33,7 @@ use Zend\Filter\StringToLower;
 class Icon extends AbstractHelper
 {
     protected $format = '<span class="%s"%s></span>';
+    protected $formatI = '<i class="%s"%s></i>';
 
     public function __invoke($icon = null, $style = '')
     {
@@ -54,7 +55,7 @@ class Icon extends AbstractHelper
         return $this->render($icon, isset($args[0]) ? $args[0] : '');
     }
 
-    public function render($icon, $style = '')
+    public function render($icon, $style = null, $useTagI = false)
     {
         if (substr($icon, 0, 3) == 'fa-') {
             $class = trim('fa '.$icon);
@@ -62,10 +63,14 @@ class Icon extends AbstractHelper
             $class = trim('glyphicon '.$icon);
         }
 
-        if ($style != '') {
+        if (!empty($style)) {
             $style = ' style="'.$style.'"';
         }
 
-        return sprintf($this->format, $class, $style);
+        if ($useTagI) {
+            return sprintf($this->formatI, $class, $style);
+        } else {
+            return sprintf($this->format, $class, $style);
+        }
     }
 }

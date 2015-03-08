@@ -11,7 +11,7 @@ before_install:
   - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
 
 before_script:
-  - composer install -o
+  - composer install -o --dev --prefer-source
 
 script:
   - (cd tests ; phpunit -c phpunit.xml)

@@ -22,12 +22,12 @@ class IconTest extends \PHPUnit_Framework_TestCase
         $this->helper = new Icon();
     }
 
-    private function getExpected($icon, $glyphicon = true, $style = '')
+    private function getExpected($icon, $glyphicon = true, $style = '', $tag = 'span')
     {
         if ($glyphicon) {
-            return '<span class="glyphicon glyphicon-'.$icon.'"'.$style.'></span>';
+            return "<$tag class=\"glyphicon glyphicon-$icon\"$style></$tag>";
         } else {
-            return '<span class="fa fa-'.$icon.'"></span>';
+            return "<$tag class=\"fa fa-$icon\"></$tag>";
         }
     }
 
@@ -39,10 +39,17 @@ class IconTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->getExpected('user', true, ' style="width:100px;"'), $this->helper->render('glyphicon-user', 'width:100px;'));
     }
-
+    public function testRenderGlyphiconWithI()
+    {
+        $this->assertEquals($this->getExpected('user', true, '', 'i'), $this->helper->render('glyphicon-user', null, true));
+    }
     public function testRenderFontAwesome()
     {
         $this->assertEquals($this->getExpected('user', false), $this->helper->render('fa-user'));
+    }
+    public function testRenderFontAwesomeWithI()
+    {
+        $this->assertEquals($this->getExpected('user', false, '', 'i'), $this->helper->render('fa-user', null, true));
     }
 
     public function testInvoke()

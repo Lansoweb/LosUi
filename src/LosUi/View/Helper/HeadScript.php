@@ -51,7 +51,7 @@ class HeadScript extends ZfHeadScript
      * @param string $basePath
      * @param array  $args
      */
-    private function callWithCdn($method, $matches, $basePath, $args)
+    private function callWithCdn($matches, $basePath, $args)
     {
         $action = $matches['action'];
         $mode = $matches['mode'];
@@ -100,7 +100,7 @@ class HeadScript extends ZfHeadScript
      * @param string $basePath
      * @param array  $args
      */
-    private function callWithoutCdn($method, $matches, $basePath, $args)
+    private function callWithoutCdn($matches, $basePath, $args)
     {
         $action = $matches['action'];
         $mode = $matches['mode'];
@@ -160,9 +160,9 @@ class HeadScript extends ZfHeadScript
         $ret = false;
 
         if (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Bootstrap|Jquery)$/', $method, $matches)) {
-            $ret = $this->callWithCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithCdn($matches, $basePath, $args);
         } elseif (preg_match('/^(?P<action>(ap|pre)pend)(?P<mode>Chosen|Moment)$/', $method, $matches)) {
-            $ret = $this->callWithoutCdn($method, $matches, $basePath, $args);
+            $ret = $this->callWithoutCdn($matches, $basePath, $args);
         }
 
         return ($ret !== false) ? $ret : parent::__call($method, $args);

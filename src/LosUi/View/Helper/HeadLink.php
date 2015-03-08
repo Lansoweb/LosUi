@@ -91,7 +91,7 @@ class HeadLink extends ZfHeadLink
                 }
         }
 
-        return parent::__call($method, $args);
+        return false;
     }
 
     /**
@@ -120,7 +120,7 @@ class HeadLink extends ZfHeadLink
                 return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
         }
 
-        return parent::__call($method, $args);
+        return false;
     }
 
     /**
