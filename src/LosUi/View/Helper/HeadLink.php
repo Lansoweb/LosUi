@@ -39,7 +39,7 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  */
 class HeadLink extends ZfHeadLink
 {
-    const VERSION_BOOTSTRAP = "3.3.2";
+    const VERSION_BOOTSTRAP = "3.3.4";
 
     const VERSION_FONTAWESOME = "4.3.0";
 

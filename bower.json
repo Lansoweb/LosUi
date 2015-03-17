@@ -1,6 +1,6 @@
 {
   "name": "LosUi",
-  "version": "1.0.14",
+  "version": "1.0.17",
   "homepage": "https://github.com/Lansoweb/LosUi",
   "authors": [
     "Leandro Silva <leandro@leandrosilva.info>"
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3",
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip",
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.4.1/chosen_v1.4.1.zip",
     "fontawesome": "~4.3",
     "moment": "~2.9"
   }

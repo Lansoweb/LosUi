@@ -43,7 +43,7 @@ class HeadScript extends ZfHeadScript
 {
     const VERSION_JQUERY = "2.1.3";
 
-    const VERSION_BOOTSTRAP = "3.3.2";
+    const VERSION_BOOTSTRAP = "3.3.4";
 
     /**
      * @param array  $matches
