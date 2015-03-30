@@ -15,6 +15,7 @@ I will add more libraries with time and add more resources to the current ones.
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
 
 ## Requirements
+- PHP 5.4 or greater
 - Zend Framework 2 [framework.zend.com](http://framework.zend.com/).
 - AssetManager from rwoverdijk [rwoverdijk/assetmanager](https://github.com/RWOverdijk/AssetManager)
 - Any library above
