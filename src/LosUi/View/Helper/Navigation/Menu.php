@@ -88,7 +88,7 @@ class Menu extends ZendMenu
         $html = '';
 
         $found = $this->findActive($container, $minDepth, $maxDepth);
-        if (empty($found)) {
+        if (!empty($found)) {
             $foundPage = $found['page'];
             $foundDepth = $found['depth'];
         } else {
