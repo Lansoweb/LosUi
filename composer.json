@@ -3,7 +3,7 @@
     "description" : "LosUi provides some UI utility classes your ZF2 application using Jquery2, Bootstrap3, Chosen, etc",
     "require" : {
         "php" : ">=5.4.0",
-        "zendframework/zendframework" : "2.3.*",
+        "zendframework/zendframework" : ">=2.3.2,<3.0.0",
         "rwoverdijk/assetmanager" : "~1.4"
     },
     "require-dev": {
