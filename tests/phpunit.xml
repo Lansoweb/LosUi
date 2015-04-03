@@ -2,17 +2,15 @@
 <!-- disable strict to debug tests -->
 <phpunit bootstrap="./bootstrap.php"
          colors="true"
-         strict="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         forceCoversAnnotation="true"
          syntaxCheck="true"
          backupGlobals="true"
          backupStaticAttributes="false">
 
     <testsuites>
-        <testsuite name="Test suite name">
+        <testsuite name="LosUi suite name">
             <directory>./</directory>
         </testsuite>
     </testsuites>
