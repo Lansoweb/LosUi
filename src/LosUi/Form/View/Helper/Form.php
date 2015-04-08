@@ -16,6 +16,7 @@ use Zend\Form\FormInterface;
 use Zend\Form\FieldsetInterface;
 use Zend\Form\View\Helper\Form as ZfFormHelper;
 use Zend\Form\Element\Button;
+use Zend\Form\Element\Submit;
 
 /**
  *
@@ -55,7 +56,7 @@ class Form extends ZfFormHelper
         $buttons = [];
 
         foreach ($form as $element) {
-            if ($element instanceof Button) {
+            if ($element instanceof Button || $element instanceof Submit) {
                 $buttons[] = $element;
                 continue;
             } elseif ($element instanceof FieldsetInterface) {
