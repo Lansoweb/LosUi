@@ -31,7 +31,7 @@ class Chosen extends AbstractHelper
      * @param  boolean                          $includeLibs
      * @return string|\LosUi\View\Helper\Chosen
      */
-    public function __invoke($element = 'select', $options = [], $includeLibs = true)
+    public function __invoke($element = 'select', $options = [], $includeLibs = true, $formatForBootstrap = false)
     {
         if ($element) {
             if (is_bool($element)) {
@@ -47,7 +47,7 @@ class Chosen extends AbstractHelper
                 $element = 'select';
             }
 
-            return $this->render($element, $options, $includeLibs);
+            return $this->render($element, $options, $includeLibs, $formatForBootstrap);
         }
 
         return $this;
@@ -59,11 +59,14 @@ class Chosen extends AbstractHelper
      * @param  boolean $includeLibs
      * @return string
      */
-    public function render($element, $options = [], $includeLibs = true)
+    public function render($element, $options = [], $includeLibs = true, $formatForBootstrap = false)
     {
         if ($includeLibs) {
             $headLink = $this->view->plugin('losHeadLink');
             $headLink->appendChosen();
+            if ($formatForBootstrap === true) {
+                $headLink->appendChosenBootstrap();
+            }
             $headScript = $this->view->plugin('losHeadScript');
             $headScript->appendChosen();
         }

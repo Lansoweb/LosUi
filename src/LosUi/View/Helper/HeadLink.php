@@ -116,6 +116,8 @@ class HeadLink extends ZfHeadLink
         switch ($type) {
             case 'Chosen':
                 return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
+            case 'ChosenBootstrap':
+                return $this->$action(sprintf('%s/losui/chosenbs3.css', $basePath));
         }
 
         return false;
@@ -140,7 +142,7 @@ class HeadLink extends ZfHeadLink
 
         if (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Bootstrap|FontAwesome)$/', $method, $matches)) {
             $ret = $this->callWithCdn($matches, $basePath, $args);
-        } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen)$/', $method, $matches)) {
+        } elseif (preg_match('/^(?P<action>set|(ap|pre)pend)(?P<type>Chosen|ChosenBootstrap)$/', $method, $matches)) {
             $ret = $this->callWithoutCdn($matches, $basePath, $args);
         }
 

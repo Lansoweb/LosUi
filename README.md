@@ -138,7 +138,7 @@ Will generate:
 
 ### Chosen
 If you do not provide an element as the first parameter, the module will assume "select" and will apply the Chosen for all "select" elements.
-You can pass thr Chosen attributes as an array (either as the first or second parameter).
+You can pass the Chosen attributes as an array (either as the first or second parameter).
 ```php
 <script>
 <?= $this->losChosen() ?>
@@ -177,6 +177,12 @@ Again, you can use the false parameter to get the default file:
 <link type="text/css" rel="stylesheet" media="screen" href="/chosen/chosen.css">
 <script src="/chosen/chosen.jquery.js" type="text/javascript"></script>
 ```
+
+UPDATE: Starting from version 1.0.19, you can style the Chosen element with Bootstrap 3. Just pass a true as fourth parameter:
+<?= $this->losChosen('#my_select',['disable_search_threshold'=>10], true, true) ?>
+
+Or ou can manually include the necessary styles with:
+<?php echo $this->losHeadLink()->appendChosenBootstrap() ?>
 
 ### Moment
 To include the script (can use append or prepend)
