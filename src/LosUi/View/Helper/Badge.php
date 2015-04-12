@@ -5,7 +5,7 @@
  * @author     Leandro Silva <leandro@leandrosilva.info>
  * @category   LosUi
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
- * @link       http://github.com/LansoWeb/LosUi
+ * @link       http://github.com/Lansoweb/LosUi
  * @link       http://getbootstrap.com/components/#badges
  */
 namespace LosUi\View\Helper;
