@@ -57,7 +57,6 @@ class Button extends AbstractHelper
 
     protected $name = null;
 
-    /* Type method */
     public function asAnchor($anchor = '#', $target = null)
     {
         $this->type = self::TYPE_ANCHOR;
