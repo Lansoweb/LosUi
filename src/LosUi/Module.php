@@ -27,6 +27,7 @@ class Module implements AutoloaderProviderInterface
      */
     public function getAutoloaderConfig()
     {
+        //return
         return [
             'Zend\Loader\ClassMapAutoloader' => [
                 __DIR__.'/../../autoload_classmap.php',
