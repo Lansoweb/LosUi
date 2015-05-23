@@ -77,8 +77,10 @@ class FormRow extends ZfFormRow
             } elseif (substr($addon, 0, 5) === 'glyph') {
                 $addon = '<span class="glyphicon '.$addon.'"></span>';
             }
+
             return '<div class="input-group-addon">'.$addon.'</div>';
         }
+
         return '';
     }
 
@@ -142,7 +144,6 @@ class FormRow extends ZfFormRow
         $addonAppend = $element->getOption('addon-append');
         $addonPrepend = $element->getOption('addon-prepend');
         if ($addonAppend !== null || $addonPrepend !== null) {
-
             $addonString = '<div class="input-group">';
             $addonString .= $this->addAddon($addonPrepend);
             $addonString .= $elementString;
