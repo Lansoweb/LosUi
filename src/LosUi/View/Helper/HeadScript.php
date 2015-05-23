@@ -41,7 +41,7 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  */
 class HeadScript extends ZfHeadScript
 {
-    const VERSION_JQUERY = "2.1.3";
+    const VERSION_JQUERY = "2.1.4";
 
     const VERSION_BOOTSTRAP = "3.3.4";
 

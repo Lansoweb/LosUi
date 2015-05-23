@@ -13,6 +13,8 @@
 /vendors/moment/benchmarks
 /vendors/moment/meteor
 /vendors/moment/scripts
+/vendors/moment/src
+/vendors/moment/templates
 /vendors/chosen/docsupport
 /vendors/chosen/*.html
 /vendors/bootstrap/grunt
