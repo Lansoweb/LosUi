@@ -69,6 +69,19 @@ class FormRow extends ZfFormRow
         return $markup;
     }
 
+    private function addAddon($addon)
+    {
+        if ($addon !== null) {
+            if (substr($addon, 0, 3) === 'fa-') {
+                $addon = '<i class="fa '.$addon.'"></i>';
+            } elseif (substr($addon, 0, 5) === 'glyph') {
+                $addon = '<span class="glyphicon '.$addon.'"></span>';
+            }
+            return '<div class="input-group-addon">'.$addon.'</div>';
+        }
+        return '';
+    }
+
     public function render(ElementInterface $element, $isHorizontal = false, $labelColumns = 2)
     {
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
@@ -126,6 +139,18 @@ class FormRow extends ZfFormRow
         }
 
         $elementString = $elementHelper->render($element);
+        $addonAppend = $element->getOption('addon-append');
+        $addonPrepend = $element->getOption('addon-prepend');
+        if ($addonAppend !== null || $addonPrepend !== null) {
+
+            $addonString = '<div class="input-group">';
+            $addonString .= $this->addAddon($addonPrepend);
+            $addonString .= $elementString;
+            $addonString .= $this->addAddon($addonAppend);
+            $addonString .= '</div>';
+
+            $elementString = $addonString;
+        }
 
         // hidden elements do not need a <label> -https://github.com/zendframework/zf2/issues/5607
         if (isset($label) && '' !== $label && $type !== 'hidden') {

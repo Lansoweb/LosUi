@@ -298,6 +298,41 @@ foreach (['name','gender','email','password','passwordVerify','captcha','newslet
 echo $this->losForm()->closeTag();
 ```
 
+You can add bootstrap addons to form inputs. Just add the keys "addon-append" or "addon-prepend" to the input options 
+and can combine them with icons (both glyphicon and fontawesome):
+```php
+array(
+	'spec' => array(
+	    'type'    => 'Zend\Form\Element\Text',
+    	'name'    => 'price',
+    	'options' => array(
+        	'label' => 'Price',
+        	'addon-append' => '.00',
+        	'addon-prepend' => 'glyphicon-usd',
+    	),
+    ),
+),
+array(
+	'user' => array(
+	    'type'    => 'Zend\Form\Element\Text',
+    	'name'    => 'user',
+    	'options' => array(
+        	'label' => 'User',
+        	'addon-prepend' => 'fa-user'
+    	),
+    ),
+),
+```
+
+The same for annotations:
+```php
+/**
+ * @Form\Attributes({"type":"text","placeholder":"Price"})
+ * @Form\Options({"label":"Price", "addon-prepend":"glyphicon-usd", "addon-append":".00"})
+ */
+protected $price;
+```
+
 #### Alert
 ```php
 <?= $this->losAlert('test') ?>
