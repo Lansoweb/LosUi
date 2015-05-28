@@ -92,8 +92,10 @@ class Form extends ZfFormHelper
     /**
      * @param FormInterface|null $form
      */
-    private function setHorizontal($form)
+    private function setHorizontal($form, $isHorizontal = false)
     {
+        $this->isHorizontal = (bool) $isHorizontal;
+
         if ($this->isHorizontal && $form !== null) {
             if ($form->hasAttribute('class')) {
                 $form->setAttribute('class', 'form-horizontal '.$form->getAttribute('class'));
@@ -105,9 +107,7 @@ class Form extends ZfFormHelper
 
     public function openTag(FormInterface $form = null, $isHorizontal = false)
     {
-        $this->isHorizontal = (bool) $isHorizontal;
-
-        $this->setHorizontal($form);
+        $this->setHorizontal($form, $isHorizontal);
 
         return parent::openTag($form);
     }
