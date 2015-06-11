@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3",
-    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.4.1/chosen_v1.4.1.zip",
+    "chosen": "~1.4",
     "fontawesome": "~4.3",
     "moment": "~2.10.3"
   }

@@ -9,7 +9,7 @@ I will add more libraries with time and add more resources to the current ones.
 - Jquery: 2.1.4 [jquery.com](http://jquery.com)
 - Bootstrap: 3.3.4 [getbootstrap.com](http://getbootstrap.com)
 - Font Awesome: 4.3.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
-- Chosen: 1.4.1 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
+- Chosen: 1.4.2 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
 - MomentJs: 2.10.3 [http://momentjs.com](http://momentjs.com)
 
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
@@ -181,7 +181,7 @@ Again, you can use the false parameter to get the default file:
 UPDATE: Starting from version 1.0.19, you can style the Chosen element with Bootstrap 3. Just pass a true as fourth parameter:
 <?= $this->losChosen('#my_select',['disable_search_threshold'=>10], true, true) ?>
 
-Or ou can manually include the necessary styles with:
+Or you can manually include the necessary styles with:
 <?php echo $this->losHeadLink()->appendChosenBootstrap() ?>
 
 ### Moment

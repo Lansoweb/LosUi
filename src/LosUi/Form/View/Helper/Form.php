@@ -45,8 +45,6 @@ class Form extends ZfFormHelper
         $this->isHorizontal = (bool) $isHorizontal;
         $this->labelColumns = (int) $labelColumns;
 
-        $this->setHorizontal($form);
-
         if (method_exists($form, 'prepare')) {
             $form->prepare();
         }

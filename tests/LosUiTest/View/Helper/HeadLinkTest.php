@@ -89,9 +89,4 @@ class HeadLinkTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<link href="/chosen/chosen.min.css" media="screen" rel="stylesheet" type="text/css" />',
             $this->helper->appendChosen()->toString());
     }
-    public function testChosenUnminified()
-    {
-        $this->assertEquals('<link href="/chosen/chosen.css" media="screen" rel="stylesheet" type="text/css" />',
-            $this->helper->appendChosen(false, false)->toString());
-    }
 }

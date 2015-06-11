@@ -107,12 +107,6 @@ class HeadLink extends ZfHeadLink
 
         $isMin = true;
 
-        if (isset($args[0])) {
-            if (is_bool($args[0])) {
-                $isMin = $args[0];
-            }
-        }
-
         switch ($type) {
             case 'Chosen':
                 return $this->$action(sprintf('%s/chosen/chosen.%scss', $basePath, $isMin ? 'min.' : ''));
