@@ -7,10 +7,10 @@ This module provides a shortcut to several UI resources from some of the best fr
 I will add more libraries with time and add more resources to the current ones.
 
 - Jquery: 2.1.4 [jquery.com](http://jquery.com)
-- Bootstrap: 3.3.4 [getbootstrap.com](http://getbootstrap.com)
-- Font Awesome: 4.3.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
+- Bootstrap: 3.3.5 [getbootstrap.com](http://getbootstrap.com)
+- Font Awesome: 4.4.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
 - Chosen: 1.4.2 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
-- MomentJs: 2.10.3 [http://momentjs.com](http://momentjs.com)
+- MomentJs: 2.10.6 [http://momentjs.com](http://momentjs.com)
 
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
 
