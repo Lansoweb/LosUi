@@ -20,6 +20,11 @@ The ideia is to facilitate the front development. You do not need to worry about
 - AssetManager from rwoverdijk [rwoverdijk/assetmanager](https://github.com/RWOverdijk/AssetManager)
 - Any library above
 
+## ChangeLog
+
+* 1.0.23
+1. Added help-block option for Form elements
+
 ## Instalation
 Instalation can be done with composer ou manually
 
@@ -331,6 +336,22 @@ The same for annotations:
  * @Form\Options({"label":"Price", "addon-prepend":"glyphicon-usd", "addon-append":".00"})
  */
 protected $price;
+```
+
+UPDATE: Added help-block element:
+```php
+array(
+	'spec' => array(
+	    'type'    => 'Zend\Form\Element\Text',
+    	'name'    => 'price',
+    	'options' => array(
+        	'label' => 'Price',
+        	'addon-append' => '.00',
+        	'addon-prepend' => 'glyphicon-usd',
+        	'help-block' => 'Value is a price',
+    	),
+    ),
+),
 ```
 
 #### Alert

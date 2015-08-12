@@ -1,12 +1,16 @@
 <?php
+
 /**
- * Form row styled for Bootstrap 3
+ * Form row styled for Bootstrap 3.
  *
  * Long description for file (if any)...
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#forms
  */
@@ -19,11 +23,14 @@ use Zend\Form\Element\MonthSelect;
 use Zend\Form\LabelAwareInterface;
 
 /**
- * Form row styled for Bootstrap 3
+ * Form row styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#forms
  */
@@ -32,6 +39,8 @@ class FormRow extends ZfFormRow
     protected $rowWrapper = '<div class="form-group%s">%s%s</div>';
 
     protected $horizontalRowWrapper = '<div class="form-group%s">%s<div class="col-sm-%d%s">%s</div>%s</div>';
+
+    protected static $helpBlockFormat = '<p class="help-block">%s</p>';
 
     protected function getElementErrorsHelper()
     {
@@ -43,7 +52,7 @@ class FormRow extends ZfFormRow
             $this->elementErrorsHelper = $this->view->plugin('los_form_element_errors');
         }
 
-        if (! $this->elementErrorsHelper instanceof FormElementErrors) {
+        if (!$this->elementErrorsHelper instanceof FormElementErrors) {
             $this->elementErrorsHelper = new FormElementErrors();
         }
 
@@ -114,7 +123,7 @@ class FormRow extends ZfFormRow
         }
 
         // Does this element have errors ?
-        if (count($element->getMessages()) > 0 && ! empty($inputErrorClass)) {
+        if (count($element->getMessages()) > 0 && !empty($inputErrorClass)) {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.$inputErrorClass;
 
@@ -153,6 +162,8 @@ class FormRow extends ZfFormRow
             $elementString = $addonString;
         }
 
+        $elementString .= $this->getHelpBlock($element);
+
         // hidden elements do not need a <label> -https://github.com/zendframework/zf2/issues/5607
         if (isset($label) && '' !== $label && $type !== 'hidden') {
             $labelAttributes = [];
@@ -161,7 +172,7 @@ class FormRow extends ZfFormRow
                 $labelAttributes = $element->getLabelAttributes();
             }
 
-            if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
+            if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
                 $label = $escapeHtmlHelper($label);
             }
 
@@ -169,31 +180,31 @@ class FormRow extends ZfFormRow
                 $labelAttributes = $this->labelAttributes;
             }
 
-            if (! $element->getAttribute('id') && $element->getName()) {
+            if (!$element->getAttribute('id') && $element->getName()) {
                 $element->setAttribute('id', $element->getName());
             }
             if ($element->getAttribute('id')) {
                 $labelAttributes['for'] = $element->getAttribute('id');
             }
             if ($isHorizontal) {
-                $labelAttributes['class'] = " control-label col-sm-".$labelColumns;
+                $labelAttributes['class'] = ' control-label col-sm-'.$labelColumns;
                 if ($element instanceof LabelAwareInterface) {
                     $element->setLabelAttributes([
-                        'class' => "control-label col-sm-".$labelColumns,
+                        'class' => 'control-label col-sm-'.$labelColumns,
                     ]);
                 }
             } else {
-                $labelAttributes['class'] = " control-label";
+                $labelAttributes['class'] = ' control-label';
                 if ($element instanceof LabelAwareInterface) {
                     $element->setLabelAttributes([
-                        'class' => "control-label",
+                        'class' => 'control-label',
                     ]);
                 }
             }
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if (! $isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
+            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
                 $markup = sprintf('<fieldset class="radio"><legend>%s</legend>%s</fieldset>', $label, $elementString);
             } elseif ($type == 'checkbox') {
                 // Checkboxes need special treatment too
@@ -205,7 +216,7 @@ class FormRow extends ZfFormRow
             } else {
                 // Ensure element and label will be separated if element has an `id`-attribute.
                 // If element has label option `always_wrap` it will be nested in any case.
-                if ($element->hasAttribute('id') && ($element instanceof LabelAwareInterface && ! $element->getLabelOption('always_wrap'))) {
+                if ($element->hasAttribute('id') && ($element instanceof LabelAwareInterface && !$element->getLabelOption('always_wrap'))) {
                     $labelOpen = '';
                     $labelClose = '';
                     $label = $labelHelper($element);
@@ -214,7 +225,7 @@ class FormRow extends ZfFormRow
                     $labelClose = $labelHelper->closeTag();
                 }
 
-                if ($label !== '' && (! $element->hasAttribute('id')) || ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))) {
+                if ($label !== '' && (!$element->hasAttribute('id')) || ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))) {
                     $label = '<span>'.$label.'</span>';
                 }
 
@@ -231,28 +242,28 @@ class FormRow extends ZfFormRow
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                            $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), '');
                         } else {
-                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, $elementString);
+                            $markup = sprintf($this->rowWrapper, !empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, $elementString);
                         }
                         break;
                     case self::LABEL_APPEND:
                     default:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), $labelOpen.$label.$labelClose);
+                            $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), $labelOpen.$label.$labelClose);
                         } else {
-                            $markup = sprintf($this->rowWrapper, ! empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen.$label.$labelClose);
+                            $markup = sprintf($this->rowWrapper, !empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen.$label.$labelClose);
                         }
                         break;
                 }
             }
 
-            if (! $isHorizontal && $this->renderErrors) {
+            if (!$isHorizontal && $this->renderErrors) {
                 $markup .= $elementErrors;
             }
         } else {
             if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
-                $markup = sprintf($this->horizontalRowWrapper, ! empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, ' col-xs-offset-'.$labelColumns, $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, ' col-xs-offset-'.$labelColumns, $elementString.($this->renderErrors ? $elementErrors : ''), '');
             } else {
                 if ($this->renderErrors) {
                     $markup = $elementString.$elementErrors;
@@ -263,5 +274,13 @@ class FormRow extends ZfFormRow
         }
 
         return $markup;
+    }
+
+    protected function getHelpBlock(ElementInterface $element)
+    {
+        return ($helpBlock = $element->getOption('help-block')) ? sprintf(
+            self::$helpBlockFormat,
+            $this->getEscapeHtmlHelper()->__invoke(($translator = $this->getTranslator()) ? $translator->translate($helpBlock, $this->getTranslatorTextDomain()) : $helpBlock)
+            ) : '';
     }
 }
