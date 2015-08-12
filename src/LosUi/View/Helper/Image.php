@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Image view helper
+ * Image view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#images
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Image view helper
+ * Image view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#images
  */
@@ -48,19 +55,19 @@ class Image extends AbstractHelper
         $class = trim($class);
 
         if ($this->isResponsive) {
-            if (! empty($class)) {
+            if (!empty($class)) {
                 $class .= ' ';
             }
             $class .= 'img-responsive';
         }
 
-        return sprintf($this->format, strpos($src, 'http') === 0 ? $src : $basePath($src), ! empty($class) ? " class=\"$class\"" : '');
+        return sprintf($this->format, strpos($src, 'http') === 0 ? $src : $basePath($src), !empty($class) ? " class=\"$class\"" : '');
     }
 
     public function setResponsive($responsive)
     {
-        if (! is_bool($responsive)) {
-            throw new \InvalidArgumentException("Argument must be a bool value.");
+        if (!is_bool($responsive)) {
+            throw new \InvalidArgumentException('Argument must be a bool value.');
         }
 
         $this->isResponsive = $responsive;

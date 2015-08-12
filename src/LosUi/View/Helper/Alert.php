@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Alert view helper styled for Bootstrap 3
+ * Alert view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#alerts
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Alert view helper styled for Bootstrap 3
+ * Alert view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#alerts
  */
@@ -67,8 +74,8 @@ class Alert extends AbstractHelper
 
     public function setDismissible($dismissible)
     {
-        if (! is_bool($dismissible)) {
-            throw new \InvalidArgumentException("Argument must be a bool value.");
+        if (!is_bool($dismissible)) {
+            throw new \InvalidArgumentException('Argument must be a bool value.');
         }
 
         $this->isDismissible = $dismissible;

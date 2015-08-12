@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Well view helper
+ * Well view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#wells
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Well view helper
+ * Well view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#wells
  */

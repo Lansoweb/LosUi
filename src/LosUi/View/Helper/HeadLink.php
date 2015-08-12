@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Head Link view helper, adding the necessary libs or cdns
+ * Head Link view helper, adding the necessary libs or cdns.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -12,7 +16,7 @@ namespace LosUi\View\Helper;
 use Zend\View\Helper\HeadLink as ZfHeadLink;
 
 /**
- * Head Link view helper, adding the necessary libs or cdns
+ * Head Link view helper, adding the necessary libs or cdns.
  *
  * Allows the following method calls:
  *
@@ -22,7 +26,6 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  * @method HeadLink prependFontAwesome($useMinified = true)
  * @method HeadLink appendChosen($useMinified = true)
  * @method HeadLink prependChosen($useMinified = true)
- *
  * @method HeadLink appendStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
  * @method HeadLink offsetSetStylesheet($index, $href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
  * @method HeadLink prependStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
@@ -33,15 +36,18 @@ use Zend\View\Helper\HeadLink as ZfHeadLink;
  * @method HeadLink setAlternate($href, $type, $title, $extras = array())
  *
  * @author Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category LosUi
+ *
  * @license https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link http://github.com/LansoWeb/LosUi
  */
 class HeadLink extends ZfHeadLink
 {
-    const VERSION_BOOTSTRAP = "3.3.5";
+    const VERSION_BOOTSTRAP = '3.3.5';
 
-    const VERSION_FONTAWESOME = "4.4.0";
+    const VERSION_FONTAWESOME = '4.4.0';
 
     /**
      * @param array  $matches
@@ -53,7 +59,7 @@ class HeadLink extends ZfHeadLink
         $action = $matches['action'];
         $type = $matches['type'];
 
-        $action .= "Stylesheet";
+        $action .= 'Stylesheet';
 
         $useCdn = false;
         $version = false;
@@ -103,7 +109,7 @@ class HeadLink extends ZfHeadLink
         $action = $matches['action'];
         $type = $matches['type'];
 
-        $action .= "Stylesheet";
+        $action .= 'Stylesheet';
 
         $isMin = true;
 
@@ -118,11 +124,13 @@ class HeadLink extends ZfHeadLink
     }
 
     /**
-     * Overload method access
+     * Overload method access.
      *
-     * @param  mixed                            $method
-     * @param  mixed                            $args
+     * @param mixed $method
+     * @param mixed $args
+     *
      * @throws Exception\BadMethodCallException
+     *
      * @return mixed
      */
     public function __call($method, $args)

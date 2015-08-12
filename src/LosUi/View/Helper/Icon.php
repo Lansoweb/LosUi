@@ -1,12 +1,16 @@
 <?php
+
 /**
- * Icon view helper
+ * Icon view helper.
  *
  * Can be used for Gltphicon and FontAwesome
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://fontawesome.io
  * @link       http://getbootstrap.com/components/#glyphicons
@@ -19,13 +23,16 @@ use Zend\Filter\Word\CamelCaseToDash;
 use Zend\Filter\StringToLower;
 
 /**
- * Icon view helper
+ * Icon view helper.
  *
  * Can be used for Gltphicon and FontAwesome
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://fontawesome.io
  * @link       http://getbootstrap.com/components/#glyphicons

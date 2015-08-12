@@ -1,12 +1,16 @@
 <?php
+
 /**
- * Paginator view helper
+ * Paginator view helper.
  *
  * Long description for file (if any)...
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#pagination
  */
@@ -16,13 +20,16 @@ use Zend\View\Helper\PaginationControl as ZfPaginationControl;
 use Zend\Paginator;
 
 /**
- * Paginator view helper
+ * Paginator view helper.
  *
  * Long description for file (if any)...
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#pagination
  */

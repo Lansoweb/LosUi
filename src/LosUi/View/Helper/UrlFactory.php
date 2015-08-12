@@ -1,4 +1,5 @@
 <?php
+
 namespace LosUi\View\Helper;
 
 use Zend\ServiceManager\FactoryInterface;
@@ -7,7 +8,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class UrlFactory implements FactoryInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function createService(ServiceLocatorInterface $sl)
     {

@@ -19,5 +19,5 @@
 /vendors/chosen/*.html
 /vendors/bootstrap/grunt
 /vendors/bootstrap/less
-
 /vendors/node_modules
+/.php_cs.cache

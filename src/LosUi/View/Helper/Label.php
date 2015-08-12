@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Label view helper
+ * Label view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#labels
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Label view helper
+ * Label view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#labels
  */

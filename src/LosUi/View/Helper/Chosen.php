@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Chosen view helper
+ * Chosen view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://harvesthq.github.io/chosen/
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Chosen view helper
+ * Chosen view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://harvesthq.github.io/chosen/
  */
@@ -26,9 +33,10 @@ class Chosen extends AbstractHelper
     protected $format = '$("%s").chosen(%s);';
 
     /**
-     * @param  string                           $element
-     * @param  array                            $options
-     * @param  boolean                          $includeLibs
+     * @param string $element
+     * @param array  $options
+     * @param bool   $includeLibs
+     *
      * @return string|\LosUi\View\Helper\Chosen
      */
     public function __invoke($element = 'select', $options = [], $includeLibs = true, $formatForBootstrap = false)
@@ -54,9 +62,10 @@ class Chosen extends AbstractHelper
     }
 
     /**
-     * @param  string  $element
-     * @param  array   $options
-     * @param  boolean $includeLibs
+     * @param string $element
+     * @param array  $options
+     * @param bool   $includeLibs
+     *
      * @return string
      */
     public function render($element, $options = [], $includeLibs = true, $formatForBootstrap = false)

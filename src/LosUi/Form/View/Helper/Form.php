@@ -1,12 +1,16 @@
 <?php
+
 /**
- * Form View Helper
+ * Form View Helper.
  *
  * This view helper overrides the default ZF2 helper to use the LosFormRow
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#forms
  */
@@ -19,14 +23,16 @@ use Zend\Form\Element\Button;
 use Zend\Form\Element\Submit;
 
 /**
- *
- * Form View Helper
+ * Form View Helper.
  *
  * This view helper overrides the default ZF2 helper to use the LosFormRow
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#forms
  */
@@ -37,7 +43,8 @@ class Form extends ZfFormHelper
     protected $labelColumns = 2;
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\Form\View\Helper\Form::render()
      */
     public function render(FormInterface $form, $isHorizontal = false, $labelColumns = 2)
@@ -74,7 +81,8 @@ class Form extends ZfFormHelper
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\Form\View\Helper\Form::__invoke()
      */
     public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
@@ -82,7 +90,7 @@ class Form extends ZfFormHelper
         $this->isHorizontal = (bool) $isHorizontal;
         $this->labelColumns = (int) $labelColumns;
 
-        if (! $form) {
+        if (!$form) {
             return $this;
         }
 

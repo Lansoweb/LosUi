@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Module file
+ * Module file.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi;
@@ -12,17 +16,21 @@ namespace LosUi;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
 /**
- * Module class
+ * Module class.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 class Module implements AutoloaderProviderInterface
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\ModuleManager\Feature\AutoloaderProviderInterface::getAutoloaderConfig()
      */
     public function getAutoloaderConfig()

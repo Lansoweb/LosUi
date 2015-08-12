@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Button view helper styled for Bootstrap 3
+ * Button view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#buttons
  */
@@ -13,11 +17,14 @@ namespace LosUi\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
- * Button view helper styled for Bootstrap 3
+ * Button view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#buttons
  */
@@ -145,7 +152,7 @@ class Button extends AbstractHelper
     /* Block method */
     public function isBlock($block = true)
     {
-        if (! is_bool($block)) {
+        if (!is_bool($block)) {
             $block = false;
         }
         $this->isBlock = $block;
@@ -156,7 +163,7 @@ class Button extends AbstractHelper
     /* Active method */
     public function isActive($active = true)
     {
-        if (! is_bool($active)) {
+        if (!is_bool($active)) {
             $active = false;
         }
         $this->isActive = $active;
@@ -167,7 +174,7 @@ class Button extends AbstractHelper
     /* Disabled method */
     public function isDisabled($disabled = true)
     {
-        if (! is_bool($disabled)) {
+        if (!is_bool($disabled)) {
             $disabled = false;
         }
         $this->isDisabled = $disabled;

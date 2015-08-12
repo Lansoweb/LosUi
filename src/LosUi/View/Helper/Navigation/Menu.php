@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Menu Navigation view helper styled for Bootstrap 3
+ * Menu Navigation view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#navbar-default
  */
@@ -18,11 +22,14 @@ use Zend\View;
 use LosUi\Navigation\Page\Divider;
 
 /**
- * Menu Navigation view helper styled for Bootstrap 3
+ * Menu Navigation view helper styled for Bootstrap 3.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#navbar-default
  * @codeCoverageIgnore
@@ -32,20 +39,21 @@ class Menu extends ZendMenu
     protected $ulClass = 'nav navbar-nav';
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\View\Helper\Navigation\Menu::renderDeepestMenu()
      */
     protected function renderDeepestMenu(AbstractContainer $container, $ulClass, $indent, $minDepth, $maxDepth, $escapeLabels, $addClassToListItem, $liActiveClass = null)
     {
-        if (! $active = $this->findActive($container, $minDepth - 1, $maxDepth)) {
+        if (!$active = $this->findActive($container, $minDepth - 1, $maxDepth)) {
             return '';
         }
 
         if ($active['depth'] < $minDepth) {
-            if (! $active['page']->hasPages()) {
+            if (!$active['page']->hasPages()) {
                 return '';
             }
-        } elseif (! $active['page']->hasPages()) {
+        } elseif (!$active['page']->hasPages()) {
             $active['page'] = $active['page']->getParent();
         } elseif (is_int($maxDepth) && $active['depth'] + 1 > $maxDepth) {
             $active['page'] = $active['page']->getParent();
@@ -55,7 +63,7 @@ class Menu extends ZendMenu
         $html = $indent.'<ul'.$ulClass.'>'.PHP_EOL;
 
         foreach ($active['page'] as $subPage) {
-            if (! $this->accept($subPage)) {
+            if (!$this->accept($subPage)) {
                 continue;
             }
 
@@ -80,7 +88,8 @@ class Menu extends ZendMenu
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\View\Helper\Navigation\Menu::renderNormalMenu()
      */
     protected function renderNormalMenu(AbstractContainer $container, $ulClass, $indent, $minDepth, $maxDepth, $onlyActive, $escapeLabels, $addClassToListItem, $liActiveClass = null)
@@ -104,25 +113,25 @@ class Menu extends ZendMenu
             $iterator->setMaxDepth($maxDepth);
         }
 
-        $prevDepth = - 1;
+        $prevDepth = -1;
         foreach ($iterator as $page) {
             $depth = $iterator->getDepth();
             $isActive = $page->isActive(true);
-            if ($depth < $minDepth || ! $this->accept($page)) {
+            if ($depth < $minDepth || !$this->accept($page)) {
                 continue;
-            } elseif ($onlyActive && ! $isActive) {
+            } elseif ($onlyActive && !$isActive) {
                 $accept = false;
                 if ($foundPage) {
                     if ($foundPage->hasPage($page)) {
                         $accept = true;
                     } elseif ($foundPage->getParent()->hasPage($page)) {
-                        if (! $foundPage->hasPages() || is_int($maxDepth) && $foundDepth + 1 > $maxDepth) {
+                        if (!$foundPage->hasPages() || is_int($maxDepth) && $foundDepth + 1 > $maxDepth) {
                             $accept = true;
                         }
                     }
                 }
 
-                if (! $accept) {
+                if (!$accept) {
                     continue;
                 }
             }
@@ -140,7 +149,7 @@ class Menu extends ZendMenu
                 }
                 $html .= $myIndent.'<ul'.$ulClass.'>'.PHP_EOL;
             } elseif ($prevDepth > $depth) {
-                for ($i = $prevDepth; $i > $depth; $i --) {
+                for ($i = $prevDepth; $i > $depth; --$i) {
                     $ind = $indent.str_repeat('        ', $i);
                     $html .= $ind.'    </li>'.PHP_EOL;
                     $html .= $ind.'</ul>'.PHP_EOL;
@@ -155,8 +164,8 @@ class Menu extends ZendMenu
                 $liClasses[] = 'active';
             }
 
-            if ($page->hasPages() && (! isset($maxDepth) || $depth < $maxDepth)) {
-                if (! isset($page->dropdown) || $page->dropdown === true) {
+            if ($page->hasPages() && (!isset($maxDepth) || $depth < $maxDepth)) {
+                if (!isset($page->dropdown) || $page->dropdown === true) {
                     $liClasses[] = 'dropdown';
                     $page->isDropdown = true;
                 }
@@ -173,7 +182,7 @@ class Menu extends ZendMenu
         }
 
         if ($html) {
-            for ($i = $prevDepth + 1; $i > 0; $i --) {
+            for ($i = $prevDepth + 1; $i > 0; --$i) {
                 $myIndent = $indent.str_repeat('        ', $i - 1);
                 $html .= $myIndent.'    </li>'.PHP_EOL.$myIndent.'</ul>'.PHP_EOL;
             }
@@ -184,7 +193,8 @@ class Menu extends ZendMenu
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see \Zend\View\Helper\Navigation\Menu::htmlify()
      */
     public function htmlify(AbstractPage $page, $escapeLabel = true, $addClassToListItem = false)
@@ -198,10 +208,10 @@ class Menu extends ZendMenu
 
         if (null !== ($translator = $this->getTranslator())) {
             $textDomain = $this->getTranslatorTextDomain();
-            if (is_string($label) && ! empty($label)) {
+            if (is_string($label) && !empty($label)) {
                 $label = $translator->translate($label, $textDomain);
             }
-            if (is_string($title) && ! empty($title)) {
+            if (is_string($title) && !empty($title)) {
                 $title = $translator->translate($title, $textDomain);
             }
         }

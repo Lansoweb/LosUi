@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Navigation view helper
+ * Navigation view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -12,11 +16,14 @@ namespace LosUi\View\Helper;
 use Zend\View\Helper\Navigation as ZendNavigation;
 
 /**
- * Navigation view helper
+ * Navigation view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 class Navigation extends ZendNavigation
@@ -25,7 +32,7 @@ class Navigation extends ZendNavigation
 
     protected $defaultHelpers = [
         'breadcrumbs' => 'LosUi\View\Helper\Navigation\Breadcrumbs',
-        'menu'        => 'LosUi\View\Helper\Navigation\Menu',
+        'menu' => 'LosUi\View\Helper\Navigation\Menu',
     ];
 
     public function getPluginManager()

@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Url view helper
+ * Url view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -13,11 +17,14 @@ use Zend\View\Helper\AbstractHelper;
 use Zend\Stdlib\RequestInterface;
 
 /**
- * Url view helper
+ * Url view helper.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 final class Url extends AbstractHelper
@@ -34,7 +41,7 @@ final class Url extends AbstractHelper
         if ($reuseMatchedParams) {
             $queryParams = $this->request->getQuery();
 
-            if (! empty($queryParams)) {
+            if (!empty($queryParams)) {
                 $queryParams = $queryParams->toArray();
                 if (array_key_exists('query', $options)) {
                     $options['query'] = array_merge($queryParams, $options['query']);

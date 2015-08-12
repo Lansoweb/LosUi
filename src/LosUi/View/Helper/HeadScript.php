@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Head Script view helper adding the necessary libs or cdns
+ * Head Script view helper adding the necessary libs or cdns.
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 namespace LosUi\View\Helper;
@@ -12,7 +16,7 @@ namespace LosUi\View\Helper;
 use Zend\View\Helper\HeadScript as ZfHeadScript;
 
 /**
- * Head Script view helper adding the necessary libs or cdns
+ * Head Script view helper adding the necessary libs or cdns.
  *
  * Allows the following method calls:
  *
@@ -24,7 +28,6 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  * @method HeadScript prependChosen($useMinified = true)
  * @method HeadScript appendMoment($useMinified = true)
  * @method HeadScript prependMoment($useMinified = true)
- *
  * @method HeadScript appendFile($src, $type = 'text/javascript', $attrs = array())
  * @method HeadScript offsetSetFile($index, $src, $type = 'text/javascript', $attrs = array())
  * @method HeadScript prependFile($src, $type = 'text/javascript', $attrs = array())
@@ -35,15 +38,18 @@ use Zend\View\Helper\HeadScript as ZfHeadScript;
  * @method HeadScript setScript($script, $type = 'text/javascript', $attrs = array())
  *
  * @author     Leandro Silva <leandro@leandrosilva.info>
+ *
  * @category   LosUi
+ *
  * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ *
  * @link       http://github.com/LansoWeb/LosUi
  */
 class HeadScript extends ZfHeadScript
 {
-    const VERSION_JQUERY = "2.1.4";
+    const VERSION_JQUERY = '2.1.4';
 
-    const VERSION_BOOTSTRAP = "3.3.5";
+    const VERSION_BOOTSTRAP = '3.3.5';
 
     /**
      * @param array  $matches
@@ -55,7 +61,7 @@ class HeadScript extends ZfHeadScript
         $action = $matches['action'];
         $mode = $matches['mode'];
 
-        $action .= "File";
+        $action .= 'File';
 
         $useCdn = false;
         $version = false;
@@ -103,7 +109,7 @@ class HeadScript extends ZfHeadScript
         $action = $matches['action'];
         $mode = $matches['mode'];
 
-        $action .= "File";
+        $action .= 'File';
 
         $langs = [];
         $isMin = true;
@@ -139,13 +145,15 @@ class HeadScript extends ZfHeadScript
     }
 
     /**
-     * Overload method access
+     * Overload method access.
      *
-     * @param  string                           $method
-     *                                                  Method to call
-     * @param  array                            $args
-     *                                                  Arguments of method
+     * @param string $method
+     *                       Method to call
+     * @param array  $args
+     *                       Arguments of method
+     *
      * @throws Exception\BadMethodCallException if too few arguments or invalid method
+     *
      * @return mixed
      */
     public function __call($method, $args)
