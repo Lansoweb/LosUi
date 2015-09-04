@@ -22,6 +22,9 @@ The ideia is to facilitate the front development. You do not need to worry about
 
 ## ChangeLog
 
+* 1.0.24
+1. Added setBasePath to specify an url for the files (see each section bellow)
+
 * 1.0.23
 1. Added help-block option for Form elements
 
@@ -67,7 +70,10 @@ echo $this->losHeadScript()->appendJquery();
 echo $this->losHeadScript()->appendJquery(true);
  
 //Will use the 2.1.0 unminified CDN version  
-echo $this->losHeadScript()->appendJquery(true, false, '2.1.0'); 
+echo $this->losHeadScript()->appendJquery(true, false, '2.1.0');
+
+//Will use a specific url for the files
+echo $this->losHeadScript()->setBasePath('http://example.com')->appendJquery();
 ?>
 ```
 
@@ -91,6 +97,9 @@ echo $this->losHeadLink()->appendFontAwesome(true);
  
 //Will use the 4.2.0 unminified CDN version  
 echo $this->losHeadLink()->appendFontAwesome(true, false, '4.2.0');
+
+//Will use a specific url for the files
+echo $this->losHeadScript()->setBasePath('http://example.com')->appendFontAwesome();
 ?>
 ```
 
@@ -189,6 +198,10 @@ UPDATE: Starting from version 1.0.19, you can style the Chosen element with Boot
 Or you can manually include the necessary styles with:
 <?php echo $this->losHeadLink()->appendChosenBootstrap() ?>
 
+//Will use a specific url for the files
+echo $this->losHeadLink()->setBasePath('http://example.com')->appendChosen();
+echo $this->losHeadScript()->setBasePath('http://example.com')->appendChosen();
+
 ### Moment
 To include the script (can use append or prepend)
 ```php
@@ -239,6 +252,9 @@ It will generate the following html:
 <script src="/moment/min/moment-with-locales.min.js" type="text/javascript"></script>
 ```
 
+//Will use a specific url for the files
+echo $this->losHeadScript()->setBasePath('http://example.com')->appendMoment();
+
 ### Bootstrap
 Bootstrap is provided as local files (default) or with CDN. Just pass "true" to the appendBootstrap method to use the CDN files.
 The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
@@ -265,6 +281,10 @@ The first call will generate the following html:
 <link type="text/css" rel="stylesheet" media="screen" href="/bootstrap/dist/css/bootstrap.min.css">
 <script src="/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 ``` 
+
+//Will use a specific url for the files
+echo $this->losHeadLink()->setBasePath('http://example.com')->appendBootstrap();
+echo $this->losHeadScript()->setBasePath('http://example.com')->appendBootstrap();
 
 For each section bellow, please refer to the [bootstrap documentation](http://getbootstrap.com) for the classes specifications.
 
