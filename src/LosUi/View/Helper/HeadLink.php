@@ -128,7 +128,7 @@ class HeadLink extends ZfHeadLink
     public function setBasePath($path = null)
     {
         if (null !== $path) {
-            $this->basePath = (string)$path;
+            $this->basePath = (string) $path;
         }
 
         return $this;

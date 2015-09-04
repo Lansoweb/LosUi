@@ -149,7 +149,7 @@ class HeadScript extends ZfHeadScript
     public function setBasePath($path = null)
     {
         if (null !== $path) {
-            $this->basePath = (string)$path;
+            $this->basePath = (string) $path;
         }
 
         return $this;
