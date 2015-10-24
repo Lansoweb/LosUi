@@ -21,6 +21,7 @@ use Zend\Form\ElementInterface;
 use Zend\Form\Element\Button;
 use Zend\Form\Element\MonthSelect;
 use Zend\Form\LabelAwareInterface;
+use Zend\Form\Element\DateSelect;
 
 /**
  * Form row styled for Bootstrap 3.
@@ -112,7 +113,25 @@ class FormRow extends ZfFormRow
 
         $type = $element->getAttribute('type');
 
-        if ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
+        if ($element instanceof DateSelect) {
+             $attrs = $element->getDayAttributes();
+             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+             $classAttributes = $classAttributes.'form-control';
+             $attrs['class'] = $classAttributes;
+             $element->setDayAttributes($attrs);
+
+             $attrs = $element->getMonthAttributes();
+             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+             $classAttributes = $classAttributes.'form-control';
+             $attrs['class'] = $classAttributes;
+             $element->setMonthAttributes($attrs);
+
+             $attrs = $element->getYearAttributes();
+             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+             $classAttributes = $classAttributes.'form-control';
+             $attrs['class'] = $classAttributes;
+             $element->setYearAttributes($attrs);
+         } elseif ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.'form-control';
             $element->setAttribute('class', $classAttributes);
@@ -204,7 +223,7 @@ class FormRow extends ZfFormRow
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || $element instanceof MonthSelect)) {
+            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || ($element instanceof MonthSelect && !$element instanceof DateSelect))) {
                 $markup = sprintf('<fieldset class="radio"><legend>%s</legend>%s</fieldset>', $label, $elementString);
             } elseif ($type == 'checkbox') {
                 // Checkboxes need special treatment too
@@ -234,6 +253,8 @@ class FormRow extends ZfFormRow
                 if ($element instanceof Button) {
                     $labelOpen = $labelClose = $label = '';
                     $addDivClass = ' col-xs-offset-'.$labelColumns;
+                } elseif ($element instanceof DateSelect) {
+                     $elementString = '<div class="form-inline">'.$elementString.'</div>';
                 }
                 if ($type == 'radio') {
                     $addDivClass = ' radio';
