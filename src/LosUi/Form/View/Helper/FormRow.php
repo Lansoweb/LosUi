@@ -114,24 +114,24 @@ class FormRow extends ZfFormRow
         $type = $element->getAttribute('type');
 
         if ($element instanceof DateSelect) {
-             $attrs = $element->getDayAttributes();
-             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
-             $classAttributes = $classAttributes.'form-control';
-             $attrs['class'] = $classAttributes;
-             $element->setDayAttributes($attrs);
+            $attrs = $element->getDayAttributes();
+            $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+            $classAttributes = $classAttributes.'form-control';
+            $attrs['class'] = $classAttributes;
+            $element->setDayAttributes($attrs);
 
-             $attrs = $element->getMonthAttributes();
-             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
-             $classAttributes = $classAttributes.'form-control';
-             $attrs['class'] = $classAttributes;
-             $element->setMonthAttributes($attrs);
+            $attrs = $element->getMonthAttributes();
+            $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+            $classAttributes = $classAttributes.'form-control';
+            $attrs['class'] = $classAttributes;
+            $element->setMonthAttributes($attrs);
 
-             $attrs = $element->getYearAttributes();
-             $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
-             $classAttributes = $classAttributes.'form-control';
-             $attrs['class'] = $classAttributes;
-             $element->setYearAttributes($attrs);
-         } elseif ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
+            $attrs = $element->getYearAttributes();
+            $classAttributes = (in_array('class', $attrs) ? $attrs['class'].' ' : '');
+            $classAttributes = $classAttributes.'form-control';
+            $attrs['class'] = $classAttributes;
+            $element->setYearAttributes($attrs);
+        } elseif ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.'form-control';
             $element->setAttribute('class', $classAttributes);
@@ -254,7 +254,7 @@ class FormRow extends ZfFormRow
                     $labelOpen = $labelClose = $label = '';
                     $addDivClass = ' col-xs-offset-'.$labelColumns;
                 } elseif ($element instanceof DateSelect) {
-                     $elementString = '<div class="form-inline">'.$elementString.'</div>';
+                    $elementString = '<div class="form-inline">'.$elementString.'</div>';
                 }
                 if ($type == 'radio') {
                     $addDivClass = ' radio';
