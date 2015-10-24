@@ -22,6 +22,9 @@ The ideia is to facilitate the front development. You do not need to worry about
 
 ## ChangeLog
 
+* 1.0.25
+1. Added \Zend\Form\Element\DateSelect support
+
 * 1.0.24
 1. Added setBasePath to specify an url for the files (see each section bellow)
 
