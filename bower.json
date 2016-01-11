@@ -20,6 +20,6 @@
     "bootstrap": "~3.3",
     "chosen": "~1.4",
     "fontawesome": "~4",
-    "moment": "~2.10.3"
+    "moment": "~2.11.0"
   }
 }
