@@ -1,12 +1,9 @@
 {
   "name": "chosen",
-  "description": "Chosen is a JavaScript plugin that makes long, unwieldy select boxes much more user-friendly. It is currently available in both jQuery and Prototype flavors.",
-  "version": "1.4.2",
+  "description": "Chosen is a JavaScript plugin that makes select boxes user-friendly. It is currently available in both jQuery and Prototype flavors.",
   "main": [
-    "chosen.jquery.min.js",
-    "chosen.css",
-    "chosen-sprite@2x.png",
-    "chosen-sprite.png"
+    "chosen.jquery.js",
+    "chosen.css"
   ],
   "license": [
     {
@@ -50,13 +47,14 @@
     "jquery": ">=1.4.4"
   },
   "devDependencies": [],
-  "_release": "1.4.2",
+  "version": "1.5.1",
+  "_release": "1.5.1",
   "_resolution": {
     "type": "version",
-    "tag": "v1.4.2",
-    "commit": "c088eaae25211cb7512734695aec08ed2645a70b"
+    "tag": "v1.5.1",
+    "commit": "737ac310c62cc8aa72888f170894054ab7692f05"
   },
-  "_source": "git://github.com/harvesthq/bower-chosen.git",
-  "_target": "~1.4",
+  "_source": "https://github.com/harvesthq/bower-chosen.git",
+  "_target": "~1.5",
   "_originalSource": "chosen"
 }
