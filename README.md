@@ -6,10 +6,10 @@
 This module provides a shortcut to several UI resources from some of the best front frameworks. 
 I will add more libraries with time and add more resources to the current ones.
 
-- Jquery: 2.2.0 [jquery.com](http://jquery.com)
+- Jquery: 2.2.3 [jquery.com](http://jquery.com)
 - Bootstrap: 3.3.6 [getbootstrap.com](http://getbootstrap.com)
-- Font Awesome: 4.5.0 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
-- Chosen: 1.4.2 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
+- Font Awesome: 4.6.1 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
+- Chosen: 1.5.1 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
 - MomentJs: 2.11.1 [http://momentjs.com](http://momentjs.com)
 
 The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
@@ -21,6 +21,12 @@ The ideia is to facilitate the front development. You do not need to worry about
 - Any library above
 
 ## ChangeLog
+
+* 1.0.27
+1. Updating JQuery from 2.2.0 to 2.2.3
+2. Updating Fort Awesome from 4.5.0 to 4.6.1
+3. Updating MomentJs from 2.11.1 to 2.11.2
+4. Updating Chosen from 1.4.2 to 1.5.1
 
 * 1.0.26
 1. Updating JQuery from 2.1.4 to 2.2.0
