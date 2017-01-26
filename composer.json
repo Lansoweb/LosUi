@@ -1,36 +1,37 @@
 {
-    "name" : "los/losui",
-    "description" : "LosUi provides some UI utility classes your ZF2 application using Jquery2, Bootstrap3, Chosen, etc",
-    "require" : {
-        "php" : ">=5.4.0",
-        "zendframework/zendframework" : ">=2.3.2,<3.0.0",
-        "rwoverdijk/assetmanager" : "~1.4"
+  "name" : "los/losui",
+  "description" : "LosUi provides some UI utility classes your ZF2 application using Jquery2, Bootstrap3, Chosen, etc",
+  "require" : {
+    "php" : "^5.6 || ^7.0",
+    "rwoverdijk/assetmanager" : "^1.7.1",
+    "zendframework/zend-view" : "^2.8",
+    "zendframework/zend-form" : "^2.9",
+    "zendframework/zend-servicemanager" : "^2.7 || ^3.2",
+    "zendframework/zend-stdlib" : "^2.7 || ^3.1",
+    "zendframework/zend-paginator" : "^2.7",
+    "zendframework/zend-navigation" : "^2.8",
+    "zendframework/zend-filter" : "^2.7"
+  },
+  "require-dev" : {
+    "satooshi/php-coveralls" : "dev-master"
+  },
+  "license" : "MIT",
+  "keywords" : [ "los", "ui", "module", "zf2" ],
+  "autoload" : {
+    "psr-4" : {
+      "LosUi\\" : "src/"
     },
-    "require-dev": {
-        "satooshi/php-coveralls": "dev-master"
-    },
-    "suggest": {
-        "los/losbase": "los/losbase for some abstract classes to speed development ",
-        "los/loslog": "los/loslog for logging"
-    },        
-    "authors" : [ 
-        {
-            "name" : "Leandro Silva",
-            "email" : "leandro@leandrosilva.info",
-            "homepage" : "http://leandrosilva.info"
-        } 
-    ],
-    "keywords" : [ "los", "ui", "module", "zf2" ],
-    "autoload" : {
-        "psr-4" : {
-            "LosUi\\" : "src/"
-        },
-        "psr-0" : {
-            "LosUi\\" : "src/"
-        },
-        "classmap" : [ "./" ]
-    },
-    "license" : "BSD-3-Clause",
-    "type" : "library",
-    "homepage" : "http://github.com/Lansoweb/LosUi"
+    "classmap" : [ "./" ]
+  },
+  "suggest" : {
+    "los/losbase" : "los/losbase for some abstract classes to speed development ",
+    "los/loslog" : "los/loslog for logging"
+  },
+  "type" : "library",
+  "authors" : [ {
+    "name" : "Leandro Silva",
+    "email" : "leandro@leandrosilva.info",
+    "homepage" : "http://leandrosilva.info"
+  } ],
+  "homepage" : "http://github.com/Lansoweb/LosUi"
 }
