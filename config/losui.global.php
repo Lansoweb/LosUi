@@ -5,9 +5,6 @@ return [
         'factories' => [
             'LosUi\View\Helper\Url' => 'LosUi\View\Helper\UrlFactory',
         ],
-        'aliases' => [
-            'los_url' => 'LosUi\View\Helper\Url',
-        ],
         'invokables' => [
             'los_alert' => 'LosUi\View\Helper\Alert',
             'los_badge' => 'LosUi\View\Helper\Badge',
@@ -27,13 +24,6 @@ return [
             'los_navigation' => 'LosUi\View\Helper\Navigation',
             'los_pagination_control' => 'LosUi\View\Helper\PaginationControl',
             'los_well' => 'LosUi\View\Helper\Well',
-        ],
-    ],
-    'asset_manager' => [
-        'resolver_configs' => [
-            'paths' => [
-                'losui' => __DIR__.'/../vendors/',
-            ],
         ],
     ],
     'view_manager' => [
