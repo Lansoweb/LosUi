@@ -50,7 +50,7 @@ class FormRow extends ZfFormRow
         }
 
         if (method_exists($this->view, 'plugin')) {
-            $this->elementErrorsHelper = $this->view->plugin('los_form_element_errors');
+            $this->elementErrorsHelper = $this->view->plugin('losFormElementErrors');
         }
 
         if (!$this->elementErrorsHelper instanceof FormElementErrors) {

@@ -67,14 +67,14 @@ class Form extends ZfFormHelper
                 $buttons[] = $element;
                 continue;
             } elseif ($element instanceof FieldsetInterface) {
-                $formContent .= $this->view->plugin('los_form_collection')->render($element);
+                $formContent .= $this->view->plugin('losFormCollection')->render($element);
             } else {
-                $formContent .= $this->view->plugin('los_form_row')->render($element, $this->isHorizontal, $this->labelColumns);
+                $formContent .= $this->view->plugin('losFormRow')->render($element, $this->isHorizontal, $this->labelColumns);
             }
         }
 
         if (count($buttons) > 0) {
-            $formContent .= $this->view->plugin('los_form_row')->renderButtons($buttons, $this->isHorizontal, $this->labelColumns);
+            $formContent .= $this->view->plugin('losFormRow')->renderButtons($buttons, $this->isHorizontal, $this->labelColumns);
         }
 
         return $this->openTag($form).$formContent.$this->closeTag();
