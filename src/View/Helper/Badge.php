@@ -7,14 +7,12 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/Lansoweb/LosUi
  * @link       http://getbootstrap.com/components/#badges
  */
 namespace LosUi\View\Helper;
-
-use Zend\Form\View\Helper\AbstractHelper;
 
 /**
  * Badge view helper styled for Bootstrap 3.
@@ -23,12 +21,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/Lansoweb/LosUi
  * @link       http://getbootstrap.com/components/#badges
  */
-class Badge extends AbstractHelper
+class Badge
 {
     protected $format = '<span class="badge">%s</span>';
 

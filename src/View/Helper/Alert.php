@@ -7,14 +7,12 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#alerts
  */
 namespace LosUi\View\Helper;
-
-use Zend\Form\View\Helper\AbstractHelper;
 
 /**
  * Alert view helper styled for Bootstrap 3.
@@ -23,12 +21,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#alerts
  */
-class Alert extends AbstractHelper
+class Alert
 {
     protected $format = '<div class="alert %s" role="alert">%s</div>';
 

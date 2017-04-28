@@ -7,7 +7,7 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  */
@@ -22,7 +22,7 @@ use Zend\View\Helper\Navigation as ZendNavigation;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  */

@@ -7,14 +7,12 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#images
  */
 namespace LosUi\View\Helper;
-
-use Zend\Form\View\Helper\AbstractHelper;
 
 /**
  * Image view helper.
@@ -23,12 +21,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#images
  */
-class Image extends AbstractHelper
+class Image
 {
     protected $format = '<img src="%s"%s>';
 
@@ -51,7 +49,6 @@ class Image extends AbstractHelper
 
     public function render($src, $class = '')
     {
-        $basePath = $this->view->plugin('basePath');
         $class = trim($class);
 
         if ($this->isResponsive) {
@@ -61,7 +58,7 @@ class Image extends AbstractHelper
             $class .= 'img-responsive';
         }
 
-        return sprintf($this->format, strpos($src, 'http') === 0 ? $src : $basePath($src), !empty($class) ? " class=\"$class\"" : '');
+        return sprintf($this->format, $src, !empty($class) ? " class=\"$class\"" : '');
     }
 
     public function setResponsive($responsive)

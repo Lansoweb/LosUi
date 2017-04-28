@@ -7,14 +7,12 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#wells
  */
 namespace LosUi\View\Helper;
-
-use Zend\Form\View\Helper\AbstractHelper;
 
 /**
  * Well view helper.
@@ -23,12 +21,12 @@ use Zend\Form\View\Helper\AbstractHelper;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/components/#wells
  */
-class Well extends AbstractHelper
+class Well
 {
     protected $format = '<div class="well%s">%s</div>';
 

@@ -9,18 +9,13 @@
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://fontawesome.io
  * @link       http://getbootstrap.com/components/#glyphicons
  */
 namespace LosUi\View\Helper;
-
-use Zend\View\Helper\AbstractHelper;
-use Zend\Filter\FilterChain;
-use Zend\Filter\Word\CamelCaseToDash;
-use Zend\Filter\StringToLower;
 
 /**
  * Icon view helper.
@@ -31,13 +26,13 @@ use Zend\Filter\StringToLower;
  *
  * @category   LosUi
  *
- * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE BSD-3 License
+ * @license    https://github.com/Lansoweb/LosUi/blob/master/LICENSE MIT License
  *
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://fontawesome.io
  * @link       http://getbootstrap.com/components/#glyphicons
  */
-class Icon extends AbstractHelper
+class Icon
 {
     protected $format = '<span class="%s"%s></span>';
     protected $formatI = '<i class="%s"%s></i>';
@@ -51,33 +46,20 @@ class Icon extends AbstractHelper
         return $this;
     }
 
-    public function __call($method, $args)
-    {
-        $filterChain = new FilterChain();
-
-        $filterChain->attach(new CamelCaseToDash())->attach(new StringToLower());
-
-        $icon = $filterChain->filter($method);
-
-        return $this->render($icon, isset($args[0]) ? $args[0] : '', isset($args[1]) ? $args[1] : false);
-    }
-
-    public function render($icon, $style = null, $useTagI = false)
+    public function render($icon, $style = null)
     {
         if (substr($icon, 0, 3) == 'fa-') {
             $class = trim('fa '.$icon);
+            $format = $this->formatI;
         } else {
             $class = trim('glyphicon '.$icon);
+            $format = $this->format;
         }
 
         if (!empty($style)) {
             $style = ' style="'.$style.'"';
         }
 
-        if ($useTagI) {
-            return sprintf($this->formatI, $class, $style);
-        } else {
-            return sprintf($this->format, $class, $style);
-        }
+        return sprintf($format, $class, $style);
     }
 }
