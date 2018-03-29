@@ -3,128 +3,82 @@
 
 
 ## Introduction
-This module provides a shortcut to several UI resources from some of the best front frameworks. 
-I will add more libraries with time and add more resources to the current ones.
-
-- Jquery: 2.2.4 [jquery.com](http://jquery.com)
-- Bootstrap: 3.3.6 [getbootstrap.com](http://getbootstrap.com)
-- Font Awesome: 4.6.3 [fortawesome.github.io](http://fortawesome.github.io/Font-Awesome/) 
-- Chosen: 1.5.1 [http://harvesthq.github.io/chosen/](http://harvesthq.github.io/chosen/)
-- MomentJs: 2.11.1 [http://momentjs.com](http://momentjs.com)
-
-The ideia is to facilitate the front development. You do not need to worry about download individually each library, control their versions, so on. Refer to the Usage bellow.
+This module provides a shortcut to several UI resources from [Bootstrap](http://getbootstrap.com).
+ 
+In the version 2.*, this library provides only method for styling your HTML with bootstrap. 
+The previous method (providing the js and css files) had a serious performance issue, 
+because if hooked on the end of the request (404 error) to return the required files.
 
 ## Requirements
-- PHP 5.4 or greater
-- Zend Framework 2 [framework.zend.com](http://framework.zend.com/).
-- AssetManager from rwoverdijk [rwoverdijk/assetmanager](https://github.com/RWOverdijk/AssetManager)
-- Any library above
+Please see composer.json
 
-## ChangeLog
-
-* 1.0.28
-1. Updating JQuery from 2.2.3 to 2.2.4
-2. Updating Fort Awesome from 4.6.1 to 4.6.3
-
-* 1.0.27
-1. Updating JQuery from 2.2.0 to 2.2.3
-2. Updating Fort Awesome from 4.5.0 to 4.6.1
-3. Updating MomentJs from 2.11.1 to 2.11.2
-4. Updating Chosen from 1.4.2 to 1.5.1
-
-* 1.0.26
-1. Updating JQuery from 2.1.4 to 2.2.0
-2. Updating Bootstrap from 3.3.5 to 3.3.6
-3. Updating Fort Awesome from 4.4.0 to 4.5.0
-4. Updating MomentJs from 2.10.6 to 2.11.1
-
-* 1.0.25
-1. Added \Zend\Form\Element\DateSelect support
-
-* 1.0.24
-1. Added setBasePath to specify an url for the files (see each section bellow)
-
-* 1.0.23
-1. Added help-block option for Form elements
-
-## Instalation
-Instalation can be done with composer ou manually
-
-### Installation with composer
+## Installation
 For composer documentation, please refer to [getcomposer.org](http://getcomposer.org/).
 
   1. Enter your project directory
-  2. Create or edit your `composer.json` file with following contents:
-
-     ```json
-     {
-         "minimum-stability": "dev",
-         "require": {
-             "los/losui": "1.*"
-         }
-     }
-     ```
-  3. Run `php composer.phar install`
-  4. Open `my/project/directory/config/application.config.php` and add `LosUi` to your `modules`
+  2. Run `php composer.phar require los/losui`
      
-### Installation without composer
-
-  1. Clone this module [LosUi](http://github.com/LansoWeb/LosUi) to your vendor directory
-  2. Enable it in your config/application.config.php like the step 4 in the previous section.
-  
 ## Usage
-This module provides two main View Helpers: LosHeadLink and LosHeadScript. You can safely replace the default ZF HeadLink and HeadScript with this ones to use their resources.
+This module provides two main View Helpers: LosHeadLink and LosHeadScript.
 
 ### Jquery
-Jquery is provided as local files (default) or with CDN. Just pass "true" to the appendJquery method to use the CDN files.
-The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+The first argument indicates the use of minified version (default) or not, while the second indicates a specific version of a CDN file.
   
 Just add the following to your layout.phtml file:
 ```php
 <?php
-//Will use the local minified version  
-echo $this->losHeadScript()->appendJquery();
-
-//Will use the CDN version  
-echo $this->losHeadScript()->appendJquery(true);
+echo $this->losHead()->getJquery();
  
-//Will use the 2.1.0 unminified CDN version  
-echo $this->losHeadScript()->appendJquery(true, false, '2.1.0');
-
-//Will use a specific url for the files
-echo $this->losHeadScript()->setBasePath('http://example.com')->appendJquery();
+//Will use the 2.2.0 unminified version  
+echo $this->losHead()->getJquery(false, '2.1.0');
 ?>
 ```
 
 It will generate the following html:
 ```html
-<script src="/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-2.1.0.js" type="text/javascript"></script>
 ``` 
 
+You can have just the link, for example to pass it to other ViewHelper like HeadLink (from zendframework)
+```php
+<?php
+//Will use the 2.2.0 unminified version  
+echo $this->losHead()->getJqueryLink(false, '2.1.0');
+?>
+```
+
+It will generate only the link:
+```
+http://code.jquery.com/jquery-2.2.0.js
+``` 
+
+
 ### Font Awesome
-Font Awesome is provided as local files (default) or with CDN. Just pass "true" to the appendFontAwesome method to use the CDN files.
-The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+The first argument indicates the use of minified version (default) or not, while the second indicates a specific version.
 
 Include the stylesheet with:
 ```php
 <?php 
-//Will use the local minified version
-echo $this->losHeadLink()->appendFontAwesome();
+echo $this->losHead()->getFontAwesome();
 
-//Will use the minified CDN version
-echo $this->losHeadLink()->appendFontAwesome(true);
+//Will use the unminified version
+echo $this->losHead()->getFontAwesome(false);
  
-//Will use the 4.2.0 unminified CDN version  
-echo $this->losHeadLink()->appendFontAwesome(true, false, '4.2.0');
+//Will use the 4.2.0 unminified version  
+echo $this->losHead()->getFontAwesome(false, '4.2.0');
 
-//Will use a specific url for the files
-echo $this->losHeadScript()->setBasePath('http://example.com')->appendFontAwesome();
+// Will return only the css link
+echo $this->losHead()->getFontAwesomeLink();
 ?>
 ```
 
-The last call will generate the following html:
+It will generate the following html:
 ```html
-<link type="text/css" rel="stylesheet" media="screen" href="/fontawesome/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css">
+https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
 ``` 
 
 To use their icon is simple, just use the LosIcon View Helper:
@@ -133,7 +87,7 @@ To use their icon is simple, just use the LosIcon View Helper:
 ```
 Will generate:
 ```html
-<span class="fa fa-user"></span>
+<i class="fa fa-user"></i>
 ```
 
 You can pass a second parameter to add any style:
@@ -142,7 +96,7 @@ You can pass a second parameter to add any style:
 ```
 Will generate:
 ```html
-<span class="fa fa-user" style="margin-right:4px;float:none"></span>
+<i class="fa fa-user" style="margin-right:4px;float:none"></i>
 ```
 
 If you need to add a class, pass it along with the icon:
@@ -151,159 +105,52 @@ If you need to add a class, pass it along with the icon:
 ```
 Will generate:
 ```html
-<span class="fa fa-user pull-right"></span>
+<i class="fa fa-user pull-right"></i>
 ```
-
-You can even call and icon as a method:
-```php
-<?= $this->losIcon()->FaUser() ?>
-```
-
-You can use icons with the "i" tag for both glyphicon and fontawesome:
-```php
-<?= $this->losIcon('fa-user','',true) ?>
-```
-Will generate:
-```html
-<i class="fa fa-user"></i>
-```
- 
-
-### Chosen
-If you do not provide an element as the first parameter, the module will assume "select" and will apply the Chosen for all "select" elements.
-You can pass the Chosen attributes as an array (either as the first or second parameter).
-```php
-<script>
-<?= $this->losChosen() ?>
-<?= $this->losChosen('#my_select') ?>
-<?= $this->losChosen('#my_select',['disable_search_threshold'=>10]) ?>
-<?= $this->losChosen(['disable_search_threshold'=>10]) ?>
-</script>
-```
-
-It is not mandatory that you include the stylesheet and script beforehand. If you call the view helper as above, the module will include both for you as minified versions.
-To disabled this behavior, pass false as last parameter:
-```php
-<script>
-<?= $this->losChosen(false) ?>
-<?= $this->losChosen('#my_select', false) ?>
-<?= $this->losChosen('#my_select',['disable_search_threshold'=>10], false) ?>
-<?= $this->losChosen(['disable_search_threshold'=>10], false) ?>
-</script>
-```
-
-
-To manually include the stylesheet and script (can use append or prepend)
-```php
-<?php echo $this->losHeadLink()->appendChosen() ?>
-<?php echo $this->losHeadScript()->appendChosen() ?>
-```
-
-It will generate the following html:
-```html
-<link type="text/css" rel="stylesheet" media="screen" href="/chosen/chosen.min.css">
-<script src="/chosen/chosen.jquery.min.js" type="text/javascript"></script>
-``` 
-
-Again, you can use the false parameter to get the default file:
-```html
-<link type="text/css" rel="stylesheet" media="screen" href="/chosen/chosen.css">
-<script src="/chosen/chosen.jquery.js" type="text/javascript"></script>
-```
-
-UPDATE: Starting from version 1.0.19, you can style the Chosen element with Bootstrap 3. Just pass a true as fourth parameter:
-<?= $this->losChosen('#my_select',['disable_search_threshold'=>10], true, true) ?>
-
-Or you can manually include the necessary styles with:
-<?php echo $this->losHeadLink()->appendChosenBootstrap() ?>
-
-//Will use a specific url for the files
-echo $this->losHeadLink()->setBasePath('http://example.com')->appendChosen();
-echo $this->losHeadScript()->setBasePath('http://example.com')->appendChosen();
-
-### Moment
-To include the script (can use append or prepend)
-```php
-<?php echo $this->losHeadScript()->appendMoment() ?>
-```
-
-It will generate the following html:
-```html
-<script src="/moment/min/moment.min.js" type="text/javascript"></script>
-``` 
-
-Again, you can use the false parameter to get the default file:
-```html
-<script src="/moment/moment.js" type="text/javascript"></script>
-```
-
-You can specify which translations to add by passing and array to the appendMoment:
-```php
-<?php echo $this->losHeadScript()->appendMoment(['pt-br','en']) ?>
-```
-
-It will generate the following html:
-```html
-<script src="/moment/min/moment.min.js" type="text/javascript"></script>
-<script src="/moment/min/locale/pt-br.min.js" type="text/javascript"></script>
-<script src="/moment/min/locale/en.min.js" type="text/javascript"></script>
-``` 
-
-You can combine with the unminified version:
-```php
-<?php echo $this->losHeadScript()->appendMoment(['pt-br','en'],false) ?>
-```
-
-It will generate the following html:
-```html
-<script src="/moment/moment.js" type="text/javascript"></script>
-<script src="/moment/locale/pt-br.js" type="text/javascript"></script>
-<script src="/moment/locale/en.js" type="text/javascript"></script>
-```
-
-You can add all languages using one minified file:
-```php
-<?php echo $this->losHeadScript()->appendMoment(['*']) ?>
-```
-
-It will generate the following html:
-```html
-<script src="/moment/min/moment-with-locales.min.js" type="text/javascript"></script>
-```
-
-//Will use a specific url for the files
-echo $this->losHeadScript()->setBasePath('http://example.com')->appendMoment();
 
 ### Bootstrap
-Bootstrap is provided as local files (default) or with CDN. Just pass "true" to the appendBootstrap method to use the CDN files.
-The second argument indicates the use of minified version (default) or not, while the third indicates a specific version of a CDN file.
+The first argument indicates the use of minified version (default) or not, while the second indicates a specific version.
 
 Include the stylesheet with (can use append or prepend)
 ```php
 <?php 
-//Will use the minified local version
-echo $this->losHeadLink()->appendBootstrap();
-echo $this->losHeadScript()->appendBootstrap();
+//Will use the minified local version (both css and js)
+echo $this->losHead()->addBootstrap();
 
-//Will use the minified CDN version
-echo $this->losHeadLink()->appendBootstrap(true);
-echo $this->losHeadScript()->appendBootstrap(true);  
+//Will use the minified version
+echo $this->losHead()->addBootstrap(true);
 
-//Will use the 3.3.1 unminified CDN version  
-echo $this->losHeadLink()->appendBootstrap(true, false, '3.3.1');
-echo $this->losHeadScript()->appendBootstrap(true, false, '3.3.1');
+//Will use the 3.3.1 unminified version  
+echo $this->losHead()->addBootstrap(true, '3.3.1');
+
+// Will only generate the javascript link
+echo $this->losHead()->addBootstrapJs();
+
+// Will only generate the css link
+echo $this->losHead()->addBootstrapCss();
+
+// Will only generate the css link url
+echo $this->losHead()->addBootstrapCssLink();
 ?>
 ```
 
 The first call will generate the following html:
 ```html
-<link type="text/css" rel="stylesheet" media="screen" href="/bootstrap/dist/css/bootstrap.min.css">
-<script src="/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-``` 
+<script src="https://bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" media="screen" href="https://bootstrap/3.3.7/css/bootstrap.min.css">
 
-//Will use a specific url for the files
-echo $this->losHeadLink()->setBasePath('http://example.com')->appendBootstrap();
-echo $this->losHeadScript()->setBasePath('http://example.com')->appendBootstrap();
+<script src="https://bootstrap/3.3.7/js/bootstrap.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" media="screen" href="https://bootstrap/3.3.7/css/bootstrap.css">
+
+<script src="https://bootstrap/3.3.1/js/bootstrap.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" media="screen" href="https://bootstrap/3.3.1/css/bootstrap.css">
+
+<script src="https://bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
+<link type="text/css" rel="stylesheet" media="screen" href="https://bootstrap/3.3.1/css/bootstrap.css">
+
+https://bootstrap/3.3.1/css/bootstrap.css
+``` 
 
 For each section bellow, please refer to the [bootstrap documentation](http://getbootstrap.com) for the classes specifications.
 
@@ -335,16 +182,19 @@ There is a LosFormRow view helper that prints just a row. It will add all necess
  
 If you need to change the order of the form elements, you can do (example for horizontal form with 4 columns for labels):
 ```php
+<?php
 echo $this->losForm()->openTag($form, true);
 foreach (['name','gender','email','password','passwordVerify','captcha','newsletter','submit'] as $element) {
     echo $this->losFormRow()->render($form->get($element), true, 4);
 }
 echo $this->losForm()->closeTag();
+?>
 ```
 
 You can add bootstrap addons to form inputs. Just add the keys "addon-append" or "addon-prepend" to the input options 
 and can combine them with icons (both glyphicon and fontawesome):
 ```php
+<?php
 array(
 	'spec' => array(
 	    'type'    => 'Zend\Form\Element\Text',
@@ -366,19 +216,22 @@ array(
     	),
     ),
 ),
+?>
 ```
 
 The same for annotations:
 ```php
+<?php
 /**
  * @Form\Attributes({"type":"text","placeholder":"Price"})
  * @Form\Options({"label":"Price", "addon-prepend":"glyphicon-usd", "addon-append":".00"})
  */
 protected $price;
+?>
 ```
 
-UPDATE: Added help-block element:
 ```php
+<?php
 array(
 	'spec' => array(
 	    'type'    => 'Zend\Form\Element\Text',
@@ -391,6 +244,7 @@ array(
     	),
     ),
 ),
+?>
 ```
 
 #### Alert
@@ -469,11 +323,6 @@ Will generate:
 <span class="glyphicon glyphicon-user pull-right"></span>
 ```
 
-You can even call and icon as a method:
-```php
-<?= $this->losIcon()->GlyphiconUser() ?>
-```
-
 #### Image
 ```php
 <?php echo $this->losImage('/images/logo.png') ?>
@@ -513,6 +362,7 @@ and submenus as dropdown as in [Bootstrap Navbar](http://getbootstrap.com/compon
 
 There is a new Page type that enable you to add a divider to the menu helper:
 ```php
+<?php
 'navigation' => [
     'default' => [
         'crud' => [
@@ -538,6 +388,7 @@ There is a new Page type that enable you to add a divider to the menu helper:
         ]
     ]
 ]
+?>
 ``` 
 
 The breadcrumbs helper will follow [Breadcrumbs](http://getbootstrap.com/components/#breadcrumbs).
