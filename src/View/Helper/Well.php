@@ -51,7 +51,7 @@ class Well
 
     public function render($content, $class = '')
     {
-        if (!empty($class)) {
+        if (! empty($class)) {
             $class = ' '.trim($class);
         }
 

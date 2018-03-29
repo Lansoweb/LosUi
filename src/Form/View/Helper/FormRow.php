@@ -43,6 +43,9 @@ class FormRow extends ZfFormRow
 
     protected static $helpBlockFormat = '<p class="help-block">%s</p>';
 
+    /**
+     * @return FormElementErrors|\Zend\Form\View\Helper\FormElementErrors
+     */
     protected function getElementErrorsHelper()
     {
         if ($this->elementErrorsHelper) {
@@ -53,13 +56,19 @@ class FormRow extends ZfFormRow
             $this->elementErrorsHelper = $this->view->plugin('losFormElementErrors');
         }
 
-        if (!$this->elementErrorsHelper instanceof FormElementErrors) {
+        if (! $this->elementErrorsHelper instanceof FormElementErrors) {
             $this->elementErrorsHelper = new FormElementErrors();
         }
 
         return $this->elementErrorsHelper;
     }
 
+    /**
+     * @param array $elements
+     * @param bool $isHorizontal
+     * @param int $labelColumns
+     * @return string
+     */
     public function renderButtons(array $elements, $isHorizontal = false, $labelColumns = 2)
     {
         $elementHelper = $this->getElementHelper();
@@ -71,7 +80,15 @@ class FormRow extends ZfFormRow
         }
 
         if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
-            $markup = sprintf($this->horizontalRowWrapper, '', '', 12 - $labelColumns, ' col-xs-offset-'.$labelColumns, $elementString, '');
+            $markup = sprintf(
+                $this->horizontalRowWrapper,
+                '',
+                '',
+                12 - $labelColumns,
+                ' col-xs-offset-'.$labelColumns,
+                $elementString,
+                ''
+            );
         } else {
             $markup = sprintf($this->rowWrapper, '', $elementString, '');
         }
@@ -79,6 +96,10 @@ class FormRow extends ZfFormRow
         return $markup;
     }
 
+    /**
+     * @param $addon
+     * @return string
+     */
     private function addAddon($addon)
     {
         if ($addon !== null) {
@@ -94,6 +115,12 @@ class FormRow extends ZfFormRow
         return '';
     }
 
+    /**
+     * @param ElementInterface $element
+     * @param bool $isHorizontal
+     * @param int $labelColumns
+     * @return string
+     */
     public function render(ElementInterface $element, $isHorizontal = false, $labelColumns = 2)
     {
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
@@ -131,7 +158,9 @@ class FormRow extends ZfFormRow
             $classAttributes = $classAttributes.'form-control';
             $attrs['class'] = $classAttributes;
             $element->setYearAttributes($attrs);
-        } elseif ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' && $type != 'file' && $type != 'multi_checkbox') {
+        } elseif ($type != 'checkbox' && $type != 'submit' && $type != 'button' && $type != 'radio' &&
+            $type != 'file' && $type != 'multi_checkbox'
+        ) {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.'form-control';
             $element->setAttribute('class', $classAttributes);
@@ -142,7 +171,7 @@ class FormRow extends ZfFormRow
         }
 
         // Does this element have errors ?
-        if (count($element->getMessages()) > 0 && !empty($inputErrorClass)) {
+        if (count($element->getMessages()) > 0 && ! empty($inputErrorClass)) {
             $classAttributes = ($element->hasAttribute('class') ? $element->getAttribute('class').' ' : '');
             $classAttributes = $classAttributes.$inputErrorClass;
 
@@ -191,7 +220,7 @@ class FormRow extends ZfFormRow
                 $labelAttributes = $element->getLabelAttributes();
             }
 
-            if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
+            if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
                 $label = $escapeHtmlHelper($label);
             }
 
@@ -199,7 +228,7 @@ class FormRow extends ZfFormRow
                 $labelAttributes = $this->labelAttributes;
             }
 
-            if (!$element->getAttribute('id') && $element->getName()) {
+            if (! $element->getAttribute('id') && $element->getName()) {
                 $element->setAttribute('id', $element->getName());
             }
             if ($element->getAttribute('id')) {
@@ -223,19 +252,27 @@ class FormRow extends ZfFormRow
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if (!$isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' || ($element instanceof MonthSelect && !$element instanceof DateSelect))) {
-                $markup = sprintf('<fieldset class="radio"><legend>%s</legend>%s</fieldset>', $label, $elementString);
+            if (! $isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' ||
+                    ($element instanceof MonthSelect && ! $element instanceof DateSelect))) {
+                $markup = sprintf(
+                    '<fieldset class="radio"><legend>%s</legend>%s</fieldset>',
+                    $label,
+                    $elementString
+                );
             } elseif ($type == 'checkbox') {
                 // Checkboxes need special treatment too
                 if ($isHorizontal) {
-                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12 - $labelColumns).' col-xs-offset-'.$labelColumns.'"><label>'.$elementString.$label.'</label></div></div>';
+                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12 - $labelColumns) .
+                        ' col-xs-offset-'.$labelColumns.'"><label>'.$elementString.$label.'</label></div></div>';
                 } else {
                     $markup = '<div class="checkbox"><label>'.$elementString.$label.'</label></div>';
                 }
             } else {
                 // Ensure element and label will be separated if element has an `id`-attribute.
                 // If element has label option `always_wrap` it will be nested in any case.
-                if ($element->hasAttribute('id') && ($element instanceof LabelAwareInterface && !$element->getLabelOption('always_wrap'))) {
+                if ($element->hasAttribute('id') &&
+                    ($element instanceof LabelAwareInterface && ! $element->getLabelOption('always_wrap'))
+                ) {
                     $labelOpen = '';
                     $labelClose = '';
                     $label = $labelHelper($element);
@@ -244,7 +281,9 @@ class FormRow extends ZfFormRow
                     $labelClose = $labelHelper->closeTag();
                 }
 
-                if ($label !== '' && (!$element->hasAttribute('id')) || ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))) {
+                if ($label !== '' && (! $element->hasAttribute('id')) ||
+                    ($element instanceof LabelAwareInterface && $element->getLabelOption('always_wrap'))
+                ) {
                     $label = '<span>'.$label.'</span>';
                 }
 
@@ -263,28 +302,62 @@ class FormRow extends ZfFormRow
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                            $markup = sprintf(
+                                $this->horizontalRowWrapper,
+                                ! empty($elementErrors) ? ' has-error' : '',
+                                $labelOpen . $label . $labelClose,
+                                12 - $labelColumns,
+                                $addDivClass,
+                                $elementString . ($this->renderErrors ? $elementErrors : ''),
+                                ''
+                            );
                         } else {
-                            $markup = sprintf($this->rowWrapper, !empty($elementErrors) ? ' has-error' : '', $labelOpen.$label.$labelClose, $elementString);
+                            $markup = sprintf(
+                                $this->rowWrapper,
+                                ! empty($elementErrors) ? ' has-error' : '',
+                                $labelOpen . $label . $labelClose,
+                                $elementString
+                            );
                         }
                         break;
                     case self::LABEL_APPEND:
                     default:
                         if ($isHorizontal) {
-                            $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, $addDivClass, $elementString.($this->renderErrors ? $elementErrors : ''), $labelOpen.$label.$labelClose);
+                            $markup = sprintf(
+                                $this->horizontalRowWrapper,
+                                ! empty($elementErrors) ? ' has-error' : '',
+                                '',
+                                12 - $labelColumns,
+                                $addDivClass,
+                                $elementString . ($this->renderErrors ? $elementErrors : ''),
+                                $labelOpen . $label . $labelClose
+                            );
                         } else {
-                            $markup = sprintf($this->rowWrapper, !empty($elementErrors) ? ' has-error' : '', $elementString, $labelOpen.$label.$labelClose);
+                            $markup = sprintf(
+                                $this->rowWrapper,
+                                ! empty($elementErrors) ? ' has-error' : '',
+                                $elementString,
+                                $labelOpen . $label . $labelClose
+                            );
                         }
                         break;
                 }
             }
 
-            if (!$isHorizontal && $this->renderErrors) {
+            if (! $isHorizontal && $this->renderErrors) {
                 $markup .= $elementErrors;
             }
         } else {
             if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
-                $markup = sprintf($this->horizontalRowWrapper, !empty($elementErrors) ? ' has-error' : '', '', 12 - $labelColumns, ' col-xs-offset-'.$labelColumns, $elementString.($this->renderErrors ? $elementErrors : ''), '');
+                $markup = sprintf(
+                    $this->horizontalRowWrapper,
+                    ! empty($elementErrors) ? ' has-error' : '',
+                    '',
+                    12 - $labelColumns,
+                    ' col-xs-offset-'.$labelColumns,
+                    $elementString.($this->renderErrors ? $elementErrors : ''),
+                    ''
+                );
             } else {
                 if ($this->renderErrors) {
                     $markup = $elementString.$elementErrors;
@@ -301,7 +374,11 @@ class FormRow extends ZfFormRow
     {
         return ($helpBlock = $element->getOption('help-block')) ? sprintf(
             self::$helpBlockFormat,
-            $this->getEscapeHtmlHelper()->__invoke(($translator = $this->getTranslator()) ? $translator->translate($helpBlock, $this->getTranslatorTextDomain()) : $helpBlock)
-            ) : '';
+            $this->getEscapeHtmlHelper()->__invoke(
+                ($translator = $this->getTranslator()) ?
+                    $translator->translate($helpBlock, $this->getTranslatorTextDomain()) :
+                    $helpBlock
+            )
+        ) : '';
     }
 }

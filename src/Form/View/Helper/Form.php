@@ -69,12 +69,20 @@ class Form extends ZfFormHelper
             } elseif ($element instanceof FieldsetInterface) {
                 $formContent .= $this->view->plugin('losFormCollection')->render($element);
             } else {
-                $formContent .= $this->view->plugin('losFormRow')->render($element, $this->isHorizontal, $this->labelColumns);
+                $formContent .= $this->view->plugin('losFormRow')->render(
+                    $element,
+                    $this->isHorizontal,
+                    $this->labelColumns
+                );
             }
         }
 
         if (count($buttons) > 0) {
-            $formContent .= $this->view->plugin('losFormRow')->renderButtons($buttons, $this->isHorizontal, $this->labelColumns);
+            $formContent .= $this->view->plugin('losFormRow')->renderButtons(
+                $buttons,
+                $this->isHorizontal,
+                $this->labelColumns
+            );
         }
 
         return $this->openTag($form).$formContent.$this->closeTag();
@@ -90,7 +98,7 @@ class Form extends ZfFormHelper
         $this->isHorizontal = (bool) $isHorizontal;
         $this->labelColumns = (int) $labelColumns;
 
-        if (!$form) {
+        if (! $form) {
             return $this;
         }
 

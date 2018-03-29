@@ -13,6 +13,8 @@
  */
 namespace LosUi\View\Helper;
 
+use LosUi\View\Helper\Navigation\Breadcrumbs;
+use LosUi\View\Helper\Navigation\Menu;
 use Zend\View\Helper\Navigation as ZendNavigation;
 
 /**
@@ -31,8 +33,8 @@ class Navigation extends ZendNavigation
     protected $defaultProxy = 'menu';
 
     protected $defaultHelpers = [
-        'breadcrumbs' => 'LosUi\View\Helper\Navigation\Breadcrumbs',
-        'menu' => 'LosUi\View\Helper\Navigation\Menu',
+        'breadcrumbs' => Breadcrumbs::class,
+        'menu' => Menu::class,
     ];
 
     public function getPluginManager()

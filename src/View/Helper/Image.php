@@ -52,18 +52,18 @@ class Image
         $class = trim($class);
 
         if ($this->isResponsive) {
-            if (!empty($class)) {
+            if (! empty($class)) {
                 $class .= ' ';
             }
             $class .= 'img-responsive';
         }
 
-        return sprintf($this->format, $src, !empty($class) ? " class=\"$class\"" : '');
+        return sprintf($this->format, $src, ! empty($class) ? " class=\"$class\"" : '');
     }
 
     public function setResponsive($responsive)
     {
-        if (!is_bool($responsive)) {
+        if (! is_bool($responsive)) {
             throw new \InvalidArgumentException('Argument must be a bool value.');
         }
 

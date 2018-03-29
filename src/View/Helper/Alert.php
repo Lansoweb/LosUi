@@ -30,7 +30,9 @@ class Alert
 {
     protected $format = '<div class="alert %s" role="alert">%s</div>';
 
-    protected $formatDismissible = '<div class="alert alert-dismissible %s" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>%s</div>';
+    protected $formatDismissible = '<div class="alert alert-dismissible %s" role="alert"><button type="button" '.
+        'class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>'.
+        '</button>%s</div>';
 
     protected $isDismissible = false;
 
@@ -72,7 +74,7 @@ class Alert
 
     public function setDismissible($dismissible)
     {
-        if (!is_bool($dismissible)) {
+        if (! is_bool($dismissible)) {
             throw new \InvalidArgumentException('Argument must be a bool value.');
         }
 

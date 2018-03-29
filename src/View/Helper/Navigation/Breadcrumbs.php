@@ -49,11 +49,14 @@ class Breadcrumbs extends ZendBreadcrumbs
      * (non-PHPdoc).
      *
      * @see \Zend\View\Helper\Navigation\AbstractHelper::htmlify()
+     * @param AbstractPage $page
+     * @param bool $hasParent
+     * @return string
      */
     public function htmlify(AbstractPage $page, $hasParent = false)
     {
         $html = '<li';
-        if (!$hasParent) {
+        if (! $hasParent) {
             $html .= ' class="active"';
         }
         $html .= '>';
@@ -65,8 +68,8 @@ class Breadcrumbs extends ZendBreadcrumbs
         $escaper = $this->view->plugin('escapeHtml');
         $label = $escaper($label);
 
-        if ($page->getHref() && ($hasParent || (!$hasParent && $this->getLinkLast())) &&
-            (!($page instanceof Uri) || $page->getUri() != '#')) {
+        if ($page->getHref() && ($hasParent || (! $hasParent && $this->getLinkLast())) &&
+            (! ($page instanceof Uri) || $page->getUri() != '#')) {
             $anchorAttribs = $this->htmlAttribs(['href' => $page->getHref()]);
             $html .= '<a'.$anchorAttribs.'>'.$label.'</a>';
         } else {
@@ -82,6 +85,8 @@ class Breadcrumbs extends ZendBreadcrumbs
      * (non-PHPdoc).
      *
      * @see \Zend\View\Helper\Navigation\Breadcrumbs::renderStraight()
+     * @param null $container
+     * @return string
      */
     public function renderStraight($container = null)
     {
@@ -90,7 +95,7 @@ class Breadcrumbs extends ZendBreadcrumbs
             $container = $this->getContainer();
         }
 
-        if (!$active = $this->findActive($container)) {
+        if (! $active = $this->findActive($container)) {
             return '';
         }
 

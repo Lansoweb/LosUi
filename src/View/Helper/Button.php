@@ -150,7 +150,7 @@ class Button
     /* Block method */
     public function isBlock($block = true)
     {
-        if (!is_bool($block)) {
+        if (! is_bool($block)) {
             $block = false;
         }
         $this->isBlock = $block;
@@ -161,7 +161,7 @@ class Button
     /* Active method */
     public function isActive($active = true)
     {
-        if (!is_bool($active)) {
+        if (! is_bool($active)) {
             $active = false;
         }
         $this->isActive = $active;
@@ -172,7 +172,7 @@ class Button
     /* Disabled method */
     public function isDisabled($disabled = true)
     {
-        if (!is_bool($disabled)) {
+        if (! is_bool($disabled)) {
             $disabled = false;
         }
         $this->isDisabled = $disabled;

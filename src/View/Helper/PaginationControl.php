@@ -39,8 +39,12 @@ class PaginationControl extends ZfPaginationControl
     protected static $nextLabel = 'Next &rarr;';
     protected static $previousLabel = '&larr; Previous';
 
-    public function __invoke(Paginator\Paginator $paginator = null, $scrollingStyle = null, $partial = null, $params = null)
-    {
+    public function __invoke(
+        Paginator\Paginator $paginator = null,
+        $scrollingStyle = null,
+        $partial = null,
+        $params = null
+    ) {
         if (is_string($params)) {
             $params = (array) $params;
         }
@@ -55,13 +59,13 @@ class PaginationControl extends ZfPaginationControl
                 $partial = 'paginator/pager.phtml';
             }
         }
-        if (!isset($params['aligned']) || !is_bool($params['aligned'])) {
+        if (! isset($params['aligned']) || ! is_bool($params['aligned'])) {
             $params['aligned'] = true;
         }
-        if (!isset($params['nextLabel'])) {
+        if (! isset($params['nextLabel'])) {
             $params['nextLabel'] = self::$nextLabel;
         }
-        if (!isset($params['previousLabel'])) {
+        if (! isset($params['previousLabel'])) {
             $params['previousLabel'] = self::$previousLabel;
         }
 

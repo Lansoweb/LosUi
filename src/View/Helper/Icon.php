@@ -56,7 +56,7 @@ class Icon
             $format = $this->format;
         }
 
-        if (!empty($style)) {
+        if (! empty($style)) {
             $style = ' style="'.$style.'"';
         }
 
