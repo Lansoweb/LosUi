@@ -15,7 +15,7 @@
 namespace LosUiTest\View\Helper;
 
 use LosUi\View\Helper\Image;
-use Zend\View\Renderer\PhpRenderer as View;
+use Laminas\View\Renderer\PhpRenderer as View;
 
 class ImageTest extends \PHPUnit_Framework_TestCase
 {

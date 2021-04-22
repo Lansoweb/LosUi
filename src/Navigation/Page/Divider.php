@@ -13,7 +13,7 @@
  */
 namespace LosUi\Navigation\Page;
 
-use Zend\Navigation\Page\AbstractPage;
+use Laminas\Navigation\Page\AbstractPage;
 
 /**
  * "Fake" Navigation Page to add a divider in the Menu.
@@ -31,7 +31,7 @@ class Divider extends AbstractPage
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\Navigation\Page\AbstractPage::getHref()
+     * @see \Laminas\Navigation\Page\AbstractPage::getHref()
      */
     public function getHref()
     {

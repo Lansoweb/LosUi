@@ -13,8 +13,8 @@
  */
 namespace LosUi\View\Helper;
 
-use Zend\Mvc\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
-use Zend\View\Helper\FlashMessenger as ZfFlashMessenger;
+use Laminas\Mvc\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
+use Laminas\View\Helper\FlashMessenger as ZfFlashMessenger;
 
 /**
  * FlashMessenger view helper styled for Bootstrap 3.

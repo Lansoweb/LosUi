@@ -14,9 +14,9 @@
  */
 namespace LosUi\View\Helper\Navigation;
 
-use Zend\Navigation\Page\AbstractPage;
-use Zend\View\Helper\Navigation\Breadcrumbs as ZendBreadcrumbs;
-use Zend\Navigation\Page\Uri;
+use Laminas\Navigation\Page\AbstractPage;
+use Laminas\View\Helper\Navigation\Breadcrumbs as ZendBreadcrumbs;
+use Laminas\Navigation\Page\Uri;
 
 /**
  * Breadcrumbs Navigation view helper styled for Bootstrap 3.
@@ -48,7 +48,7 @@ class Breadcrumbs extends ZendBreadcrumbs
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\View\Helper\Navigation\AbstractHelper::htmlify()
+     * @see \Laminas\View\Helper\Navigation\AbstractHelper::htmlify()
      * @param AbstractPage $page
      * @param bool $hasParent
      * @return string
@@ -84,7 +84,7 @@ class Breadcrumbs extends ZendBreadcrumbs
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\View\Helper\Navigation\Breadcrumbs::renderStraight()
+     * @see \Laminas\View\Helper\Navigation\Breadcrumbs::renderStraight()
      * @param null $container
      * @return string
      */

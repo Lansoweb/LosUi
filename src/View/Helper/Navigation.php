@@ -15,7 +15,7 @@ namespace LosUi\View\Helper;
 
 use LosUi\View\Helper\Navigation\Breadcrumbs;
 use LosUi\View\Helper\Navigation\Menu;
-use Zend\View\Helper\Navigation as ZendNavigation;
+use Laminas\View\Helper\Navigation as ZendNavigation;
 
 /**
  * Navigation view helper.

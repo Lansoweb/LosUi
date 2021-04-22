@@ -16,8 +16,8 @@
  */
 namespace LosUi\View\Helper;
 
-use Zend\View\Helper\PaginationControl as ZfPaginationControl;
-use Zend\Paginator;
+use Laminas\View\Helper\PaginationControl as ZfPaginationControl;
+use Laminas\Paginator;
 
 /**
  * Paginator view helper.
