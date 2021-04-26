@@ -197,7 +197,7 @@ and can combine them with icons (both glyphicon and fontawesome):
 <?php
 array(
 	'spec' => array(
-	    'type'    => 'Zend\Form\Element\Text',
+	    'type'    => 'Laminas\Form\Element\Text',
     	'name'    => 'price',
     	'options' => array(
         	'label' => 'Price',
@@ -208,7 +208,7 @@ array(
 ),
 array(
 	'user' => array(
-	    'type'    => 'Zend\Form\Element\Text',
+	    'type'    => 'Laminas\Form\Element\Text',
     	'name'    => 'user',
     	'options' => array(
         	'label' => 'User',
@@ -234,7 +234,7 @@ protected $price;
 <?php
 array(
 	'spec' => array(
-	    'type'    => 'Zend\Form\Element\Text',
+	    'type'    => 'Laminas\Form\Element\Text',
     	'name'    => 'price',
     	'options' => array(
         	'label' => 'Price',

@@ -16,11 +16,11 @@
  */
 namespace LosUi\Form\View\Helper;
 
-use Zend\Form\FormInterface;
-use Zend\Form\FieldsetInterface;
-use Zend\Form\View\Helper\Form as ZfFormHelper;
-use Zend\Form\Element\Button;
-use Zend\Form\Element\Submit;
+use Laminas\Form\FormInterface;
+use Laminas\Form\FieldsetInterface;
+use Laminas\Form\View\Helper\Form as ZfFormHelper;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\Submit;
 
 /**
  * Form View Helper.
@@ -45,7 +45,7 @@ class Form extends ZfFormHelper
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\Form\View\Helper\Form::render()
+     * @see \Laminas\Form\View\Helper\Form::render()
      */
     public function render(FormInterface $form, $isHorizontal = false, $labelColumns = 2)
     {
@@ -91,7 +91,7 @@ class Form extends ZfFormHelper
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\Form\View\Helper\Form::__invoke()
+     * @see \Laminas\Form\View\Helper\Form::__invoke()
      */
     public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
     {

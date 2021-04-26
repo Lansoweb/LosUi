@@ -14,7 +14,7 @@
  */
 namespace LosUi\Form\View\Helper;
 
-use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrors;
+use Laminas\Form\View\Helper\FormElementErrors as LaminasFormElementErrors;
 
 /**
  * Form Element Errors styled for Bootstrap 3.
@@ -28,7 +28,7 @@ use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrors;
  * @link       http://github.com/LansoWeb/LosUi
  * @link       http://getbootstrap.com/css/#forms
  */
-class FormElementErrors extends ZendFormElementErrors
+class FormElementErrors extends LaminasFormElementErrors
 {
     protected $messageCloseString = '</p></div>';
 

@@ -16,12 +16,12 @@
  */
 namespace LosUi\Form\View\Helper;
 
-use Zend\Form\View\Helper\FormRow as ZfFormRow;
-use Zend\Form\ElementInterface;
-use Zend\Form\Element\Button;
-use Zend\Form\Element\MonthSelect;
-use Zend\Form\LabelAwareInterface;
-use Zend\Form\Element\DateSelect;
+use Laminas\Form\View\Helper\FormRow as ZfFormRow;
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\MonthSelect;
+use Laminas\Form\LabelAwareInterface;
+use Laminas\Form\Element\DateSelect;
 
 /**
  * Form row styled for Bootstrap 3.
@@ -44,7 +44,7 @@ class FormRow extends ZfFormRow
     protected static $helpBlockFormat = '<p class="help-block">%s</p>';
 
     /**
-     * @return FormElementErrors|\Zend\Form\View\Helper\FormElementErrors
+     * @return FormElementErrors|\Laminas\Form\View\Helper\FormElementErrors
      */
     protected function getElementErrorsHelper()
     {

@@ -16,7 +16,7 @@
  */
 namespace LosUi\Form\View\Helper;
 
-use Zend\Form\View\Helper\FormCollection as ZfFormCollection;
+use Laminas\Form\View\Helper\FormCollection as ZfFormCollection;
 
 /**
  * Form Collection View Helper.

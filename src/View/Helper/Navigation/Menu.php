@@ -16,9 +16,9 @@ namespace LosUi\View\Helper\Navigation;
 
 use LosUi\Navigation\Page\Divider;
 use RecursiveIteratorIterator;
-use Zend\Navigation\AbstractContainer;
-use Zend\Navigation\Page\AbstractPage;
-use Zend\View\Helper\Navigation\Menu as ZendMenu;
+use Laminas\Navigation\AbstractContainer;
+use Laminas\Navigation\Page\AbstractPage;
+use Laminas\View\Helper\Navigation\Menu as ZendMenu;
 
 /**
  * Menu Navigation view helper styled for Bootstrap 3.
@@ -40,7 +40,7 @@ class Menu extends ZendMenu
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\View\Helper\Navigation\Menu::renderDeepestMenu()
+     * @see \Laminas\View\Helper\Navigation\Menu::renderDeepestMenu()
      * @param AbstractContainer $container
      * @param $ulClass
      * @param $indent
@@ -106,7 +106,7 @@ class Menu extends ZendMenu
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\View\Helper\Navigation\Menu::renderNormalMenu()
+     * @see \Laminas\View\Helper\Navigation\Menu::renderNormalMenu()
      * @param AbstractContainer $container
      * @param $ulClass
      * @param $indent
@@ -232,7 +232,7 @@ class Menu extends ZendMenu
     /**
      * (non-PHPdoc).
      *
-     * @see \Zend\View\Helper\Navigation\Menu::htmlify()
+     * @see \Laminas\View\Helper\Navigation\Menu::htmlify()
      * @param AbstractPage $page
      * @param bool $escapeLabel
      * @param bool $addClassToListItem
