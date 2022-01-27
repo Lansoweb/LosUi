@@ -2,7 +2,7 @@
     "name": "los/losui",
     "description": "LosUi provides some UI utility classes your PHP application using Jquery, Bootstrap, Chosen, etc",
     "require": {
-        "php": "^7.4",
+        "php": "~7.4.0||~8.0.0||~8.1.0",
         "laminas/laminas-view": "^2.10",
         "laminas/laminas-form": "^2.11",
         "laminas/laminas-servicemanager": "^3.0",
@@ -37,7 +37,7 @@
     "require-dev": {
         "laminas/laminas-coding-standard": "^1.0",
         "squizlabs/php_codesniffer": "^2.7",
-        "phpstan/phpstan": "^0.9.2"
+        "phpstan/phpstan": "^0.12.58"
     },
     "scripts": {
         "check": [
@@ -46,5 +46,11 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "phpstan": "phpstan analyse -l 4 src"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "laminas/laminas-dependency-plugin": true
+        }
     }
 }
