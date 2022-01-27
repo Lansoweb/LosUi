@@ -2,7 +2,7 @@
     "name": "los/losui",
     "description": "LosUi provides some UI utility classes your PHP application using Jquery, Bootstrap, Chosen, etc",
     "require": {
-        "php": "^7.4 | ^8.0 | ^8.1",
+        "php": "~7.4.0||~8.0.0||~8.1.0",
         "laminas/laminas-view": "^2.10",
         "laminas/laminas-form": "^2.11",
         "laminas/laminas-servicemanager": "^3.0",
