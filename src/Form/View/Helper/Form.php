@@ -38,21 +38,18 @@ use Laminas\Form\Element\Submit;
  */
 class Form extends ZfFormHelper
 {
-    protected $isHorizontal = false;
+    protected bool $isHorizontal = false;
 
-    protected $labelColumns = 2;
+    protected int $labelColumns = 2;
 
     /**
      * (non-PHPdoc).
      *
      * @see \Laminas\Form\View\Helper\Form::render()
      */
-    public function render(FormInterface $form, $isHorizontal = false, $labelColumns = 2)
+    public function render(FormInterface $form): string
     {
-        $this->isHorizontal = (bool) $isHorizontal;
-        $this->labelColumns = (int) $labelColumns;
-
-        $this->setHorizontal($form, $this->isHorizontal);
+        $this->setHorizontal($form);
 
         if (method_exists($form, 'prepare')) {
             $form->prepare();
@@ -69,20 +66,18 @@ class Form extends ZfFormHelper
             } elseif ($element instanceof FieldsetInterface) {
                 $formContent .= $this->view->plugin('losFormCollection')->render($element);
             } else {
-                $formContent .= $this->view->plugin('losFormRow')->render(
-                    $element,
-                    $this->isHorizontal,
-                    $this->labelColumns
-                );
+                $formContent .= $this->view->plugin('losFormRow')
+                    ->setIsHorizontal($this->isHorizontal)
+                    ->setLabelColumns($this->labelColumns)
+                    ->render($element);
             }
         }
 
         if (count($buttons) > 0) {
-            $formContent .= $this->view->plugin('losFormRow')->renderButtons(
-                $buttons,
-                $this->isHorizontal,
-                $this->labelColumns
-            );
+            $formContent .= $this->view->plugin('losFormRow')
+                ->setIsHorizontal($this->isHorizontal)
+                ->setLabelColumns($this->labelColumns)
+                ->renderButtons($buttons);
         }
 
         return $this->openTag($form).$formContent.$this->closeTag();
@@ -93,25 +88,20 @@ class Form extends ZfFormHelper
      *
      * @see \Laminas\Form\View\Helper\Form::__invoke()
      */
-    public function __invoke(FormInterface $form = null, $isHorizontal = false, $labelColumns = 2)
+    public function __invoke(FormInterface $form = null)
     {
-        $this->isHorizontal = (bool) $isHorizontal;
-        $this->labelColumns = (int) $labelColumns;
-
         if (! $form) {
             return $this;
         }
 
-        return $this->render($form, $this->isHorizontal, $this->labelColumns);
+        return $this->render($form);
     }
 
     /**
      * @param FormInterface|null $form
      */
-    private function setHorizontal($form, $isHorizontal = false)
+    private function setHorizontal($form)
     {
-        $this->isHorizontal = (bool) $isHorizontal;
-
         if ($this->isHorizontal && $form !== null) {
             if ($form->hasAttribute('class')) {
                 $form->setAttribute('class', 'form-horizontal '.$form->getAttribute('class'));
@@ -121,10 +111,23 @@ class Form extends ZfFormHelper
         }
     }
 
-    public function openTag(FormInterface $form = null, $isHorizontal = false)
+    public function openTag(?FormInterface $form = null): string
     {
-        $this->setHorizontal($form, $isHorizontal);
+        $this->setHorizontal($form);
 
         return parent::openTag($form);
+    }
+
+    public function setIsHorizontal(bool $isHorizontal): Form
+    {
+        $this->isHorizontal = $isHorizontal;
+
+        return $this;
+    }
+
+    public function setLabelColumns(int $labelColumns): Form
+    {
+        $this->labelColumns = $labelColumns;
+        return $this;
     }
 }

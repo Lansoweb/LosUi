@@ -16,6 +16,7 @@
  */
 namespace LosUi\Form\View\Helper;
 
+use Laminas\Form\View\Helper\FormElementErrors;
 use Laminas\Form\View\Helper\FormRow as ZfFormRow;
 use Laminas\Form\ElementInterface;
 use Laminas\Form\Element\Button;
@@ -37,6 +38,9 @@ use Laminas\Form\Element\DateSelect;
  */
 class FormRow extends ZfFormRow
 {
+    private int $labelColumns = 2;
+    private bool $isHorizontal = false;
+
     protected $rowWrapper = '<div class="form-group%s">%s%s</div>';
 
     protected $horizontalRowWrapper = '<div class="form-group%s">%s<div class="col-sm-%d%s">%s</div>%s</div>';
@@ -46,7 +50,7 @@ class FormRow extends ZfFormRow
     /**
      * @return FormElementErrors|\Laminas\Form\View\Helper\FormElementErrors
      */
-    protected function getElementErrorsHelper()
+    protected function getElementErrorsHelper(): FormElementErrors
     {
         if ($this->elementErrorsHelper) {
             return $this->elementErrorsHelper;
@@ -63,13 +67,7 @@ class FormRow extends ZfFormRow
         return $this->elementErrorsHelper;
     }
 
-    /**
-     * @param array $elements
-     * @param bool $isHorizontal
-     * @param int $labelColumns
-     * @return string
-     */
-    public function renderButtons(array $elements, $isHorizontal = false, $labelColumns = 2)
+    public function renderButtons(array $elements)
     {
         $elementHelper = $this->getElementHelper();
 
@@ -79,13 +77,13 @@ class FormRow extends ZfFormRow
             $elementString .= $elementHelper->render($button).' ';
         }
 
-        if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
+        if ($this->isHorizontal && $this->labelPosition == self::LABEL_PREPEND) {
             $markup = sprintf(
                 $this->horizontalRowWrapper,
                 '',
                 '',
-                12 - $labelColumns,
-                ' col-xs-offset-'.$labelColumns,
+                12 - $this->labelColumns,
+                ' col-xs-offset-'.$this->labelColumns,
                 $elementString,
                 ''
             );
@@ -115,13 +113,7 @@ class FormRow extends ZfFormRow
         return '';
     }
 
-    /**
-     * @param ElementInterface $element
-     * @param bool $isHorizontal
-     * @param int $labelColumns
-     * @return string
-     */
-    public function render(ElementInterface $element, $isHorizontal = false, $labelColumns = 2)
+    public function render(ElementInterface $element, ?string $labelPosition = null): string
     {
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
         $labelHelper = $this->getLabelHelper();
@@ -234,11 +226,11 @@ class FormRow extends ZfFormRow
             if ($element->getAttribute('id')) {
                 $labelAttributes['for'] = $element->getAttribute('id');
             }
-            if ($isHorizontal) {
-                $labelAttributes['class'] = ' control-label col-sm-'.$labelColumns;
+            if ($this->isHorizontal) {
+                $labelAttributes['class'] = ' control-label col-sm-'.$this->labelColumns;
                 if ($element instanceof LabelAwareInterface) {
                     $element->setLabelAttributes([
-                        'class' => 'control-label col-sm-'.$labelColumns,
+                        'class' => 'control-label col-sm-'.$this->labelColumns,
                     ]);
                 }
             } else {
@@ -252,7 +244,7 @@ class FormRow extends ZfFormRow
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels. The semantic way is to group them inside a fieldset
-            if (! $isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' ||
+            if (! $this->isHorizontal && ($type === 'multi_checkbox' || $type === 'radio' ||
                     ($element instanceof MonthSelect && ! $element instanceof DateSelect))) {
                 $markup = sprintf(
                     '<fieldset class="radio"><legend>%s</legend>%s</fieldset>',
@@ -261,9 +253,9 @@ class FormRow extends ZfFormRow
                 );
             } elseif ($type == 'checkbox') {
                 // Checkboxes need special treatment too
-                if ($isHorizontal) {
-                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12 - $labelColumns) .
-                        ' col-xs-offset-'.$labelColumns.'"><label>'.$elementString.$label.'</label></div></div>';
+                if ($this->isHorizontal) {
+                    $markup = '<div class="form-group"><div class="checkbox col-xs-'.(12 - $this->labelColumns) .
+                        ' col-xs-offset-'.$this->labelColumns.'"><label>'.$elementString.$label.'</label></div></div>';
                 } else {
                     $markup = '<div class="checkbox"><label>'.$elementString.$label.'</label></div>';
                 }
@@ -291,7 +283,7 @@ class FormRow extends ZfFormRow
                 // Button element is a special case, because label is always rendered inside it
                 if ($element instanceof Button) {
                     $labelOpen = $labelClose = $label = '';
-                    $addDivClass = ' col-xs-offset-'.$labelColumns;
+                    $addDivClass = ' col-xs-offset-'.$this->labelColumns;
                 } elseif ($element instanceof DateSelect) {
                     $elementString = '<div class="form-inline">'.$elementString.'</div>';
                 }
@@ -301,12 +293,12 @@ class FormRow extends ZfFormRow
 
                 switch ($this->labelPosition) {
                     case self::LABEL_PREPEND:
-                        if ($isHorizontal) {
+                        if ($this->isHorizontal) {
                             $markup = sprintf(
                                 $this->horizontalRowWrapper,
                                 ! empty($elementErrors) ? ' has-error' : '',
                                 $labelOpen . $label . $labelClose,
-                                12 - $labelColumns,
+                                12 - $this->labelColumns,
                                 $addDivClass,
                                 $elementString . ($this->renderErrors ? $elementErrors : ''),
                                 ''
@@ -322,12 +314,12 @@ class FormRow extends ZfFormRow
                         break;
                     case self::LABEL_APPEND:
                     default:
-                        if ($isHorizontal) {
+                        if ($this->isHorizontal) {
                             $markup = sprintf(
                                 $this->horizontalRowWrapper,
                                 ! empty($elementErrors) ? ' has-error' : '',
                                 '',
-                                12 - $labelColumns,
+                                12 - $this->labelColumns,
                                 $addDivClass,
                                 $elementString . ($this->renderErrors ? $elementErrors : ''),
                                 $labelOpen . $label . $labelClose
@@ -344,17 +336,17 @@ class FormRow extends ZfFormRow
                 }
             }
 
-            if (! $isHorizontal && $this->renderErrors) {
+            if (! $this->isHorizontal && $this->renderErrors) {
                 $markup .= $elementErrors;
             }
         } else {
-            if ($isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
+            if ($this->isHorizontal && $this->labelPosition == self::LABEL_PREPEND && $type !== 'hidden') {
                 $markup = sprintf(
                     $this->horizontalRowWrapper,
                     ! empty($elementErrors) ? ' has-error' : '',
                     '',
-                    12 - $labelColumns,
-                    ' col-xs-offset-'.$labelColumns,
+                    12 - $this->labelColumns,
+                    ' col-xs-offset-'.$this->labelColumns,
                     $elementString.($this->renderErrors ? $elementErrors : ''),
                     ''
                 );
@@ -380,5 +372,18 @@ class FormRow extends ZfFormRow
                     $helpBlock
             )
         ) : '';
+    }
+
+    public function setIsHorizontal(bool $isHorizontal): FormRow
+    {
+        $this->isHorizontal = $isHorizontal;
+
+        return $this;
+    }
+
+    public function setLabelColumns(int $labelColumns): FormRow
+    {
+        $this->labelColumns = $labelColumns;
+        return $this;
     }
 }
