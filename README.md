@@ -1,4 +1,10 @@
-# LosUI 
+# LosUI
+
+> [!WARNING]
+> ## Archived
+> This Bootstrap 3, jQuery, and Chosen integration is no longer maintained and
+> will receive no further releases. Build new interfaces with a current asset
+> pipeline and UI system instead of extending this legacy module.
 [![Build Status](https://travis-ci.org/Lansoweb/LosUi.svg?branch=master)](https://travis-ci.org/Lansoweb/LosUi) [![Latest Stable Version](https://poser.pugx.org/los/losui/v/stable.svg)](https://packagist.org/packages/los/losui) [![Total Downloads](https://poser.pugx.org/los/losui/downloads.svg)](https://packagist.org/packages/los/losui) [![Coverage Status](https://coveralls.io/repos/Lansoweb/LosUi/badge.svg)](https://coveralls.io/r/Lansoweb/LosUi) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lansoweb/LosUi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lansoweb/LosUi/?branch=master) [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/bab31378-77d2-46b3-94df-976c60ed2fe6.svg?style=flat)](https://insight.sensiolabs.com/projects/bab31378-77d2-46b3-94df-976c60ed2fe6) [![Dependency Status](https://www.versioneye.com/user/projects/54da836cc1bbbd5f82000357/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54da836cc1bbbd5f82000357) [![Dependency Status](https://www.versioneye.com/user/projects/54da837ec1bbbd5f8200035e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54da837ec1bbbd5f8200035e)
 
 
